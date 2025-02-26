@@ -49,7 +49,6 @@ function Hell() {
 
 					<img className="z-4 top-1/2 punch w-60 h-50" src="/punch_to_face.png" />
 				</div>
-				{/* <FireEffect /> */}
 			</div>
 		</>
 	);
