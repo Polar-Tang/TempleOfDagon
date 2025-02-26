@@ -1,6 +1,3 @@
-import React from 'react'
-import gsap from 'gsap'
-import { useGSAP } from '@gsap/react'
 
 // className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
 const DemonFace = () => {

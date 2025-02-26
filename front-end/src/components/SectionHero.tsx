@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import '../output.css'
 import "../pages/home.css"
 import gsap from 'gsap'

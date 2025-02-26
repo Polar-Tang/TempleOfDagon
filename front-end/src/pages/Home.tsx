@@ -1,7 +1,6 @@
 
 import Navbar from '@/components/Navbar'
 import SectionHero from '@/components/SectionHero';
-import React from 'react'
 import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
 import "./home.css"
 import "../output.css"
