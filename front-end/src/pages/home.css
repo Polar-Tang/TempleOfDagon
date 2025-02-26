@@ -1,21 +1,21 @@
 @font-face {
     font-family: 'burtonNT';
-    src: url('/public/fonts/NITEMARE.TTF') format('truetype'),
+    src: url('/fonts/NITEMARE.TTF') format('truetype'),
 }
 
 @font-face {
   font-family: 'Castoro';
-  src: url('/public/fonts/CastoroTitling-Regular.ttf') format('truetype');
+  src: url('/fonts/CastoroTitling-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Vollkorn';
-  src: url('/public/fonts/static/Vollkorn-Regular.ttf') format('truetype');
+  src: url('/fonts/static/Vollkorn-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/public/fonts/static/Montserrat-Regular.ttf') format('truetype');
+  src: url('/fonts/static/Montserrat-Regular.ttf') format('truetype');
 }
 
 .font-burtonNT {
