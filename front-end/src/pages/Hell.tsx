@@ -47,7 +47,7 @@ function Hell() {
 					<div className="speed-line absolute w-1 h-52 bg-black top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -rotate-30"></div>
 					<div className="speed-line absolute w-1 h-52 bg-black top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -rotate-45"></div>
 
-					<img className="z-4 top-1/2 punch w-60 h-50" src="/punch_to_face.png" />
+					<img src="/punch_to_face.png" className="z-4 top-1/2 punch w-60 h-50" />
 				</div>
 			</div>
 		</>
