@@ -7,13 +7,14 @@ import {
 
 import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
+import { DropdownMenuCheckboxes } from "./buttons/DropdownMenuCheckboxes"
 
 const Navbar = () => {
 
     const [isVisible, setIsVisible] = useState(true)
     const [lastScrollPosition, setLastScrollPosition] = useState(0)
 
-    const handleScroll = () => {
+    const handleScroll = (): void => {
         console.log("Listen carefully scrolling")
         const currentScrollPosition = window.scrollY || window.pageYOffset
         if (currentScrollPosition > lastScrollPosition) {
@@ -25,12 +26,12 @@ const Navbar = () => {
         setLastScrollPosition(currentScrollPosition)
     }
 
-    
+
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll)
 
-        console.log("Is it visible? ",isVisible)
+        console.log("Is it visible? ", isVisible)
 
         console.log("Current scroll thing ", window.pageYOffset)
         return () => {
@@ -43,20 +44,27 @@ const Navbar = () => {
     }
 
     return (
-        <NavigationMenu className={`bg-transparent text-white p-4 fixed top-0 w-full transition-transform duration-300 z-50 ${isVisible ? 'translate-y-0' : 'transform -translate-y-full'
-        }`}>
-            <NavigationMenuList>
-                <NavigationMenuItem className="flex justify-center justify-between w-full"> 
+        <NavigationMenu className={`bg-transparent text-white p-4 fixed top-0 w-full transition-transform duration-300 z-50  ${isVisible ? 'translate-y-0' : 'transform -translate-y-full'
+            }`}>
+            <NavigationMenuList className="flex justify-between w-full space-x-4 grid grid-cols-3 grid-cols-[1fr_5fr_1fr]">
+                <NavigationMenuItem>
                     <Link to="/">
                         <NavigationMenuLink className={`${navClasses.linkClass}`} >
                             Home
                         </NavigationMenuLink>
                     </Link>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem className="flex-auto">
                     <Link to="/infierno">
                         <NavigationMenuLink className={`${navClasses.linkClass}`} >
                             Conoce a satanás
                         </NavigationMenuLink>
                     </Link>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem className="flex-end">
+                    <DropdownMenuCheckboxes />
                 </NavigationMenuItem>
             </NavigationMenuList>
         </NavigationMenu>

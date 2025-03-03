@@ -10,12 +10,12 @@
 
 @font-face {
   font-family: 'Vollkorn';
-  src: url('/fonts/static/Vollkorn-Regular.ttf') format('truetype');
+  src: url('/fonts/Vollkorn-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/static/Montserrat-Regular.ttf') format('truetype');
+  src: url('/fonts/Montserrat-Regular.ttf') format('truetype');
 }
 
 .font-burtonNT {
