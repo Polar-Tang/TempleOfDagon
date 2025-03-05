@@ -1,0 +1,45 @@
+.banner-wrapper{
+    background-color: black;
+}
+  
+  .app {
+    text-align: center;
+    max-width: 1200px;
+    margin: 10rem auto;
+  }
+  
+  img {
+    max-width: 150px;
+    height: 10rem;
+    object-fit: cover;
+    padding: 0 10px;
+    cursor: pointer;
+  }
+  
+  .banner-wrapper {
+    width: 100%;
+    height: 10rem;
+    overflow: hidden;
+  }
+  
+  .banner-wrapper .wrapper {
+    display: flex;
+  }
+  
+  .banner-wrapper .wrapper .images {
+    display: flex;
+    animation: swipe 20s linear infinite;
+    /* @apply animate-running;  Set default animation to running */
+  }
+  
+
+  
+  @keyframes swipe {
+    0% {
+      transform: translateX(0);
+    }
+  
+    100% {
+      transform: translateX(-100%);
+    }
+  }

@@ -3,6 +3,8 @@ import corsOptions from './utils/corsOptions.js'
 import cors from 'cors'
 import ENVIRONMENT from './config/environment.js'
 import authRouter from './routes/auth.route.js'
+import productRouter from './routes/product.route.js'
+
 
 const port = 3000
 const app = express()
@@ -28,6 +30,8 @@ app.use(express.json({limit: '3mb' }))
 
 
 app.use('/api/auth', authRouter)
+app.use('/api/product', productRouter)
+
 
 app.listen(port, () => {
     console.log(`listen on http://localhost:${port}`)

@@ -8,12 +8,15 @@
     "@supabase/supabase-js": "^2.49.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "drizzle-orm": "^0.40.0",
+    "express": "^4.21.2",
+    "postgres": "^3.4.5"
   },
   "name": "back-end",
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
+    "drizzle-kit": "^0.30.5",
     "supabase": "^2.15.8",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2"

@@ -5,7 +5,9 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const ENVIRONMENT = {
-    URL_FRONT: process.env.URL_FRONT || '',
+    URL_FRONT: process.env.URL_FRONT,
+    SUPABASE_project_URL: process.env.SUPABASE_project_URL,
+    SUPABASE_apiKey: process.env.SUPABASE_apiKey
 }
 
 export default ENVIRONMENT

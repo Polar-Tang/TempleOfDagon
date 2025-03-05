@@ -1,4 +1,4 @@
 xdg-settings: default-url-scheme-handler not implemented for xfce
-08:48:14.458 › [electron client protocol] FAILED to set default protocol 'insomnia://'
-Debugger listening on ws://127.0.0.1:36735/c01bf8fe-1df6-44cc-834b-aadb5a654583
+09:46:02.456 › [electron client protocol] FAILED to set default protocol 'insomnia://'
+Debugger listening on ws://127.0.0.1:46285/77e1007a-b709-42b8-9d9b-66bf62e6ce16
 For help, see: https://nodejs.org/en/docs/inspector
