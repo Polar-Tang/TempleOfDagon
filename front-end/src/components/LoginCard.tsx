@@ -21,17 +21,17 @@ import { Button } from "@/components/ui/button"
 //     label,
 //     buttonText
 // }
-type formScheme = {
-    email: string
-    password: string
-}
+// type formScheme = {
+//     email: string
+//     password: string
+// }
 
 const LoginCard = () => {
 
-    const form_state: formScheme = {
-        email: '',
-        password: ''
-    }
+    // const form_state: formScheme = {
+    //     email: '',
+    //     password: ''
+    // }
 
     const handleRegister = (e: React.FormEvent) => { 
         e.preventDefault()
