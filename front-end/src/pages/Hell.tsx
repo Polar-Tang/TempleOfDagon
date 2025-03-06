@@ -2,7 +2,6 @@
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react';
 import '../output.css'
-import DemonFace from '../components/DemonFace'
 import Navbar from '../components/Navbar'
 // import { getParticleSystem } from './getParticleSystem'
 // import * as THREE from "three";
@@ -36,7 +35,6 @@ function Hell() {
 		<>
 			<Navbar/>
 			<div className="w-full h-screen overflow-hidden relative flex items-center justify-center h-screen w-screen bg-white">
-			<DemonFace/> 
 				<div className='punch-container absolute top-1/2 left-[70%] -translate-y-1/8'>
 					<div className="speed-line absolute w-1 h-52 bg-black top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-0"></div>
 					<div className="speed-line absolute w-1 h-52 bg-black top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-15"></div>

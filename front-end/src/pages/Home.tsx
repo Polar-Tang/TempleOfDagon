@@ -1,12 +1,11 @@
 
 import Navbar from '@/components/Navbar'
 import SectionHero from '@/components/SectionHero';
-import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
 // import "./home.css"
 // import "../output.css"
 import "../components/banner.css"
 import Banner from '@/components/Banner';
-import { images } from '/public/data';
+import { images } from '../utils/data';
 import Footer from '@/components/Footer';
 
 const Home = () => {

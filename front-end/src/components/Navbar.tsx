@@ -1,10 +1,4 @@
-import {
-    NavigationMenu,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-} from "@/components/ui/navigation-menu"
-import { FaCartShopping, FaBars } from "react-icons/fa6";
+import { FaCartShopping } from "react-icons/fa6";
 import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
 import { DropdownMenuCheckboxes } from "../components/DropdownNavbar"
@@ -12,7 +6,6 @@ import { DropdownMenuCheckboxes } from "../components/DropdownNavbar"
 const Navbar = () => {
 
     const [isVisible, setIsVisible] = useState(true)
-    const [dropdownState, setDropdownState] = useState(false)
     const [lastScrollPosition, setLastScrollPosition] = useState(0)
 
     const handleScroll = (): void => {
@@ -53,11 +46,10 @@ const Navbar = () => {
             <Link className={`${navClasses.linkClass}`} to="/">
                 <img className="h-10 w-40" alt="Logo de la empresa" src="/LOGO.png" />
             </Link>
-            <Link to={"/cart"} className={`${navClasses.linkClass}`}>
+            <Link to={"/"} className={`${navClasses.linkClass}`}>
                 <FaCartShopping  />
             </Link>
             </nav>
-            <div className={`w-full h-10 bg-red-400 ${dropdownState ? 'block' : 'hidden'}`}></div>
         </div>
     )
 }
