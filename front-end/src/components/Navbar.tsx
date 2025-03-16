@@ -9,7 +9,6 @@ const Navbar = () => {
     const [lastScrollPosition, setLastScrollPosition] = useState(0)
 
     const handleScroll = (): void => {
-        console.log("Listen carefully scrolling")
         const currentScrollPosition = window.scrollY || window.pageYOffset
         if (currentScrollPosition > lastScrollPosition) {
             setIsVisible(false)

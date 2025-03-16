@@ -2,7 +2,8 @@
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-// import { useRef, Ref } from 'react';
+import "./banner.css"
+import { useRef} from 'react';
 
 interface BannerPorps {
 	images: {
@@ -17,49 +18,6 @@ interface Index {
 
 export function ImageSection({ images, index }: BannerPorps & Index) {
 
-	gsap.registerPlugin(useGSAP);
-	gsap.registerPlugin(ScrollTrigger)
-
-	useGSAP(() => {
-		const tl = gsap.timeline();
-		const secWrapper = document.querySelector('.image-wrapper-2') as HTMLElement;
-		console.log("How fortune the man with none: ", secWrapper, "tih a length of ", secWrapper.clientWidth)
-		gsap.set(".image-wrapper-2", { x: secWrapper.scrollWidth })
-
-		const wrapper = document.querySelector(".wrapper") as HTMLElement
-
-		tl.to(".banner-wrapper .wrapper .images", {
-			x: -(wrapper.scrollWidth - wrapper.clientWidth),
-		  	ease: "none", 
-			scrollTrigger: {
-				scrub: 1,
-				trigger: ".wrapper",
-				start: "top 90%",
-				markers: true,
-				// horizontal: true,
-				end: () => `+=` + wrapper.scrollWidth,
-
-			},
-		})
-
-		// tl.to(".image-wrapper-1", {
-		// 	x: -secWrapper.scrollWidth,
-		// 	duration: 5,
-		// 	ease: "none",
-
-
-		// });
-
-		// tl.to(".image-wrapper-2", {
-		// 	x: 0,
-		// 	duration: 5,
-		// 	ease: "none",
-
-		// });
-
-	}, []);
-	// {scope: imagesContaier2}
-	console.log("")
 	return (
 		<div className={`images flex image-wrapper-${index}`}>
 			{images.map(({ src, name }) => (
@@ -72,46 +30,105 @@ export function ImageSection({ images, index }: BannerPorps & Index) {
 }
 
 export default function Banner({ images }: BannerPorps) {
+	const wrapperRef = useRef<HTMLDivElement>(null);
+
+	gsap.registerPlugin(useGSAP);
+	gsap.registerPlugin(ScrollTrigger)
+
+	useGSAP(() => {
+		const wrapper = wrapperRef.current;
+		console.log("Wrapper: ", wrapperRef)
+		
+		ScrollTrigger.defaults({
+			scroller: document.documentElement
+		  });
+		  
+		  ScrollTrigger.config({
+			limitCallbacks: true,
+			ignoreMobileResize: true
+		  });
+		  
+	
+			const images: HTMLElement[] = gsap.utils.toArray(".image")
+
+			console.log("Wrapper: ", wrapper)
+			console.log("Images array", images)
+	
+			wrapper?.appendChild(images[0].cloneNode(true))
+
+			const totalWidth = images[0].offsetWidth;
+
+			// Infinite animation
+			const animation = gsap.to(".wrapper", {
+			  x: -totalWidth,
+			  duration: 20,
+			  ease: "none",
+			  repeat: -1
+			});
+
+			ScrollTrigger.create({
+				trigger: ".banner-wrapper",
+				start: "top top",
+				end: () => "+=" + wrapper?.scrollWidth, // or something larger than your scroll width
+				scrub: 1,
+				onUpdate: (self) => {
+				  // Control the speed of the animation based on scroll direction
+				  const scrollDirection = self.getVelocity() / 1000; // Velocity of scrolling
+				  gsap.to(animation, { timeScale: Math.min(Math.max(scrollDirection, 0.1), 5) }); // Adjust the scale for more control
+				}
+			  });
+
+			  images.forEach(image => {
+				
+				ScrollTrigger.create({
+				trigger: image,
+
+					onUpdate: (self) => {
+					  console.log(self.progress, " of ", image)
+					}
+				  });
+			  })
+		  
+			  return () => {
+				animation.kill();
+				// ScrollTrigger.kill();
+			  };
+		// 	let scrollTween = gsap.to(wrapper, {
+		// 		x: wrapper ? -(document.documentElement.clientWidth) : 0,
+		// 		ease: "none",
+		// 		scrollTrigger: {
+		// 			trigger: wrapper,
+		// 			start: "top top",
+		// 			end: `+=${wrapper ?  document.documentElement.clientWidth: 0}`,
+		// 			pin: true,
+		// 			scrub: 0.5,
+		// 		  }
+		// 	});
+		// 	console.log("The scroll tween: ", scrollTween)
+		// 	let acc: number = 0
+		// 	images.forEach(image => {
+		// 		console.log("THis is the image: ", image, acc++)
+		// 		gsap.to(image, {
+		// 			scrollTrigger: {
+		// 				trigger: wrapper,
+		// 				markers: true,
+		// 				start: "top top",
+		// 				containerAnimation: scrollTween,
+		// 				end: `+=${wrapper ?  document.documentElement.clientWidth: 0}`,
+	
+		// 			}
+		// 		})
+		// 	})
+
+		// if (!wrapper) return;
+	}, [])
+
 	return (
 		<div className='banner-wrapper h-full flex items-center'>
 			<div className='wrapper flex items-center justify-center'>
 				<ImageSection images={images} index="1" />
-				<ImageSection images={images} index="2" />
+				<ImageSection images={images} index="2" /> 
 			</div>
 		</div>
 	);
 }
-
-// const imagesContaier2 = useRef(images)
-
-// const [gatewayAnimateState, setGatewayAnimateState] = useState(false)
-
-// const imagesHTML: NodeListOf<Element> = document.querySelectorAll('.wrapper .images .image')
-// const touchEnd = () => {
-// 	setGatewayAnimateState(false)
-// 	imagesHTML.forEach(img => img.classList.remove('animate-paused'));
-// }
-// const touchStart = () => {
-// 	setGatewayAnimateState(true)
-// 	imagesHTML.forEach(img => img.classList.add('animate-paused'));
-// }
-// useEffect(() => {
-// 	const imagesContainer = document.querySelector('.wrapper .images');
-// 	if (!imagesContainer) return; // Prevent errors if the element is not found
-// 	console.log("The image container",imagesContainer)
-
-// 	imagesContainer.addEventListener("touchstart", touchStart)
-// 	imagesContainer.addEventListener("touchend", touchEnd)
-// 	imagesContainer.addEventListener("mouseover", touchStart)
-// 	imagesContainer.addEventListener("mouseleave", touchEnd)
-
-// 	return () => {
-// 		imagesContainer.removeEventListener("touchstart", touchStart)
-// 		imagesContainer.removeEventListener("touchend", touchEnd)
-// 		imagesContainer.removeEventListener("mouseover", touchStart)
-// 		imagesContainer.removeEventListener("mouseleave", touchEnd)
-// 	}
-
-// }, [])
-
-// ${gatewayAnimateState ? 'animate-paused' : 'animate-running'}
