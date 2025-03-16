@@ -4,8 +4,6 @@
   
   
   img {
-    /* max-width: 150px; */
-    /* height: 10rem; */
     object-fit: cover;
     padding: 0 10px;
     cursor: pointer;
@@ -13,20 +11,22 @@
   
   .banner-wrapper {
     width: 100%;
-    /* height: 10rem; */
-    overflow: hidden;
+    /* overflow: hidden; */
   }
   
   .banner-wrapper .wrapper {
     display: flex;
+    width: 200%; 
   }
   
+  
+
   .banner-wrapper .wrapper .images {
     display: flex;
-    animation: swipe 20s linear infinite;
-    /* @apply animate-running;  Set default animation to running */
+    width: 50%;
+    flex: 0 0 50%;
   }
-  
+  /* 
 
   
   @keyframes swipe {
@@ -37,4 +37,4 @@
     100% {
       transform: translateX(-100%);
     }
-  }
+  } */

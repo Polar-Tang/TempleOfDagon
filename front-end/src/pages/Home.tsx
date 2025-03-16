@@ -1,12 +1,12 @@
 
 import Navbar from '@/components/Navbar'
 import SectionHero from '@/components/SectionHero';
-// import "./home.css"
+import "./home.css"
 // import "../output.css"
 import "../components/banner.css"
 import Banner from '@/components/Banner';
 import { images } from '../utils/data';
-import Footer from '@/components/Footer';
+// import Footer from '@/components/Footer';
 
 const Home = () => {
   return (
@@ -18,7 +18,7 @@ const Home = () => {
       <SectionHero />
       <Banner images={images}/>
     </div>
-    <Footer/>
+    {/* <Footer/> */}
     </>
   )
 }

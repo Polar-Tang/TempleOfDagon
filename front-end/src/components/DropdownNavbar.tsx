@@ -1,6 +1,6 @@
 "use client"
 
-
+import { FaBars } from "react-icons/fa6";
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -18,9 +18,11 @@ export function DropdownMenuCheckboxes() {
   // const [showPanel, setShowPanel] = React.useState<Checked>(false)
 
   return (
-    <DropdownMenu >
+    <DropdownMenu  >
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">Open</Button>
+        <Button variant="outline">
+          <FaBars className="mr-2 h-25 w-25" />
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel>Appearance</DropdownMenuLabel>
