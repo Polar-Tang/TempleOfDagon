@@ -24,9 +24,9 @@ const Navbar = () => {
     useEffect(() => {
         window.addEventListener('scroll', handleScroll)
 
-        console.log("Is it visible? ", isVisible)
+        // console.log("Is it visible? ", isVisible)
 
-        console.log("Current scroll thing ", window.pageYOffset)
+        // console.log("Current scroll thing ", window.pageYOffset)
         return () => {
             window.removeEventListener('scroll', handleScroll)
         }

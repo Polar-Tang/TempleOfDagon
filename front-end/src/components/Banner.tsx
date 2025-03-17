@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./banner.css"
-import { useRef} from 'react';
+import { useRef, useState } from 'react';
 
 interface BannerPorps {
 	images: {
@@ -31,103 +31,74 @@ export function ImageSection({ images, index }: BannerPorps & Index) {
 
 export default function Banner({ images }: BannerPorps) {
 	const wrapperRef = useRef<HTMLDivElement>(null);
+	const [imageListState, setImageListState] = useState(images)
+
 
 	gsap.registerPlugin(useGSAP);
 	gsap.registerPlugin(ScrollTrigger)
 
 	useGSAP(() => {
 		const wrapper = wrapperRef.current;
-		console.log("Wrapper: ", wrapperRef)
-		
+		const wraperHTML: HTMLElement = document.querySelector(".wrapper")!;
+
 		ScrollTrigger.defaults({
 			scroller: document.documentElement
-		  });
-		  
-		  ScrollTrigger.config({
+		});
+
+		ScrollTrigger.config({
 			limitCallbacks: true,
 			ignoreMobileResize: true
-		  });
-		  
-	
-			const images: HTMLElement[] = gsap.utils.toArray(".image")
+		});
 
-			console.log("Wrapper: ", wrapper)
-			console.log("Images array", images)
-	
-			wrapper?.appendChild(images[0].cloneNode(true))
+		const imagesElementsList: HTMLElement[] = gsap.utils.toArray(".image")
 
-			const totalWidth = images[0].offsetWidth;
+		const animation = gsap.to(".wrapper", {
+		  x: -wraperHTML?.scrollWidth + window.innerWidth ,
+		  duration: 20,
+		  ease: "none",
+		  repeat: -1
+		});
 
-			// Infinite animation
-			const animation = gsap.to(".wrapper", {
-			  x: -totalWidth,
-			  duration: 20,
-			  ease: "none",
-			  repeat: -1
-			});
+		let total: number = 0
 
-			ScrollTrigger.create({
-				trigger: ".banner-wrapper",
-				start: "top top",
-				end: () => "+=" + wrapper?.scrollWidth, // or something larger than your scroll width
-				scrub: 1,
-				onUpdate: (self) => {
-				  // Control the speed of the animation based on scroll direction
-				  const scrollDirection = self.getVelocity() / 1000; // Velocity of scrolling
-				  gsap.to(animation, { timeScale: Math.min(Math.max(scrollDirection, 0.1), 5) }); // Adjust the scale for more control
-				}
-			  });
 
-			  images.forEach(image => {
+		ScrollTrigger.create({
+			trigger: ".banner-wrapper",
+			scroller: ".banner-wrapper",
+			start: "left left",
+			// end: () => "+=" + "3000",
+			end: () => "+=" + wraperHTML?.scrollWidth,
+			scrub: 1,
+			markers: true,
+			horizontal: true,
+			onUpdate: () => {
+				const lastImage = imagesElementsList[9]
 				
-				ScrollTrigger.create({
-				trigger: image,
+				if (ScrollTrigger.isInViewport(lastImage, 0.2, true)) {
+					console.log("Appending image to the end of the carousel.");
+					imagesElementsList.push(lastImage)
+					setImageListState((prevState) => {
+						const newImages = [...prevState];
+						newImages.push(images[total]);
+						return newImages;
+					})
+					total < 9 ? total++ : total= 0
+					console.log("Now total ", total)
+				}
+			}
+		});
 
-					onUpdate: (self) => {
-					  console.log(self.progress, " of ", image)
-					}
-				  });
-			  })
-		  
-			  return () => {
-				animation.kill();
-				// ScrollTrigger.kill();
-			  };
-		// 	let scrollTween = gsap.to(wrapper, {
-		// 		x: wrapper ? -(document.documentElement.clientWidth) : 0,
-		// 		ease: "none",
-		// 		scrollTrigger: {
-		// 			trigger: wrapper,
-		// 			start: "top top",
-		// 			end: `+=${wrapper ?  document.documentElement.clientWidth: 0}`,
-		// 			pin: true,
-		// 			scrub: 0.5,
-		// 		  }
-		// 	});
-		// 	console.log("The scroll tween: ", scrollTween)
-		// 	let acc: number = 0
-		// 	images.forEach(image => {
-		// 		console.log("THis is the image: ", image, acc++)
-		// 		gsap.to(image, {
-		// 			scrollTrigger: {
-		// 				trigger: wrapper,
-		// 				markers: true,
-		// 				start: "top top",
-		// 				containerAnimation: scrollTween,
-		// 				end: `+=${wrapper ?  document.documentElement.clientWidth: 0}`,
-	
-		// 			}
-		// 		})
-		// 	})
-
-		// if (!wrapper) return;
+		   return () => {
+		 	animation.kill();
+		   };
 	}, [])
 
 	return (
 		<div className='banner-wrapper h-full flex items-center'>
 			<div className='wrapper flex items-center justify-center'>
-				<ImageSection images={images} index="1" />
-				<ImageSection images={images} index="2" /> 
+				<ImageSection images={imageListState} index="1" />
+				{/* <ImageSection images={images} index="2" /> */}
+
 			</div>
 		</div>
 	);
