@@ -41,6 +41,8 @@ export default function Banner({ images }: BannerPorps) {
 		const wrapper = wrapperRef.current;
 		const wraperHTML: HTMLElement = document.querySelector(".wrapper")!;
 
+		const scrollableWidth: number = wraperHTML?.scrollWidth
+
 		ScrollTrigger.defaults({
 			scroller: document.documentElement
 		});
@@ -53,7 +55,7 @@ export default function Banner({ images }: BannerPorps) {
 		const imagesElementsList: HTMLElement[] = gsap.utils.toArray(".image")
 
 		const animation = gsap.to(".wrapper", {
-		  x: -wraperHTML?.scrollWidth + window.innerWidth ,
+		  x: -wraperHTML?.scrollWidth,
 		  duration: 20,
 		  ease: "none",
 		  repeat: -1
@@ -66,13 +68,14 @@ export default function Banner({ images }: BannerPorps) {
 			trigger: ".banner-wrapper",
 			scroller: ".banner-wrapper",
 			start: "left left",
-			// end: () => "+=" + "3000",
 			end: () => "+=" + wraperHTML?.scrollWidth,
+			// end: () => "+=" + wraperHTML?.scrollWidth,
 			scrub: 1,
 			markers: true,
 			horizontal: true,
 			onUpdate: () => {
 				const lastImage = imagesElementsList[9]
+				// const firstImage = imagesList[total]
 				
 				if (ScrollTrigger.isInViewport(lastImage, 0.2, true)) {
 					console.log("Appending image to the end of the carousel.");
@@ -88,9 +91,9 @@ export default function Banner({ images }: BannerPorps) {
 			}
 		});
 
-		   return () => {
-		 	animation.kill();
-		   };
+		//    return () => {
+		//  	animation.kill();
+		//    };
 	}, [])
 
 	return (
