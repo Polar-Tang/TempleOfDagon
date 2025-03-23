@@ -3,22 +3,22 @@ import ReactDOM from 'react-dom';
 interface ImageProductProps {
   isProduct: boolean;
   name: string;
-  source: string;
+  src: string;
   setIsProduct: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const ImageProduct = ({isProduct, source, name, setIsProduct}: ImageProductProps)  => {
+const ImageProduct = ({isProduct, src, name, setIsProduct}: ImageProductProps)  => {
   if (!isProduct) return null;
-
+  console.log("is PRoduct state: ",isProduct)
   return ReactDOM.createPortal(
-    <div className={` ${isProduct ? 'fixed' : 'hidden'} w-full h-dvh top-0 left-0 z-10 flex items-center`} style={{ backgroundColor: 'rgba(0, 0, 0, 0.03)' }}>
+    <div className={` fixed portal-product w-full h-dvh top-0 left-0 z-100 flex items-center`} style={{ backgroundColor: 'rgba(0, 0, 0, 0.03)' }}>
       <div className="w-full max-w-md mx-auto bg-white">
         {/* <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl dark:bg-gray-950"></div>  */}
           <div className="flex justify-end p-2">
             <Button onClick={() => setIsProduct(false)}>Close</Button>
           </div>
           <img
-            src={source}
+            src={src}
             alt="Product Image"
             width={600}
             height={400}

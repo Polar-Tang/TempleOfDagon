@@ -15,7 +15,8 @@ const Home = () => {
   grid-cols-1 
   grid-rows-[5fr_4fr]
   flex
-  relative'>
+  relative
+  '>
       <Navbar />
       <SectionHero />
       <Banner images={images}/>

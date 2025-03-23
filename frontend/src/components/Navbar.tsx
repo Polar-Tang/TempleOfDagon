@@ -39,7 +39,7 @@ const Navbar = () => {
     // ${isVisible ? 'translate-y-0' : 'transform -translate-y-full'}
 
     return (
-        <div className="w-full z-100 bg-transparent absolute top-0 left-0 right-0">
+        <div className="fixed top-0 w-full z-51 bg-transparent absolute top-0 left-0 right-0">
             <nav className={`bg-transparent w-full h-15 text-white flex justify-between items-center px-4 py-2  ${isVisible ? 'translate-y-0' : 'transform -translate-y-full'}`}>
             <DropdownMenuCheckboxes />
             <Link className={`${navClasses.linkClass}`} to="/">

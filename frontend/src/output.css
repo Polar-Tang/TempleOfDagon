@@ -1,4 +1,4 @@
-/*! tailwindcss v4.0.14 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.0.15 | MIT License | https://tailwindcss.com */
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -203,9 +203,6 @@
   .pointer-events-none {
     pointer-events: none;
   }
-  .visible {
-    visibility: visible;
-  }
   .sr-only {
     position: absolute;
     width: 1px;
@@ -226,17 +223,11 @@
   .relative {
     position: relative;
   }
-  .inset-px {
-    inset: 1px;
-  }
   .-top-12 {
     top: calc(var(--spacing) * -12);
   }
   .top-0 {
     top: calc(var(--spacing) * 0);
-  }
-  .top-1 {
-    top: calc(var(--spacing) * 1);
   }
   .top-1\/2 {
     top: calc(1/2 * 100%);
@@ -265,9 +256,6 @@
   .left-0 {
     left: calc(var(--spacing) * 0);
   }
-  .left-1 {
-    left: calc(var(--spacing) * 1);
-  }
   .left-1\/2 {
     left: calc(1/2 * 100%);
   }
@@ -295,6 +283,9 @@
   .z-50 {
     z-index: 50;
   }
+  .z-51 {
+    z-index: 51;
+  }
   .z-100 {
     z-index: 100;
   }
@@ -315,9 +306,6 @@
   }
   .-mt-4 {
     margin-top: calc(var(--spacing) * -4);
-  }
-  .mt-1 {
-    margin-top: calc(var(--spacing) * 1);
   }
   .mt-1\.5 {
     margin-top: calc(var(--spacing) * 1.5);
@@ -355,9 +343,6 @@
   .inline-flex {
     display: inline-flex;
   }
-  .table {
-    display: table;
-  }
   .aspect-square {
     aspect-ratio: 1 / 1;
   }
@@ -388,9 +373,6 @@
   .size-full {
     width: 100%;
     height: 100%;
-  }
-  .h-1 {
-    height: calc(var(--spacing) * 1);
   }
   .h-1\.5 {
     height: calc(var(--spacing) * 1.5);
@@ -446,9 +428,6 @@
   .w-20 {
     width: calc(var(--spacing) * 20);
   }
-  .w-25 {
-    width: calc(var(--spacing) * 25);
-  }
   .w-40 {
     width: calc(var(--spacing) * 40);
   }
@@ -497,14 +476,8 @@
   .flex-1 {
     flex: 1;
   }
-  .flex-shrink {
-    flex-shrink: 1;
-  }
   .shrink-0 {
     flex-shrink: 0;
-  }
-  .flex-grow {
-    flex-grow: 1;
   }
   .grow-0 {
     flex-grow: 0;
@@ -512,19 +485,8 @@
   .basis-full {
     flex-basis: 100%;
   }
-  .border-collapse {
-    border-collapse: collapse;
-  }
-  .-translate-x-1 {
-    --tw-translate-x: calc(var(--spacing) * -1);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
   .-translate-x-1\/2 {
     --tw-translate-x: calc(calc(1/2 * 100%) * -1);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-  .-translate-y-1 {
-    --tw-translate-y: calc(var(--spacing) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .-translate-y-1\/2 {
@@ -577,9 +539,6 @@
   .cursor-default {
     cursor: default;
   }
-  .resize {
-    resize: both;
-  }
   .list-none {
     list-style-type: none;
   }
@@ -591,12 +550,6 @@
   }
   .flex-col {
     flex-direction: column;
-  }
-  .flex-row {
-    flex-direction: row;
-  }
-  .flex-wrap {
-    flex-wrap: wrap;
   }
   .place-items-center {
     place-items: center;
@@ -656,6 +609,13 @@
       --tw-space-y-reverse: 0;
       margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));
       margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-x-4 {
+    :where(& > :not(:last-child)) {
+      --tw-space-x-reverse: 0;
+      margin-inline-start: calc(calc(var(--spacing) * 4) * var(--tw-space-x-reverse));
+      margin-inline-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-x-reverse)));
     }
   }
   .overflow-hidden {
@@ -759,6 +719,9 @@
   .object-cover {
     object-fit: cover;
   }
+  .p-0 {
+    padding: calc(var(--spacing) * 0);
+  }
   .p-1 {
     padding: calc(var(--spacing) * 1);
   }
@@ -780,6 +743,12 @@
   .px-6 {
     padding-inline: calc(var(--spacing) * 6);
   }
+  .px-\[1\.2\] {
+    padding-inline: 1.2;
+  }
+  .px-\[1\.2em\] {
+    padding-inline: 1.2em;
+  }
   .py-1 {
     padding-block: calc(var(--spacing) * 1);
   }
@@ -789,14 +758,17 @@
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
-  .py-4 {
-    padding-block: calc(var(--spacing) * 4);
-  }
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
   }
   .py-10 {
     padding-block: calc(var(--spacing) * 10);
+  }
+  .py-\[0\.6\] {
+    padding-block: 0.6;
+  }
+  .py-\[0\.6em\] {
+    padding-block: 0.6em;
   }
   .pt-0 {
     padding-top: calc(var(--spacing) * 0);
@@ -825,6 +797,9 @@
   .text-left {
     text-align: left;
   }
+  .text-start {
+    text-align: start;
+  }
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
@@ -849,6 +824,9 @@
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
   }
+  .text-\[1em\] {
+    font-size: 1em;
+  }
   .leading-none {
     --tw-leading: 1;
     line-height: 1;
@@ -871,6 +849,9 @@
   }
   .whitespace-nowrap {
     white-space: nowrap;
+  }
+  .text-black {
+    color: var(--color-black);
   }
   .text-blue-500 {
     color: var(--color-blue-500);
@@ -902,14 +883,8 @@
   .text-white {
     color: var(--color-white);
   }
-  .underline {
-    text-decoration-line: underline;
-  }
   .underline-offset-4 {
     text-underline-offset: 4px;
-  }
-  .opacity-50 {
-    opacity: 50%;
   }
   .shadow {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
@@ -931,9 +906,6 @@
     --tw-shadow: 0 1px 2px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.05));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
-  .ring-ring {
-    --tw-ring-color: var(--ring);
-  }
   .ring-ring\/10 {
     --tw-ring-color: color-mix(in oklab, var(--ring) 10%, transparent);
   }
@@ -948,9 +920,6 @@
   .outline {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
-  }
-  .outline-ring {
-    outline-color: var(--ring);
   }
   .outline-ring\/50 {
     outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
@@ -996,12 +965,6 @@
   }
   .duration-300 {
     animation-duration: 300ms;
-  }
-  .paused {
-    animation-play-state: paused;
-  }
-  .running {
-    animation-play-state: running;
   }
   .group-data-\[disabled\=true\]\:pointer-events-none {
     &:is(:where(.group)[data-disabled="true"] *) {
@@ -1959,6 +1922,11 @@
   initial-value: skewY(0);
 }
 @property --tw-space-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-space-x-reverse {
   syntax: "*";
   inherits: false;
   initial-value: 0;

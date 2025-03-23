@@ -18,10 +18,10 @@ export function DropdownMenuCheckboxes() {
   // const [showPanel, setShowPanel] = React.useState<Checked>(false)
 
   return (
-    <DropdownMenu  >
+    <DropdownMenu modal={false} >
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">
-          <FaBars className="mr-2 h-25 w-25" />
+        <Button className="flex justify-center items-center p-0 text-center" variant="outline">
+          <FaBars className="h-25 w-full justify-center items-center p-0 text-center" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
