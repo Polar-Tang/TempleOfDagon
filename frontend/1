@@ -1,0 +1,101 @@
+[2239401:2239401:0322/175612.246215:ERROR:secret_portal_key_provider.cc(214)] Retrieved secret is empty.
+[2239401:2239401:0322/175612.246887:ERROR:object_proxy.cc(576)] Failed to call method: org.freedesktop.portal.Secret.RetrieveSecret: object_path= /org/freedesktop/portal/desktop: org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Secret” on object at path /org/freedesktop/portal/desktop
+[2239401:2239401:0322/175612.246920:ERROR:request.cc(97)] Method call failed.
+Created TensorFlow Lite XNNPACK delegate for CPU.
+Attempting to use a delegate that only supports static-sized tensors with a graph that has dynamic-sized tensors (tensor#-1 is a dynamic-sized tensor).
+[2239401:2239429:0322/175628.698402:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239401:0322/175636.113879:ERROR:interface_endpoint_client.cc(725)] Message 1 rejected by interface blink.mojom.WidgetHost
+Fontconfig error: Cannot load default config file: No such file: (null)
+[2239401:2239429:0322/175651.234503:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/175657.083181:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/175700.155460:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/175743.003833:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+Fontconfig error: Cannot load default config file: No such file: (null)
+[2239401:2239429:0322/175909.261032:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/175939.259237:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/180058.555882:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/180101.627312:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/180246.114694:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/180357.755269:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -7
+[2239455:2239461:0322/180430.816696:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[2239401:2239429:0322/180811.843181:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/180844.475515:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/181148.989098:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -7
+Fontconfig error: Cannot load default config file: No such file: (null)
+Fontconfig error: Cannot load default config file: No such file: (null)
+Fontconfig error: Cannot load default config file: No such file: (null)
+[2239401:2239429:0322/181539.387898:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/181653.051011:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/181656.123149:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+Fontconfig error: Cannot load default config file: No such file: (null)
+[2239445:2239445:0322/182133.799694:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[2239401:2239429:0322/183103.342800:ERROR:connection_handler_impl.cc(477)] Timed out waiting for GCM Protocol buffer.
+[2239401:2239429:0322/183103.343193:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -7
+[2239401:2239429:0322/183201.035058:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -7
+[2239401:2239429:0322/183254.234982:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/183257.306960:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/183521.037652:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2
+[2239401:2239429:0322/183525.009673:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+[2239401:2239429:0322/183542.284493:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+[2239455:2239461:0322/183608.872269:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[2239455:2239461:0322/183608.872624:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[2239455:2239461:0322/183619.410285:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[2239401:2239429:0322/183619.410582:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -100
+[2239401:2239429:0322/184102.523411:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/184218.011012:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/184655.579089:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/184859.003290:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/184902.075279:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239401:0322/185938.300399:ERROR:web_contents_delegate.cc(292)] WebContentsDelegate::CheckMediaAccessPermission: Not supported.
+[2239401:2239401:0322/185938.300597:ERROR:web_contents_delegate.cc(292)] WebContentsDelegate::CheckMediaAccessPermission: Not supported.
+[2239401:2239401:0322/190035.515547:ERROR:web_contents_delegate.cc(292)] WebContentsDelegate::CheckMediaAccessPermission: Not supported.
+[2239401:2239401:0322/190035.515657:ERROR:web_contents_delegate.cc(292)] WebContentsDelegate::CheckMediaAccessPermission: Not supported.
+[2239401:2239429:0322/190209.543575:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/190209.545376:ERROR:mcs_client.cc(700)]   Error code: 401  Error message: Authentication Failed: wrong_secret
+[2239401:2239429:0322/190209.545404:ERROR:mcs_client.cc(702)] Failed to log in to GCM, resetting connection.
+[2239401:2239429:0322/190217.947124:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/190239.259173:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/190327.311942:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/190521.304731:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/190813.601209:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/191009.104910:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/191030.365536:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/191113.807567:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/191235.633707:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239445:2239445:0322/191314.011189:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[2239401:2239429:0322/191529.929712:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/192138.674662:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+Fontconfig error: Cannot load default config file: No such file: (null)
+[2239401:2239429:0322/193318.587893:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -7
+[2239401:2239429:0322/193318.588217:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -7
+[2239401:2239429:0322/193349.744481:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -7
+[2239401:2239429:0322/193352.567063:ERROR:connection_handler_impl.cc(477)] Timed out waiting for GCM Protocol buffer.
+[2239401:2239429:0322/193352.567378:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -7
+[2239401:2239429:0322/193528.571842:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/193528.572110:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/193836.539649:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/193836.923293:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239401:0322/202230.006775:ERROR:new_tab_page_handler.cc(1306)] NewTabPage loaded into a non-browser-tab context
+[2239401:2239429:0322/202735.291386:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239455:2239461:0322/203910.278767:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -101
+[2239455:2239461:0322/203912.267499:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -101
+[2239455:2239461:0322/203913.498201:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -101
+[2239401:2239429:0322/203923.218981:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -7
+[2239455:2239461:0322/203925.790534:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[2239401:2239429:0322/203938.523365:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/204656.018330:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+[2239401:2239429:0322/204656.020206:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+[2239401:2239429:0322/204728.763945:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+[2239401:2239429:0322/210513.551916:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/210539.934336:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/210630.800597:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/210822.130287:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/211217.240533:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/211946.947254:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[2239401:2239429:0322/213653.230858:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -7
+[2239401:2239429:0322/214405.994962:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+[2239401:2239429:0322/214439.465577:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -7
+[2239401:2239401:0322/215220.857418:ERROR:new_tab_page_handler.cc(1306)] NewTabPage loaded into a non-browser-tab context
+[2239401:2239401:0322/221105.668837:ERROR:interface_endpoint_client.cc(725)] Message 0 rejected by interface blink.mojom.WidgetHost
+[2239401:2239401:0322/221141.451122:ERROR:interface_endpoint_client.cc(725)] Message 0 rejected by interface blink.mojom.WidgetHost
+[2239401:2239401:0322/223552.322802:ERROR:CONSOLE(1)] "Dragging on multiple documents.", source: devtools://devtools/bundled/ui/legacy/legacy.js (1)
