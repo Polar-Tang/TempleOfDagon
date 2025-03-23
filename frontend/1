@@ -99,3 +99,5 @@ Fontconfig error: Cannot load default config file: No such file: (null)
 [2239401:2239401:0322/221105.668837:ERROR:interface_endpoint_client.cc(725)] Message 0 rejected by interface blink.mojom.WidgetHost
 [2239401:2239401:0322/221141.451122:ERROR:interface_endpoint_client.cc(725)] Message 0 rejected by interface blink.mojom.WidgetHost
 [2239401:2239401:0322/223552.322802:ERROR:CONSOLE(1)] "Dragging on multiple documents.", source: devtools://devtools/bundled/ui/legacy/legacy.js (1)
+[2239401:2239401:0322/223952.133040:ERROR:interface_endpoint_client.cc(725)] Message 1 rejected by interface blink.mojom.WidgetHost
+[2239401:2239401:0322/224232.821560:ERROR:interface_endpoint_client.cc(725)] Message 1 rejected by interface blink.mojom.WidgetHost
