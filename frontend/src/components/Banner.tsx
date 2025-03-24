@@ -93,17 +93,18 @@ export default function Banner({ images }: BannerPorps) {
 
 
 
-		// ScrollTrigger.create({
-		// 	trigger: ".banner-wrapper",
-		// 	scroller: ".banner-wrapper",
-		// 	start: "left left",
-		// 	// end: "=+3000",
-		// 	// end: () => `+=${scrollableWidth/2}` ,
-		// 	end: () => "+=" + scrollableWidth,
-		// 	scrub: 1,
-		// 	markers: true,
-		// 	horizontal: true,
-		// });
+		ScrollTrigger.create({
+			trigger: ".banner-wrapper",
+			scroller: ".banner-wrapper",
+			start: "left left",
+			end: () => "+=" + scrollableWidth,
+			scrub: 1,
+			horizontal: true,
+			// onUpdate: (self) => {
+			// 	const scrollDirection = self.getVelocity() / 1000;
+			// 	gsap.to(animation, { timeScale: Math.min(Math.max(scrollDirection, 0.1), 5) });
+			//   }
+		});
 
 		return () => {
 			animation.kill();
