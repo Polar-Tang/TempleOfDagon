@@ -16,3 +16,20 @@ Attempting to use a delegate that only supports static-sized tensors with a grap
 [2648689:2648717:0323/192250.078280:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2
 [2648735:2648740:0323/193715.232512:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -101
 [2648689:2648689:0323/193750.903522:ERROR:interface_endpoint_client.cc(725)] Message 1 rejected by interface blink.mojom.WidgetHost
+[2648733:2648733:0323/194601.232569:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[2648733:2648733:0323/194601.252572:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[2648733:2648733:0323/194601.260985:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[2648733:2648733:0323/194601.276865:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[2648733:2648733:0323/194601.298853:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[2648733:2648733:0323/194601.300741:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[2648733:2648733:0323/194601.306479:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[2648733:2648733:0323/194601.337175:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[2648733:2648733:0323/194601.347883:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[2648689:2648689:0323/195643.688871:ERROR:atom_cache.cc(230)] Add chromium/from-privileged to kAtomsToCache
+[2695355:24:0323/200503.938011:ERROR:srtp_transport.cc(137)] Failed to unprotect RTP packet: size=200, seqnum=63801, SSRC=523655, previous failure count: 0
+[2648689:2648717:0323/212015.781771:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2
+[2648735:2648740:0323/215136.816485:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -101
+[2648735:2648740:0323/220332.836110:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[2648735:2648740:0323/220332.836531:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+Fontconfig error: Cannot load default config file: No such file: (null)
+[2648689:2648689:0323/220447.348471:ERROR:new_tab_page_handler.cc(1306)] NewTabPage loaded into a non-browser-tab context

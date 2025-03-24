@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./banner.css"
-import { ReactElement, useEffect, useState, createElement } from 'react';
+import { ReactElement, useState } from 'react';
 import ImageProduct from './ImageProduct';
 
 interface BannerPorps {
@@ -12,37 +12,6 @@ interface BannerPorps {
 		name: string;
 	}[],
 }
-
-interface ImageProductProps {
-	isProduct: boolean;
-	name: string;
-	src: string;
-	setIsProduct: React.Dispatch<React.SetStateAction<boolean>>
-  }
-
-export function ProductPortal(
-	{isProduct,
-	src,
-	name,
-	setIsProduct,} : ImageProductProps
-) {
-	console.log({isProduct,
-		src,
-		name,
-		setIsProduct,})
-		useEffect(() => {
-			const element = createElement(ImageProduct, {
-				isProduct,
-				src,
-				name,
-				setIsProduct,
-			});
-			console.log(element);
-		}, []);
-	
-	
-}
-
 
 export function ImageSection({ images }: BannerPorps): ReactElement<any | void, any | void> {
 	const [isProduct, setIsProduct] = useState(false)
@@ -66,7 +35,6 @@ export function ImageSection({ images }: BannerPorps): ReactElement<any | void, 
 	return (
 		<div className={`images`}>
 			{images.map(({ src, name }, index) => {
-				// console.log(`Rendering image ${index + 1}: ${name}\n with src:\n ${src}`);
 				return (
 					<div className='image h-full' key={index}>
 						<button onClick={e => renderProductPortal(e) } >
