@@ -56,7 +56,7 @@ export function ImageSection({ images }: BannerPorps): ReactElement<any | void, 
 }
 
 export default function Banner({ images }: BannerPorps) {
-	const [imageListState, setImageListState] = useState(images)
+	// const [imageListState, setImageListState] = useState(images)
 
 
 	gsap.registerPlugin(useGSAP);
