@@ -103,22 +103,6 @@ export default function Banner({ images }: BannerPorps) {
 		// 	scrub: 1,
 		// 	markers: true,
 		// 	horizontal: true,
-			// onUpdate: () => {
-			// 	const lastImage = imageElementsList[9]
-			// 	// const firstImage = imagesList[total]
-
-			// 	if (ScrollTrigger.isInViewport(lastImage, 0.2, true)) {
-			// 		console.log("Appending image to the end of the carousel.");
-			// 		imageElementsList.push(lastImage)
-			// 		setImageListState((prevState) => {
-			// 			const newImages = [...prevState];
-			// 			newImages.push(images[total]);
-			// 			return newImages;
-			// 		})
-			// 		total < 9 ? total++ : total = 0
-			// 		console.log("Now total ", total)
-			// 	}
-			// }
 		// });
 
 		return () => {
