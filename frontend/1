@@ -1,35 +1,38 @@
-[2648689:2648689:0323/175720.700716:ERROR:secret_portal_key_provider.cc(214)] Retrieved secret is empty.
-[2648689:2648689:0323/175720.701724:ERROR:object_proxy.cc(576)] Failed to call method: org.freedesktop.portal.Secret.RetrieveSecret: object_path= /org/freedesktop/portal/desktop: org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Secret” on object at path /org/freedesktop/portal/desktop
-[2648689:2648689:0323/175720.701775:ERROR:request.cc(97)] Method call failed.
+[236603:236603:0324/140435.377424:ERROR:secret_portal_key_provider.cc(214)] Retrieved secret is empty.
+[236603:236603:0324/140435.377897:ERROR:object_proxy.cc(576)] Failed to call method: org.freedesktop.portal.Secret.RetrieveSecret: object_path= /org/freedesktop/portal/desktop: org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Secret” on object at path /org/freedesktop/portal/desktop
+[236603:236603:0324/140435.377932:ERROR:request.cc(97)] Method call failed.
+[236603:236603:0324/140440.677371:ERROR:interface_endpoint_client.cc(725)] Message 1 rejected by interface blink.mojom.WidgetHost
 Created TensorFlow Lite XNNPACK delegate for CPU.
 Attempting to use a delegate that only supports static-sized tensors with a graph that has dynamic-sized tensors (tensor#-1 is a dynamic-sized tensor).
-[2648689:2648717:0323/175742.618432:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
-[2648689:2648717:0323/175811.473416:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
-[2648689:2648717:0323/175908.782824:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
-[2648689:2648717:0323/180058.152539:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
-[2648689:2648717:0323/180356.737269:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
-[2648934:24:0323/180916.483003:ERROR:srtp_transport.cc(137)] Failed to unprotect RTP packet: size=79, seqnum=41932, SSRC=69316, previous failure count: 0
-[2648689:2648717:0323/181049.044093:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
-[2648934:24:0323/181337.377302:ERROR:srtp_transport.cc(137)] Failed to unprotect RTP packet: size=136, seqnum=2621, SSRC=73048, previous failure count: 0
-[2648934:24:0323/182925.318056:ERROR:srtp_transport.cc(137)] Failed to unprotect RTP packet: size=205, seqnum=41997, SSRC=96379, previous failure count: 0
-[2648934:24:0323/183501.081469:ERROR:srtp_transport.cc(137)] Failed to unprotect RTP packet: size=136, seqnum=35947, SSRC=64634, previous failure count: 0
-[2648689:2648717:0323/192250.078280:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2
-[2648735:2648740:0323/193715.232512:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -101
-[2648689:2648689:0323/193750.903522:ERROR:interface_endpoint_client.cc(725)] Message 1 rejected by interface blink.mojom.WidgetHost
-[2648733:2648733:0323/194601.232569:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
-[2648733:2648733:0323/194601.252572:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
-[2648733:2648733:0323/194601.260985:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
-[2648733:2648733:0323/194601.276865:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
-[2648733:2648733:0323/194601.298853:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
-[2648733:2648733:0323/194601.300741:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
-[2648733:2648733:0323/194601.306479:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
-[2648733:2648733:0323/194601.337175:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
-[2648733:2648733:0323/194601.347883:ERROR:shared_image_manager.cc(250)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
-[2648689:2648689:0323/195643.688871:ERROR:atom_cache.cc(230)] Add chromium/from-privileged to kAtomsToCache
-[2695355:24:0323/200503.938011:ERROR:srtp_transport.cc(137)] Failed to unprotect RTP packet: size=200, seqnum=63801, SSRC=523655, previous failure count: 0
-[2648689:2648717:0323/212015.781771:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2
-[2648735:2648740:0323/215136.816485:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -101
-[2648735:2648740:0323/220332.836110:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
-[2648735:2648740:0323/220332.836531:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[236603:236631:0324/140522.332477:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[236603:236631:0324/140634.684755:ERROR:registration_request.cc(274)] Registration URL fetching failed.
+[236658:236664:0324/140751.896011:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[236603:236631:0324/140757.118052:ERROR:registration_request.cc(274)] Registration URL fetching failed.
 Fontconfig error: Cannot load default config file: No such file: (null)
-[2648689:2648689:0323/220447.348471:ERROR:new_tab_page_handler.cc(1306)] NewTabPage loaded into a non-browser-tab context
+[236658:236664:0324/140948.310917:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[236658:236664:0324/140948.311693:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[236603:236631:0324/140952.659254:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[236603:236631:0324/141337.211544:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[242700:23:0324/141655.658094:ERROR:srtp_transport.cc(137)] Failed to unprotect RTP packet: size=83, seqnum=27349, SSRC=859899, previous failure count: 0
+[242700:23:0324/141835.291062:ERROR:dtls_transport.cc(663)] DtlsTransport[0|1|RW]: Received unexpected non-DTLS packet.
+[236603:236631:0324/141959.421075:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+[236658:236664:0324/143421.498736:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[242700:23:0324/143612.306903:ERROR:srtp_transport.cc(137)] Failed to unprotect RTP packet: size=186, seqnum=31306, SSRC=859899, previous failure count: 0
+[236603:236631:0324/144136.853717:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+[236603:236631:0324/144202.788488:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+[236603:236631:0324/144216.272896:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+[236603:236631:0324/144237.205426:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+[236603:236631:0324/144309.637032:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+[236603:236631:0324/144330.386866:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+[236603:236631:0324/144548.282111:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -118
+[236603:236631:0324/144803.444812:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -118
+[236603:236631:0324/144843.285253:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+[236603:236631:0324/145150.776657:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -118
+[236603:236626:0324/145207.162006:ERROR:get_updates_processor.cc(266)] PostClientToServerMessage() failed during GetUpdates with error Network error (ERR_CONNECTION_TIMED_OUT)
+[236603:236631:0324/145405.940759:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -118
+[236603:236631:0324/145944.693290:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+[236603:236631:0324/150031.612232:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+[236603:236631:0324/150031.618442:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+[236603:236603:0324/150519.306439:ERROR:interface_endpoint_client.cc(725)] Message 1 rejected by interface blink.mojom.WidgetHost
+[236603:236603:0324/151921.158957:ERROR:atom_cache.cc(230)] Add chromium/from-privileged to kAtomsToCache
+Fontconfig error: Cannot load default config file: No such file: (null)

@@ -3,8 +3,9 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./banner.css"
-import { ReactElement, useState } from 'react';
+import { ReactElement, useRef, useState } from 'react';
 import ImageProduct from './ImageProduct';
+
 
 interface BannerPorps {
 	images: {
@@ -56,21 +57,17 @@ export function ImageSection({ images }: BannerPorps): ReactElement<any | void, 
 }
 
 export default function Banner({ images }: BannerPorps) {
-	// const [imageListState, setImageListState] = useState(images)
-
+	const wrapperRef = useRef<HTMLDivElement>(null);
 
 	gsap.registerPlugin(useGSAP);
-	gsap.registerPlugin(ScrollTrigger)
-
+	
 	useGSAP(() => {
-		const wraperHTML: HTMLElement = document.querySelector(".wrapper")!;
-		
+		// const wraperHTML = wrapperRef.current;
 
-		const imageElementsList: HTMLElement[] = gsap.utils.toArray(".image")
+		const scrollableWidth: number = 4000 // wraperHTML?.scrollWidth 
+		const imageFraction: number = scrollableWidth / 20
 
-		const scrollableWidth: number = wraperHTML?.scrollWidth
-		const imageFraction: number = scrollableWidth / imageElementsList.length
-
+		console.log("This are the scrollable width",scrollableWidth)
 		ScrollTrigger.config({
 			limitCallbacks: true,
 			ignoreMobileResize: true
@@ -83,27 +80,12 @@ export default function Banner({ images }: BannerPorps) {
 
 		const animation = gsap.to(".wrapper", {
 			x: `-=${scrollableWidth}`,
-			duration: imageElementsList.length,
+			duration: 20,
 			ease: "none",
 			modifiers: {
-				x: gsap.utils.unitize(x => parseFloat(x) % (imageElementsList.length * imageFraction)) 
+				x: gsap.utils.unitize(x => parseFloat(x) % (20 * imageFraction)) 
 			},
 			repeat: -1
-		});
-
-
-
-		ScrollTrigger.create({
-			trigger: ".banner-wrapper",
-			scroller: ".banner-wrapper",
-			start: "left left",
-			end: () => "+=" + scrollableWidth,
-			scrub: 1,
-			horizontal: true,
-			// onUpdate: (self) => {
-			// 	const scrollDirection = self.getVelocity() / 1000;
-			// 	gsap.to(animation, { timeScale: Math.min(Math.max(scrollDirection, 0.1), 5) });
-			//   }
 		});
 
 		return () => {
@@ -113,7 +95,7 @@ export default function Banner({ images }: BannerPorps) {
 
 	return (
 		<div className='banner-wrapper h-full flex items-center'>
-			<div className='wrapper flex items-center justify-center'>
+			<div ref={wrapperRef} className='wrapper flex items-center justify-center'>
 				<ImageSection images={images} />
 				<ImageSection images={images} />
 
