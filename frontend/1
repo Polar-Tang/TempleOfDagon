@@ -36,3 +36,16 @@ Fontconfig error: Cannot load default config file: No such file: (null)
 [236603:236603:0324/150519.306439:ERROR:interface_endpoint_client.cc(725)] Message 1 rejected by interface blink.mojom.WidgetHost
 [236603:236603:0324/151921.158957:ERROR:atom_cache.cc(230)] Add chromium/from-privileged to kAtomsToCache
 Fontconfig error: Cannot load default config file: No such file: (null)
+[236656:236656:0324/160658.927387:ERROR:gl_surface_presentation_helper.cc(260)] GetVSyncParametersIfAvailable() failed for 1 times!
+[236603:236603:0324/165120.115953:ERROR:new_tab_page_handler.cc(1306)] NewTabPage loaded into a non-browser-tab context
+[236658:236664:0324/182328.538496:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[236658:236664:0324/182328.546997:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[236658:236664:0324/182328.548301:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[236658:236664:0324/182329.883311:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -101
+[236658:236664:0324/183924.640665:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[236658:236664:0324/185102.694658:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[236658:236664:0324/185103.091555:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[236603:236626:0324/190238.777560:ERROR:get_updates_processor.cc(266)] PostClientToServerMessage() failed during GetUpdates with error Network error (ERR_TIMED_OUT)
+[236658:236664:0324/200544.170814:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[236658:236664:0324/200544.173193:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100
+[236658:236664:0324/200613.139223:ERROR:ssl_client_socket_impl.cc(877)] handshake failed; returned -1, SSL error code 1, net_error -100

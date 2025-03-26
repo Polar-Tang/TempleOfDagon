@@ -36,6 +36,7 @@ export function ImageSection({ images }: BannerPorps): ReactElement<any | void, 
 	return (
 		<div className={`images`}>
 			{images.map(({ src, name }, index) => {
+				{console.log("SRC: ",src, "this is the name: ", name)}
 				return (
 					<div className='image h-full' key={index}>
 						<button onClick={e => renderProductPortal(e) } >
@@ -63,9 +64,12 @@ export default function Banner({ images }: BannerPorps) {
 	
 	useGSAP(() => {
 		// const wraperHTML = wrapperRef.current;
+		// wrapper HTML no carga completo en el primer renderixado
+		// if (!wraperHTML) return; 
 
-		const scrollableWidth: number = 4000 // wraperHTML?.scrollWidth 
-		const imageFraction: number = scrollableWidth / 20
+		const scrollableWidth: number =  4000 //wraperHTML?.scrollWidth? wraperHTML?.scrollWidth : 4000
+		const imageWIdht: number = 202
+		const totalImages: number = 20
 
 		console.log("This are the scrollable width",scrollableWidth)
 		ScrollTrigger.config({
@@ -75,15 +79,15 @@ export default function Banner({ images }: BannerPorps) {
 
 
 		gsap.set(".image", {
-			x: (i) => i * imageFraction
+			x: (i) => i * imageWIdht
 		  });
 
 		const animation = gsap.to(".wrapper", {
 			x: `-=${scrollableWidth}`,
-			duration: 20,
+			duration: totalImages *2 ,
 			ease: "none",
 			modifiers: {
-				x: gsap.utils.unitize(x => parseFloat(x) % (20 * imageFraction)) 
+				x: gsap.utils.unitize(x => parseFloat(x) % (totalImages * imageWIdht)) 
 			},
 			repeat: -1
 		});
@@ -103,3 +107,5 @@ export default function Banner({ images }: BannerPorps) {
 		</div>
 	);
 }
+
+

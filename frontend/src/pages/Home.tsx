@@ -16,12 +16,13 @@ const Home = () => {
   grid-rows-[5fr_4fr]
   flex
   relative
+  w-screen
   '>
-      <Navbar />
+      {/* <Navbar />  */}
       <SectionHero />
       <Banner images={images}/>
     </div>
-    <Footer/>
+    {/* <Footer/> */}
     </>
   )
 }

@@ -29,11 +29,13 @@ html, body {
   
   .wrapper {
     display: flex;
+    width: 200%;
   }
   
 
   .wrapper .images {
     display: flex;
+
     /* animation: swipe 20s linear infinite; */
 
   }

@@ -28,7 +28,8 @@ export function DropdownMenuCheckboxes() {
         <DropdownMenuLabel>Appearance</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <AccordionDemo />
-        {/* <DropdownMenuCheckboxItem
+        {/* 
+        <DropdownMenuCheckboxItem
           checked={showActivityBar}
           onCheckedChange={setShowActivityBar}
           disabled
