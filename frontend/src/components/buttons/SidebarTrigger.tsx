@@ -1,5 +1,5 @@
-import { CartContext } from "@/context/CartContext";
-import { useContext } from "react";
+// import { CartContext } from "@/context/CartContext";
+// import { useContext } from "react";
 import { FaCartShopping } from "react-icons/fa6";
 import { useSidebar } from "../ui/sidebar";
 import { Button } from "../ui/button";

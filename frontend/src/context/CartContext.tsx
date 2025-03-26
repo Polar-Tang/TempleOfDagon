@@ -1,6 +1,6 @@
 import React, { createContext } from 'react'
 import { SidebarProvider } from "@/components/ui/sidebar"
-import SidebarTrigger  from "@/components/buttons/SidebarTrigger"
+// import SidebarTrigger  from "@/components/buttons/SidebarTrigger"
 import { AppSidebar } from "@/components/SideBar"
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -21,8 +21,8 @@ export const CartProvider = ({ children }: LayoutProps) => {
         }>
             <SidebarProvider>
                 <div className="flex flex-col w-full">
-                <AppSidebar /> 
                 <Navbar/>
+                <AppSidebar /> 
                     {children}
                     <Footer/>
                 </div>

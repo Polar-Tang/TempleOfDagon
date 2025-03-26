@@ -1,6 +1,4 @@
-import Footer from '@/components/Footer'
 import AuthCard from '@/components/AuthCard'
-import Navbar from '@/components/Navbar'
 import "./home.css"
 import "../output.css"
 // import { useEffect } from 'react'
