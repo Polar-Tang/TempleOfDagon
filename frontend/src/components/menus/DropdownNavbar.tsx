@@ -1,5 +1,3 @@
-"use client"
-
 import { FaBars } from "react-icons/fa6";
 import { Button } from "@/components/ui/button"
 import {

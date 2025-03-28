@@ -1,44 +1,29 @@
 import {  ChevronDown, Grid, List, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import ProjectCard from "@/components/ProjectCard"
-import Navbar from "@/components/Navbar"
+import ProductCard from "@/components/cards/ProductCard"
+import {images} from "@/utils/data"
+
+type Image = {
+  src: string
+  name: string
+}
+
+const ProductsList = () => {
+  return (
+    <>
+      {images.map((image: Image) => (
+        <ProductCard key={image.src} src={image.src} name={image.name} />
+      ))}
+    </>
+  )
+}
 
 export default function ProductsPage() {
-  const projects = [
-    {
-      id: 1,
-      name: "trian-tattoo-qmiy",
-      url: "trian-tattoo-qmiy.vercel.app",
-      repo: "Polar-Tang/TrianTattoo",
-      description: "using static numbers instead of element properties that ar...",
-      updatedAt: "2d ago",
-      branch: "main",
-    },
-    {
-      id: 2,
-      name: "trian-tattoo",
-      url: "trian-tattoo.vercel.app",
-      repo: "Polar-Tang/TrianTattoo",
-      description: "using static numbers instead of element properties that ar...",
-      updatedAt: "2d ago",
-      branch: "main",
-    },
-    {
-      id: 3,
-      name: "white-bakana",
-      url: "white-bakana.vercel.app",
-      repo: "Polar-Tang/single_opt-in_BAKANA",
-      description: "DVH AND H-SCREEN ON LG",
-      updatedAt: "Feb 21",
-      branch: "main",
-    },
-  ]
 
   return (
     <div className="min-h-screen w-screen bg-black text-white">
       <header className="border-b border-gray-800 top-0 w-full h-15 px-4 py-2">
-      <Navbar />   
       </header>
 
 
@@ -80,9 +65,7 @@ export default function ProductsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-            {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
+            <ProductsList />
           </div>
         </div>
       </main>

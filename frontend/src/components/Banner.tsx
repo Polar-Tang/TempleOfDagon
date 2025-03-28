@@ -1,101 +1,106 @@
-// import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react'
 import gsap from 'gsap'
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import "./banner.css"
-import { ReactElement, useRef, useState } from 'react';
-import ImageProduct from './ImageProduct';
+import { ReactElement, useContext, useEffect, useRef, useState } from 'react'
+import { ProductPortalContext } from '@/context/ProductPortalContext'
 
-
+const reactWindow = window.React
+import React from "react"
+console.log(reactWindow === window.React);
 interface BannerPorps {
 	images: {
-		src: string;
-		name: string;
-	}[],
+		src: string
+		name: string
+	}[]
 }
 
 export function ImageSection({ images }: BannerPorps): ReactElement<any | void, any | void> {
-	const [isProduct, setIsProduct] = useState(false)
-	const [selectedImage, setSelectedImage] = useState({ src: '', name: '' });
-
-	const renderProductPortal = (e: React.MouseEvent<HTMLButtonElement>) => { 
-	  const imgElement = e.target as HTMLImageElement
-	  
-	  if (imgElement.tagName === 'IMG') {
-		const src = imgElement.src
-		const name = imgElement.alt
-		
-		console.log(src, name)
-  
-		setSelectedImage({ src, name })
-		setIsProduct(true)
-	  }
-	};
 	
+	const { setIsProductPortalOpen,
+		setSelectedImage
+	  } = useContext(ProductPortalContext)
+
+	const renderProductPortal = (e: React.MouseEvent<HTMLButtonElement>) => {
+		const imgElement = e.target as HTMLImageElement
+
+		if (imgElement.tagName === 'IMG') {
+			const src: string = imgElement.src
+			const name: string = imgElement.alt
+
+			const dataProduct = { 
+				src: src, 
+				name: name,
+			}
+
+			setSelectedImage(dataProduct)
+			setIsProductPortalOpen(true)
+		}
+	}
+
 
 	return (
 		<div className={`images`}>
 			{images.map(({ src, name }, index) => {
-				{console.log("SRC: ",src, "this is the name: ", name)}
 				return (
 					<div className='image h-full' key={index}>
-						<button onClick={e => renderProductPortal(e) } >
+						<button onClick={e => renderProductPortal(e)} >
 							<img src={src} alt={name} className='h-50 max-w-50' />
 						</button>
-						{isProduct && (
-							<ImageProduct
-							  isProduct={isProduct}
-							  src={selectedImage.src}
-							  name={selectedImage.name}
-							  setIsProduct={setIsProduct}
-							/>
-						  )}
 					</div>
-				);
+				)
 			})}
 		</div>
-	);
+	)
 }
 
 export default function Banner({ images }: BannerPorps) {
-	const wrapperRef = useRef<HTMLDivElement>(null);
-
-	gsap.registerPlugin(useGSAP);
+	const wrapperRef = useRef<HTMLDivElement>(null)
+	const [animationState, setanimationState] = useState<gsap.core.Tween>()
+	const { isProductPortalOpen } = useContext(ProductPortalContext)
 	
-	useGSAP(() => {
-		// const wraperHTML = wrapperRef.current;
-		// wrapper HTML no carga completo en el primer renderixado
-		// if (!wraperHTML) return; 
+	gsap.registerPlugin(useGSAP)
 
-		const scrollableWidth: number =  4000 //wraperHTML?.scrollWidth? wraperHTML?.scrollWidth : 4000
+	useGSAP(() => {
+		const scrollableWidth: number = 4000
 		const imageWIdht: number = 202
 		const totalImages: number = 20
 
-		console.log("This are the scrollable width",scrollableWidth)
 		ScrollTrigger.config({
 			limitCallbacks: true,
 			ignoreMobileResize: true
-		});
-
+		})
 
 		gsap.set(".image", {
 			x: (i) => i * imageWIdht
-		  });
+		})
+
 
 		const animation = gsap.to(".wrapper", {
 			x: `-=${scrollableWidth}`,
-			duration: totalImages *2 ,
+			duration: totalImages * 2,
 			ease: "none",
 			modifiers: {
-				x: gsap.utils.unitize(x => parseFloat(x) % (totalImages * imageWIdht)) 
+				x: gsap.utils.unitize(x => parseFloat(x) % (totalImages * imageWIdht))
 			},
-			repeat: -1
-		});
+			repeat: -1,
+		})
+
+		setanimationState(animation)
 
 		return () => {
-			animation.kill();
-		};
-	}, [])
+			animation.kill()
+		}
+	}, []) // SHould render on every render
+
+	useEffect(() => {
+		if (isProductPortalOpen && animationState) {
+			animationState.pause();
+		} else if (animationState){
+			animationState.play();
+		}
+	  }, [isProductPortalOpen]);
 
 	return (
 		<div className='banner-wrapper h-full flex items-center'>
@@ -105,7 +110,7 @@ export default function Banner({ images }: BannerPorps) {
 
 			</div>
 		</div>
-	);
+	)
 }
 
 

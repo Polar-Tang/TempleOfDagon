@@ -3,6 +3,7 @@ import "./home.css"
 import "../output.css"
 import Banner from '@/components/Banner';
 import { images } from '../utils/data';
+import ProductPortalProvider from '@/context/ProductPortalContext';
 
 const Home = () => {
 
@@ -17,7 +18,9 @@ const Home = () => {
   '>
       {/* <Navbar />  */}
       <SectionHero />
-      <Banner images={images}/>
+      <ProductPortalProvider >
+        <Banner images={images}/>
+      </ProductPortalProvider>
     </div>
     {/* <Footer/> */}
     </>

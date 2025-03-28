@@ -1,4 +1,4 @@
-import AuthCard from '@/components/AuthCard'
+import AuthCard from '@/components/cards/AuthCard'
 import "./home.css"
 import "../output.css"
 // import { useEffect } from 'react'

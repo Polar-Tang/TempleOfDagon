@@ -1,5 +1,5 @@
 // import Footer from '@/components/Footer'
-import AuthCard from '@/components/AuthCard'
+import AuthCard from '@/components/cards/AuthCard'
 // import Navbar from '@/components/Navbar'
 import "./home.css"
 import "../output.css"
@@ -11,7 +11,7 @@ const LoginPage = () => {
 		title: "Login",
 		cardDescription: "Enter your email and password to login to your account",
 		linkDirection: [{
-			to: "/register",
+			to: "/registrar",
 			label: "No tengo cuenta"
 
 		}, {

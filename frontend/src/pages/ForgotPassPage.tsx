@@ -1,5 +1,5 @@
 import Footer from '@/components/Footer'
-import AuthCard from '@/components/AuthCard'
+import AuthCard from '@/components/cards/AuthCard'
 import Navbar from '@/components/Navbar'
 import "./home.css"
 import "../output.css"

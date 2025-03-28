@@ -8,9 +8,9 @@ return (
             {/* <Route path="/infierno" element={<Hell />} /> */}
             <Route path="/" element={<Home />} />
             <Route path='/login' element={<LoginPage/>} />
-            <Route path='/register' element={<RegisterPage/>} />
+            <Route path='/registrar' element={<RegisterPage/>} />
             <Route path='/recuprarcontraseña' element={<ForgotPassPage/>} />
-            <Route path='/store' element={<ProductsPage/>} /> 
+            <Route path='/tienda' element={<ProductsPage/>} /> 
         </Routes>
     )
 }
