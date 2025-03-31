@@ -21,7 +21,6 @@ export const ProductPortalProvider = ({ children }: {children: React.ReactNode})
 	const [selectedImage, setSelectedImage] = useState<selectedImage>({ src: '', name: '' })
 
 
-
     return (
         <ProductPortalContext.Provider value={{
             setIsProductPortalOpen,

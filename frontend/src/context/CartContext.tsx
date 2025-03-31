@@ -1,6 +1,5 @@
 import React, { createContext } from 'react'
 import { SidebarProvider } from "@/components/ui/sidebar"
-// import SidebarTrigger  from "@/components/buttons/SidebarTrigger"
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { AppSidebar } from '@/components/menus/SideBar'

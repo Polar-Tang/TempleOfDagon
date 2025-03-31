@@ -9,10 +9,8 @@ const isEmptyObject = (obj) => {
 export const createProductController = async (req, res, next) => {
     try {
 
-        // LACK VALIDATIONS OF REQ BODY
-
         if (isEmptyObject(req.body)) {
-            return next(new AppError("Wrong product", 400))
+            return next(new AppError("El producto está vacío", 400))
         }
 
         const new_object = await ProductRepository.createProduct(req.body)
@@ -125,12 +123,12 @@ export const getAllProductController = async (req, res, next) => {
     try {
         const ProductSearched = await ProductRepository.getAllProducts()
         if (isEmptyObject(ProductSearched)) {
-            return next(new AppError("Product not found", 404))
+            return next(new AppError("No hay productos", 404))
         }
         const response = new ResponseBuilder()
         .setOk(true)
         .setStatus(200)
-        .setMessage(`All products`)
+        .setMessage(`Todos los productos`)
         .setPayload({
             ProductSearched
         })
@@ -140,11 +138,4 @@ export const getAllProductController = async (req, res, next) => {
         console.error(error);
         next(error)
     }
-}
-
-export const preflightCOntroller = async (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:5173')
-    res.header('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS, POST')
-
-    res.send(200)
 }

@@ -26,7 +26,7 @@ app.disable('If-None-Match')
 app.use(express.json({limit: '3mb' }))
 app.use(express.urlencoded({ extended: true }))
 
-app.use('/api/status', statusRouter)
+// app.use('/api/status', statusRouter)
 
 app.use('/api/auth', authRouter)
 
@@ -39,11 +39,6 @@ app.use('/api/cart', cartRouter)
 
 // THE MIDDLEWARE OF ERROR AT LAST
 app.use(errorHandlerMiddleware)
-
-app.post('/', (req, res) => {
-    console.log("Request of post method has the body: ", req.body)
-    res.json(req.body)
-})
 
 app.listen(port, () => {
     console.log(`Example app listening on local host  http://localhost:${port}`)

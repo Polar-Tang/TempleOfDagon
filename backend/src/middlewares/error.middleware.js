@@ -1,22 +1,32 @@
+import ResponseBuilder from "../helpers/builders/response.builder.js"
 
-
-const errorHandlerMiddleware = (err, req, res, next) => { 
+const errorHandlerMiddleware = (err, req, res, next) => {
     err.statusCode = err.statusCode || 500
     err.status = err.status || "error"
 
     if (err.isOperational) {
-        return res.status(err.statusCode).json({
-            status: err.status,
+        const response = new ResponseBuilder()
+        .setOk(false)
+        .setStatus(err.statusCode)
+        .setMessage(`Algo salió mal`)
+        .setPayload({
             message: err.message
         })
+        .build()
+    return res.status(err.statusCode).json({ response })
     }
 
-    console.error('PANIC: ',err)
+    console.error('PANIC: ', err)
 
-    return res.status(500).json({
-        status: err.status,
-        message: 'Algo asió mal.'
-    })
+    const response = new ResponseBuilder()
+        .setOk(false)
+        .setStatus(err.statusCode)
+        .setMessage(`Algo salió mal`)
+        .setPayload({
+            message: "Ocurrió un error, intenta luego más tarde"
+        })
+        .build()
+    return res.status(err.statusCode).json({ response })
 }
 
 export default errorHandlerMiddleware

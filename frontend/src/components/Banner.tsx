@@ -5,47 +5,39 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import "./banner.css"
 import { ReactElement, useContext, useEffect, useRef, useState } from 'react'
 import { ProductPortalContext } from '@/context/ProductPortalContext'
-
-const reactWindow = window.React
-import React from "react"
-console.log(reactWindow === window.React);
-interface BannerPorps {
-	images: {
-		src: string
-		name: string
-	}[]
-}
+import {BannerPorps} from '@/types/products'
 
 export function ImageSection({ images }: BannerPorps): ReactElement<any | void, any | void> {
-	
+
 	const { setIsProductPortalOpen,
-		setSelectedImage
-	  } = useContext(ProductPortalContext)
+		setSelectedImage,
+	} = useContext(ProductPortalContext)
 
 	const renderProductPortal = (e: React.MouseEvent<HTMLButtonElement>) => {
+
 		const imgElement = e.target as HTMLImageElement
 
 		if (imgElement.tagName === 'IMG') {
 			const src: string = imgElement.src
 			const name: string = imgElement.alt
 
-			const dataProduct = { 
-				src: src, 
+			const dataProduct = {
+				src: src,
 				name: name,
 			}
-
+			
 			setSelectedImage(dataProduct)
 			setIsProductPortalOpen(true)
 		}
-	}
 
+	}
 
 	return (
 		<div className={`images`}>
 			{images.map(({ src, name }, index) => {
 				return (
 					<div className='image h-full' key={index}>
-						<button onClick={e => renderProductPortal(e)} >
+						<button onClick={(e) => renderProductPortal(e)} >
 							<img src={src} alt={name} className='h-50 max-w-50' />
 						</button>
 					</div>
@@ -58,8 +50,10 @@ export function ImageSection({ images }: BannerPorps): ReactElement<any | void, 
 export default function Banner({ images }: BannerPorps) {
 	const wrapperRef = useRef<HTMLDivElement>(null)
 	const [animationState, setanimationState] = useState<gsap.core.Tween>()
-	const { isProductPortalOpen } = useContext(ProductPortalContext)
-	
+	const { isProductPortalOpen, selectedImage } = useContext(ProductPortalContext)
+	const isSelectedImageEmpty = (selectedImage.name && selectedImage.src) == ""
+
+
 	gsap.registerPlugin(useGSAP)
 
 	useGSAP(() => {
@@ -92,15 +86,15 @@ export default function Banner({ images }: BannerPorps) {
 		return () => {
 			animation.kill()
 		}
-	}, []) // SHould render on every render
+	}, [])
 
 	useEffect(() => {
-		if (isProductPortalOpen && animationState) {
+		if (isProductPortalOpen && animationState && !isSelectedImageEmpty) {
 			animationState.pause();
-		} else if (animationState){
+		} else if (animationState) {
 			animationState.play();
 		}
-	  }, [isProductPortalOpen]);
+	}, [isProductPortalOpen, isSelectedImageEmpty]);
 
 	return (
 		<div className='banner-wrapper h-full flex items-center'>

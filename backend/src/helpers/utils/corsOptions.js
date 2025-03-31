@@ -1,7 +1,9 @@
+import ENVIRONMENT from '../../config/environment.js'
+
 const corsOptions = {
-    origin: 'http://localhost:5000',
+    origin: `${process.env.FRONTENDURL}`,
     credentials: true, 
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'], 
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
     allowedHeaders: ['Content-Type', 'Authorization'], 
 }
 export default corsOptions

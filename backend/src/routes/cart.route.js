@@ -14,14 +14,14 @@ const cartRouter = express.Router()
 // });
 cartRouter.use(cookieParser());
 
-cartRouter.post('/add', authMiddleware(['admin','user']), addToCartController)
+cartRouter.post('/add', addToCartController)
 cartRouter.options('/add', cors(corsOptions))
 
 cartRouter.delete('/:seller_id', authMiddleware(['admin', 'user']), eliminateProductCart )
 cartRouter.options('/:seller_id', cors(corsOptions))
 
 
-cartRouter.get('/', authMiddleware(['admin', 'user']), getAllCartProducts)
+cartRouter.get('/', getAllCartProducts)
 cartRouter.options('/', cors(corsOptions))
 
 cartRouter.post('/checkout', authMiddleware(['admin', 'user']), checkoutController)

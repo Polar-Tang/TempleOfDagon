@@ -18,7 +18,7 @@ class ProductRepository {
     }
 
     static async getProductById (product_id){
-        return Product.findOne(product_id)
+        return Product.findOne({"seller_id":product_id})
     }
 
     static async deleteProduct (filter){

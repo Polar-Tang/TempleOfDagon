@@ -2,10 +2,19 @@ import SectionHero from '@/components/SectionHero';
 import "./home.css"
 import "../output.css"
 import Banner from '@/components/Banner';
-import { images } from '../utils/data';
+import ProductsMock from '@/mocks/productsMock';
 import ProductPortalProvider from '@/context/ProductPortalContext';
 
 const Home = () => {
+
+  const images = ProductsMock.map((image) => {
+    return {
+      src: image.image_url,
+      name: image.title
+    }
+  }
+  )
+  // const {ProductsMock.image_url, productsMock.title} = images
 
   return (
     <>

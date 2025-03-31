@@ -11,21 +11,23 @@ export const addToCartController = async (req, res, next) => {
 
     if (!cartId) {
         cartId = crypto.randomBytes(16).toString("hex")
-        res.cookie("cartId", cartId, { httpOnly: true, secure: true, sameSite: "strict" })
+        res.cookie("Basket-Id", cartId, { httpOnly: true, secure: true, sameSite: "strict" })
     }
+    console.log(req.body)
+
     const { seller_id } = req.body
-    const product = await ProductRepository.getProductById({ "seller_id": seller_id, })
+    const product = await ProductRepository.getProductById(seller_id)
     if (!product) {
-        return next(new AppError("Product not found", 404))
+        return next(new AppError("Producto no encontrado", 404))
     }
     const newProduct = await CartProductRepository.createProductCart(product, cartId)
     if (!newProduct) {
         const response = new ResponseBuilder()
             .setOk(true)
             .setStatus(200)
-            .setMessage(`There's no more products`)
+            .setMessage(`No hay más productos`)
             .setPayload({
-                detail: "No more stock"
+                detail: "No hay más productos, el stock está agotado"
             })
             .build()
         return res.status(200).json({ response })
@@ -33,9 +35,9 @@ export const addToCartController = async (req, res, next) => {
     const response = new ResponseBuilder()
         .setOk(true)
         .setStatus(200)
-        .setMessage(`The product falls on the cart...`)
+        .setMessage(`El producto ha sido añadido al carrito con éxito`)
         .setPayload({
-            detail: "Product added"
+            detail: "Producto añadido"
         })
         .build()
     return res.status(200).json({ response })
@@ -47,11 +49,11 @@ export const eliminateProductCart = async (req, res, next) => {
     const cartId = req.cookies.cartId
 
     if (!cartId) {
-        return next(new AppError("There's no cart session ", 400))
+        return next(new AppError("No hay sesión del carrito", 400))
     }
 
     if (!seller_id) {
-        return next(new AppError("Requset must contain a query"))
+        return next(new AppError("Parametro no encontrado", 400))
     }
 
     const retriever = await CartProductRepository.deleteProductCart(seller_id, cartId)
@@ -61,7 +63,7 @@ export const eliminateProductCart = async (req, res, next) => {
     const response = new ResponseBuilder()
         .setOk(true)
         .setStatus(200)
-        .setMessage(`The product drops from the cart...`)
+        .setMessage(`El producto ha sido añadido al carrito con éxito`)
         .setPayload({
             detail: retriever
         })
@@ -74,20 +76,20 @@ export const getAllCartProducts = async (req, res, next) => {
         const cartId = req.cookies.cartId
         const productsDetail = await CartProductRepository.getAllProductsDetails(cartId)
         if (!productsDetail) {
-            return next(new AppError("There's no cookie", 404))
+            return next(new AppError("No hay cookie", 404))
         }
     
         const response = new ResponseBuilder()
             .setOk(true)
             .setStatus(200)
-            .setMessage(`Get products`)
+            .setMessage(`Listando productos`)
             .setPayload({
                 detail: productsDetail
             })
             .build()
         return res.status(200).json({ response })
     } catch(err){
-        return next(new AppError("An error ocurs, try again later!", 500))
+        return next(new AppError("Ocurrió un error, intenta denuevo luego", 500))
     }
 }
 
