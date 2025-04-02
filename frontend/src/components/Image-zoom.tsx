@@ -79,7 +79,7 @@ export function ImageZoom({ src, alt, magnifyAmount = 2.5, className, product }:
           <div
             className={cn(
               "relative overflow-hidden rounded-lg aspect-square ",
-              !showMagnifier && "hidden md:block opacity-50",
+              !showMagnifier && "hidden md:block",
               showMagnifier && "md:block opacity-100",
             )}
           >
