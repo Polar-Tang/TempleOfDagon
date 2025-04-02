@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from 'react'
+import React, { useCallback, useContext } from 'react'
 import type { ResponseCartObject } from "@/types/bodyResponse"
 import { CartContext } from '@/context/CartContext'
 import { Product } from '@/types/products'

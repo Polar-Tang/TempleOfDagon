@@ -4,6 +4,7 @@ import { Repeat } from "lucide-react"
 import type { Product } from "@/types/products"
 import { useContext, useEffect, useState } from "react"
 import { CartContext } from "@/context/CartContext"
+import { Link } from "react-router-dom"
 
 export default function ProductCard({ product, addToCart }: {
   product: Product,
@@ -66,6 +67,13 @@ export default function ProductCard({ product, addToCart }: {
           isSuccess ? "bg-green-500 hover:bg-green-600 text-white" : "bg-navy-blue hover:bg-navy-blue/90 text-white"
         }`}
         onClick={addToCart}>Añadir al carrito</Button>
+        <Button 
+        className={`w-full transition-colors duration-300 ease-in-out`}
+        >
+          <Link to={`/tienda/${_id}`}>
+            <span className="text-sm text-white">Ver detalles</span>
+          </Link>
+        </Button>
       </CardFooter>
     </Card>
   )

@@ -1,17 +1,19 @@
 import React, { useContext, useEffect } from 'react'
-import { ChevronDown, Grid, List, Search } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
-import { ProductsContext } from '@/context/ProductsContext'
+import useProducts from '@/hooks/useProducts'
 import ProductsMock from '@/mocks/productsMock'
+import ProductsNavbar from './menus/ProductsNavbar'
+import BreadCrumbsNav from './menus/BreadCrumbsNav'
+import { LayoutContext } from '@/context/LayoutContext'
 
-const SecondNavbarStore = ({ children }: { children: React.ReactNode }) => {
-
-    const {setProductsState, productsState} =useContext(ProductsContext)
+const SecondNavbarStore = ({ children }: { children: React.ReactNode}) => {
+    const { setProductsState, productsState } = useProducts()
     // console.log("Children", setProductsState(searchIpunt?.value))
+    const {isSingleProduct} = useContext(LayoutContext)
 
-    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => { 
-        const value = e.target.value    
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value
         const results = ProductsMock.filter((product) => {
             return product.title.toLowerCase().includes(value.toLowerCase())
         })
@@ -22,7 +24,7 @@ const SecondNavbarStore = ({ children }: { children: React.ReactNode }) => {
         }
         console.log("Results", results, "for value", value)
     }
-    
+
     // This function is utilized in a input and is changing the productsState to results, however this render only once. I need to use a useEffect to render the products assuming every change. But remember that
     useEffect(() => {
         handleSearch
@@ -35,42 +37,30 @@ const SecondNavbarStore = ({ children }: { children: React.ReactNode }) => {
             <main className="container mx-auto px-4 py-6">
                 <div className="flex flex-col gap-4">
                     <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-                        <div className="relative w-full md:w-auto flex-1 max-w-3xl">
-                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" />
-                            <Input
-                                placeholder="Search Repositories and Projects..."
-                                className="pl-10 bg-gray-900 border-gray-700 h-10 w-full"
-                                onChange={handleSearch}
-                            />
-                            <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-1 text-xs text-gray-400">
-                                <span>⌘</span>
-                                <span>K</span>
-                            </div>
-                        </div>
+                        {
+                            isSingleProduct
+                                ?
+                                <> <div className="relative w-full md:w-auto flex-1 max-w-3xl">
+                                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" />
+                                    <Input
+                                        placeholder="Search Repositories and Projects..."
+                                        className="pl-10 bg-gray-900 border-gray-700 h-10 w-full"
+                                        onChange={handleSearch}
+                                    />
+                                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-1 text-xs text-gray-400">
+                                        <span>⌘</span>
+                                        <span>K</span>
+                                    </div>
+                                </div>
+                                    <ProductsNavbar />
+                                </>
 
-                        <div className="flex items-center gap-2 w-full md:w-auto">
-                            <Button variant="outline" className="text-gray-300 border-gray-700 bg-gray-900 flex items-center gap-2">
-                                <span>Sort by activity</span>
-                                <ChevronDown className="h-4 w-4" />
-                            </Button>
-
-                            <div className="flex items-center border border-gray-700 rounded-md overflow-hidden">
-                                <Button variant="ghost" size="icon" className="h-9 w-9 rounded-none bg-gray-900 text-gray-300">
-                                    <Grid className="h-4 w-4" />
-                                </Button>
-                                <Button variant="ghost" size="icon" className="h-9 w-9 rounded-none bg-gray-900 text-gray-300">
-                                    <List className="h-4 w-4" />
-                                </Button>
-                            </div>
-
-                            <Button className="ml-2 bg-white text-black hover:bg-gray-200 flex items-center gap-2">
-                                <span>Add New...</span>
-                                <ChevronDown className="h-4 w-4" />
-                            </Button>
-                        </div>
+                                : <BreadCrumbsNav />}
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 justify-items-center">
+                    <div className={ isSingleProduct 
+                    ? `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 justify-items-center`
+                    : `grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-[1fr,_2fr]`}>
                         {children}
                     </div>
                 </div>

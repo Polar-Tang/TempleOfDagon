@@ -1,10 +1,6 @@
-import Footer from '@/components/Footer'
 import AuthCard from '@/components/cards/AuthCard'
-import Navbar from '@/components/Navbar'
 import "./home.css"
 import "../output.css"
-// import { useEffect } from 'react'
-// import { AlertErrorComponent } from '@/components/AlertErrorComponent'
 
 const ForgotPassPage = () => {
 	const auth_card_props = {
@@ -31,10 +27,8 @@ const ForgotPassPage = () => {
 	return (
 		<>
 			<div className='h-dvh w-full flex items-center justify-center flex-col-1 relative bg-black'>
-				<Navbar />
 				<AuthCard endpoint="register" submit_bottom_text={auth_card_props.submit_bottom_text} field_data_props={auth_card_props.field_data_props} linkDirections={auth_card_props.linkDirection} cardDescription={auth_card_props.cardDescription} titleH1={auth_card_props.title} />
 			</div>
-			<Footer />
 		</>
 	)
 }

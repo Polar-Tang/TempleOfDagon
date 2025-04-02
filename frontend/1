@@ -1,0 +1,229 @@
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_3D_FEATURES
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CAPSET_QUERY_FIX
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_RESOURCE_BLOB
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_HOST_VISIBLE
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CROSS_DEVICE
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CONTEXT_INIT
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_SUPPORTED_CAPSET_IDs
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_EXPLICIT_DEBUG_NAME
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_FENCE_PASSING
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_GUEST_HANDLE
+MESA: error: DRM_IOCTL_VIRTGPU_GET_CAPS failed with Permission denied
+MESA: error: DRM_IOCTL_VIRTGPU_CONTEXT_INIT failed with Invalid argument, continuing without context...
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+libva error: /usr/lib/x86_64-linux-gnu/dri/r600_drv_video.so init failed
+libva error: /usr/lib/x86_64-linux-gnu/dri/radeonsi_drv_video.so init failed
+
+(spotify:40942): libayatana-appindicator-WARNING **: 16:20:21.823: libayatana-appindicator is deprecated. Please use libayatana-appindicator-glib in newly written code.
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_3D_FEATURES
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CAPSET_QUERY_FIX
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_RESOURCE_BLOB
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_HOST_VISIBLE
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CROSS_DEVICE
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CONTEXT_INIT
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_SUPPORTED_CAPSET_IDs
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_EXPLICIT_DEBUG_NAME
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_FENCE_PASSING
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_GUEST_HANDLE
+MESA: error: DRM_IOCTL_VIRTGPU_GET_CAPS failed with Permission denied
+MESA: error: DRM_IOCTL_VIRTGPU_CONTEXT_INIT failed with Invalid argument, continuing without context...
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+libva error: /usr/lib/x86_64-linux-gnu/dri/r600_drv_video.so init failed
+libva error: /usr/lib/x86_64-linux-gnu/dri/radeonsi_drv_video.so init failed
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_3D_FEATURES
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CAPSET_QUERY_FIX
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_RESOURCE_BLOB
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_HOST_VISIBLE
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CROSS_DEVICE
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CONTEXT_INIT
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_SUPPORTED_CAPSET_IDs
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_EXPLICIT_DEBUG_NAME
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_FENCE_PASSING
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_GUEST_HANDLE
+MESA: error: DRM_IOCTL_VIRTGPU_GET_CAPS failed with Permission denied
+MESA: error: DRM_IOCTL_VIRTGPU_CONTEXT_INIT failed with Invalid argument, continuing without context...
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+libva error: /usr/lib/x86_64-linux-gnu/dri/r600_drv_video.so init failed
+libva error: /usr/lib/x86_64-linux-gnu/dri/radeonsi_drv_video.so init failed
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_3D_FEATURES
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CAPSET_QUERY_FIX
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_RESOURCE_BLOB
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_HOST_VISIBLE
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CROSS_DEVICE
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CONTEXT_INIT
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_SUPPORTED_CAPSET_IDs
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_EXPLICIT_DEBUG_NAME
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_FENCE_PASSING
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_GUEST_HANDLE
+MESA: error: DRM_IOCTL_VIRTGPU_GET_CAPS failed with Permission denied
+MESA: error: DRM_IOCTL_VIRTGPU_CONTEXT_INIT failed with Invalid argument, continuing without context...
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+libva error: /usr/lib/x86_64-linux-gnu/dri/r600_drv_video.so init failed
+libva error: /usr/lib/x86_64-linux-gnu/dri/radeonsi_drv_video.so init failed
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_3D_FEATURES
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CAPSET_QUERY_FIX
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_RESOURCE_BLOB
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_HOST_VISIBLE
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CROSS_DEVICE
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CONTEXT_INIT
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_SUPPORTED_CAPSET_IDs
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_EXPLICIT_DEBUG_NAME
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_FENCE_PASSING
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_GUEST_HANDLE
+MESA: error: DRM_IOCTL_VIRTGPU_GET_CAPS failed with Permission denied
+MESA: error: DRM_IOCTL_VIRTGPU_CONTEXT_INIT failed with Invalid argument, continuing without context...
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+libva error: /usr/lib/x86_64-linux-gnu/dri/r600_drv_video.so init failed
+libva error: /usr/lib/x86_64-linux-gnu/dri/radeonsi_drv_video.so init failed
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_3D_FEATURES
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CAPSET_QUERY_FIX
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_RESOURCE_BLOB
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_HOST_VISIBLE
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CROSS_DEVICE
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CONTEXT_INIT
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_SUPPORTED_CAPSET_IDs
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_EXPLICIT_DEBUG_NAME
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_FENCE_PASSING
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_GUEST_HANDLE
+MESA: error: DRM_IOCTL_VIRTGPU_GET_CAPS failed with Permission denied
+MESA: error: DRM_IOCTL_VIRTGPU_CONTEXT_INIT failed with Invalid argument, continuing without context...
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+libva error: /usr/lib/x86_64-linux-gnu/dri/r600_drv_video.so init failed
+libva error: /usr/lib/x86_64-linux-gnu/dri/radeonsi_drv_video.so init failed
+[41248:41248:0402/162046.466250:ERROR:gles2_cmd_decoder_passthrough.cc(1053)] [GroupMarkerNotSet(crbug.com/242999)!:F0FEEB737D550000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader flag to opt in to lower security guarantees for trusted content.
+*** stack smashing detected ***: terminated
+*** stack smashing detected ***: terminated
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_3D_FEATURES
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CAPSET_QUERY_FIX
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_RESOURCE_BLOB
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_HOST_VISIBLE
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CROSS_DEVICE
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CONTEXT_INIT
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_SUPPORTED_CAPSET_IDs
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_EXPLICIT_DEBUG_NAME
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_FENCE_PASSING
+MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_GUEST_HANDLE
+MESA: error: DRM_IOCTL_VIRTGPU_GET_CAPS failed with Permission denied
+MESA: error: DRM_IOCTL_VIRTGPU_CONTEXT_INIT failed with Invalid argument, continuing without context...
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
+MESA: error: Failed to create virtgpu AddressSpaceStream
+MESA: error: vulkan: Failed to get host connection
+Warning: ../src/amd/vulkan/radv_physical_device.c:2048: Device '/dev/dri/renderD128' is not using the AMDGPU kernel driver: Invalid argument (VK_ERROR_INCOMPATIBLE_DRIVER)
+*** stack smashing detected ***: terminated

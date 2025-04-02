@@ -10,7 +10,7 @@
 } from "@/components/ui/sidebar"
 // import { Products } from "@/types/products"
 import CartMenu from "./CartMenu"
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import { Button } from "../ui/button"
 
 export function AppSidebar() {

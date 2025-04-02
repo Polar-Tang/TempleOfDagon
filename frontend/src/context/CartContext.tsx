@@ -1,19 +1,11 @@
 // import useAddProductCart from '@/hooks/useAddProductCart'
 import { Products } from '@/types/products'
-import React, { createContext, useState } from 'react'
-
-interface ProductsCartContextProps {
-    cartProductsState: Products
-    setCartProductsState: React.Dispatch<React.SetStateAction<Products>>,
-}
+import { createContext, useState } from 'react'
+import {ParentProps, ProductsCartContextProps} from "@/types/ContextTypes"
 
 export const CartContext = createContext({} as ProductsCartContextProps)
 
-export interface CartProps {
-    children: React.ReactNode
-}
-
-export const CartProvider = ({ children }: CartProps) => {
+export const CartProvider = ({ children }: ParentProps) => {
 
     const [cartProductsState, setCartProductsState] = useState([] as Products )
 

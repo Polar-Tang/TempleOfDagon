@@ -1,23 +1,21 @@
-import React, { createContext } from 'react'
+import { createContext, useState } from 'react'
 import { SidebarProvider } from "@/components/ui/sidebar"
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { AppSidebar } from '@/components/menus/SideBar'
+import type { LayoutContextProps, ParentProps } from '@/types/ContextTypes'
 
-export const LayoutContext = createContext("")
+export const LayoutContext = createContext({} as LayoutContextProps)
 
-export interface LayoutProps {
-    children: React.ReactNode
-}
+export const LayoutProvider = ({ children }: ParentProps) => {
 
-export const LayoutProvider = ({ children }: LayoutProps) => {
-
-    const hello: string = "Auth provider is working"
+    const [isSingleProduct, setisSingleProduct] = useState<boolean>(false)
 
     return (
-        <LayoutContext.Provider value={
-            hello
-        }>
+        <LayoutContext.Provider value={{
+            isSingleProduct,
+            setisSingleProduct
+        }}>
             <SidebarProvider>
               <AppSidebar />  
                 <div className="flex flex-col w-full">

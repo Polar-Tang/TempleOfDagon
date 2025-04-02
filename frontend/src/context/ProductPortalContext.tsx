@@ -1,17 +1,6 @@
 import ProductCardPortal from '@/components/cards/ProductCardPortal'
 import React, { createContext, useState } from 'react'
-
-interface ProductCardPortalProps {
-    isProductPortalOpen: boolean
-    selectedImage: selectedImage
-    setIsProductPortalOpen: React.Dispatch<React.SetStateAction<boolean>>
-    setSelectedImage: React.Dispatch<React.SetStateAction<selectedImage>>,
-
-  }
-type selectedImage = {
-    src: string
-    name: string
-}
+import {ProductCardPortalProps, selectedImage } from "@/types/ContextTypes"
 
 export const ProductPortalContext = createContext({} as ProductCardPortalProps)
 

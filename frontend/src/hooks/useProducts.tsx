@@ -1,16 +1,13 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import type { Products } from "@/types/products"
-import type BodyResponse from "@/types/bodyResponse"
+import type {BodyResponse} from "@/types/bodyResponse"
 
 interface ProductCardPortalProps {
     productsState: Products
     setProductsState: React.Dispatch<React.SetStateAction<Products>>,
 }
 
-export const ProductsContext = createContext({} as ProductCardPortalProps)
-
-
-export const ProductsProvider = ({ children }: { children: React.ReactNode }) => {
+const useProducts = (): ProductCardPortalProps => {
 
     const [productsState, setProductsState] = useState<Products>([] as Products)
     const fetchAllProducts = async (): Promise<BodyResponse> => {
@@ -34,14 +31,10 @@ export const ProductsProvider = ({ children }: { children: React.ReactNode }) =>
         fetchData();
     }, []);
 
-    return (
-        <ProductsContext.Provider value={{
+    return {
             productsState,
             setProductsState,
-        }}>
-            {children}
-        </ProductsContext.Provider>
-    )
+        }
 }
 
-export default ProductsProvider
+export default useProducts

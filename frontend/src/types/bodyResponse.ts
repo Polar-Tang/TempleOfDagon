@@ -5,7 +5,7 @@ export interface BodyResponse {
     status: number
     message: string
     payload: {
-        ProductSearched: ResponseCartObject | Products | Product
+        ProductSearched: Products
         detail?: string
     }
 }
