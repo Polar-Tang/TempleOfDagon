@@ -2,32 +2,31 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Repeat } from "lucide-react"
 import type { Product } from "@/types/products"
+import { useContext, useEffect, useState } from "react"
+import { CartContext } from "@/context/CartContext"
 
-export default function ProductCard({product}: {product: Product}) {
-  const {_id,
+export default function ProductCard({ product, addToCart }: {
+  product: Product,
+  addToCart: (e: React.MouseEvent) => void,
+}) {
+  const { _id,
     seller_id,
     title,
     price,
-    image_url} = product
+    image_url } = product
 
+    const { cartProductsState} = useContext(CartContext)
 
-    const addToCart = async (e: React.MouseEvent) => {
-      e.preventDefault()
-      const product = e.target as HTMLButtonElement
-      const grandparent = product.parentElement?.parentElement
-      console.log(grandparent?.id)
-      const resposHTTP = await fetch(`${import.meta.env.VITE_API_URL}/api/cart/add`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          // credentials: 'include',
-        },
-        // headers: getAuthHeaders(),
-        body: JSON.stringify({"seller_id": grandparent?.id})
-      })
-      const data = await resposHTTP.json();
-      console.log(data)
-    }
+    const [isSuccess, setIsSuccess] = useState<boolean>(false)
+    useEffect(() => {
+        setIsSuccess(true)
+    
+        // Reset back to original color after 2 seconds
+        setTimeout(() => {
+          setIsSuccess(false)
+        }, 2000)
+      }
+      , [cartProductsState])
 
   return (
     <Card key={_id} id={seller_id} className="justify-items-center w-full overflow-hidden border-none shadow-none bg-trasparent">
@@ -36,7 +35,7 @@ export default function ProductCard({product}: {product: Product}) {
           <img
             src={image_url}
             alt="Nature's Miracle Urine Destroyer"
-            className="object-fit w-full h-full rounded-lg "
+            className="object-fit h-full rounded-lg max-w-[120px]"
           />
         </div>
 
@@ -62,7 +61,11 @@ export default function ProductCard({product}: {product: Product}) {
       </CardContent>
 
       <CardFooter className="p-4 pt-0">
-        <Button className="w-full bg-navy-blue hover:bg-navy-blue/90 text-white" onClick={addToCart}>Añadir al carrito</Button>
+        <Button 
+        className={`w-full transition-colors duration-300 ease-in-out ${
+          isSuccess ? "bg-green-500 hover:bg-green-600 text-white" : "bg-navy-blue hover:bg-navy-blue/90 text-white"
+        }`}
+        onClick={addToCart}>Añadir al carrito</Button>
       </CardFooter>
     </Card>
   )

@@ -1,31 +1,30 @@
-import React, { createContext } from 'react'
-import { SidebarProvider } from "@/components/ui/sidebar"
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
-import { AppSidebar } from '@/components/menus/SideBar'
+// import useAddProductCart from '@/hooks/useAddProductCart'
+import { Products } from '@/types/products'
+import React, { createContext, useState } from 'react'
 
-export const CartContext = createContext("")
+interface ProductsCartContextProps {
+    cartProductsState: Products
+    setCartProductsState: React.Dispatch<React.SetStateAction<Products>>,
+}
 
-export interface LayoutProps {
+export const CartContext = createContext({} as ProductsCartContextProps)
+
+export interface CartProps {
     children: React.ReactNode
 }
 
-export const CartProvider = ({ children }: LayoutProps) => {
+export const CartProvider = ({ children }: CartProps) => {
 
-    const hello: string = "Auth provider is working"
+    const [cartProductsState, setCartProductsState] = useState([] as Products )
+
+    // const {} = useAddProductCart()
 
     return (
-        <CartContext.Provider value={
-            hello
-        }>
-            <SidebarProvider>
-              <AppSidebar />  
-                <div className="flex flex-col w-full">
-                <Navbar/>
-                    {children}
-                <Footer/>
-                </div>
-            </SidebarProvider>
+        <CartContext.Provider value={{
+            cartProductsState, 
+            setCartProductsState
+        }}>
+            {children}
         </CartContext.Provider>
     )
 }

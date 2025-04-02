@@ -1,14 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 import type { Products } from "@/types/products"
-
-interface BodyResponse {
-    ok: boolean
-    status: number
-    message: string
-    payload: {
-        ProductSearched: Products
-    }
-}
+import type BodyResponse from "@/types/bodyResponse"
 
 interface ProductCardPortalProps {
     productsState: Products

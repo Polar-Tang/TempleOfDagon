@@ -15,6 +15,7 @@
     "bcrypt": "^3.0.4-napi",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
+    "create-cloudflare": "^2.43.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "joi": "^17.13.3",

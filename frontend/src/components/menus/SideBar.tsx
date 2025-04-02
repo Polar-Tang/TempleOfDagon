@@ -1,6 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
-
-import {
+  import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
@@ -10,37 +8,13 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-
-// Menu items.
-const items = [
-  {
-    title: "Home",
-    url: "#",
-    icon: Home,
-  },
-  {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
-]
+// import { Products } from "@/types/products"
+import CartMenu from "./CartMenu"
+import { Link } from "react-router-dom"
+import { Button } from "../ui/button"
 
 export function AppSidebar() {
+
   return (
     <Sidebar>
       <SidebarContent>
@@ -48,16 +22,22 @@ export function AppSidebar() {
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              <SidebarMenuItem>
+                <CartMenu />
+              </SidebarMenuItem>
+              {/* {cartProducts && cartProducts.map((item) => (
+                      <img src={item.image_url} alt={item.title} className="w-10 h-10 rounded-full" />
+                      <div className="flex align-center" >
+                      <p className="text-sm " >{item.title}</p>
+                      <span className="text-sm text-gray-500 ">{item.price}</span>
+                      </div>
+                      </SidebarMenuItem>
+                      ))} */}
+                      <SidebarMenuButton asChild>
+                        <Button asChild variant="outline" className="w-full">
+                            <span className="text-sm">Ver todos los productos</span>
+                            </Button>
+                        </SidebarMenuButton>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

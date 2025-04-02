@@ -4,11 +4,13 @@ import SecondNavbarStore from "@/components/SecondNavbarStore"
 import { SkeletonCard } from "@/components/cards/SkelectonCard"
 import { useContext } from "react"
 import ProductsProvider, { ProductsContext } from '@/context/ProductsContext'
-
+import useAddProductCart from "@/hooks/useAddProductCart"
 
 
 const ProductsList = () => {
   const {productsState} = useContext(ProductsContext)
+
+  const addToCart = useAddProductCart()
 
   return (
     <>
@@ -20,7 +22,7 @@ const ProductsList = () => {
           )
           )
           : productsState.map((product) => (
-            <ProductCard product={product} />
+            <ProductCard product={product} addToCart={addToCart}/>
         ))}
     </>
   )
