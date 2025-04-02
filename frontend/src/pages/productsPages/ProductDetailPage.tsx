@@ -26,8 +26,8 @@ export default function ProductDetailPage() {
         product={product}
         src={product.image_url}
         alt={product.title}
-        width={400}
-        height={400}
+        // width={400}
+        // height={400}
         className="object-cover"
       />
     </SecondNavbarStore>

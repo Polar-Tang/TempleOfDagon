@@ -11,14 +11,12 @@ import ProductsDetails from "@/components/ProductDetails"
 interface ImageZoomProps {
   src: string
   alt: string
-  width: number
-  height: number
   magnifyAmount?: number
   className?: string,
   product: Product
 }
 
-export function ImageZoom({ src, alt, width, height, magnifyAmount = 2.5, className, product }: ImageZoomProps) {
+export function ImageZoom({ src, alt, magnifyAmount = 2.5, className, product }: ImageZoomProps) {
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [showMagnifier, setShowMagnifier] = useState(false)
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
