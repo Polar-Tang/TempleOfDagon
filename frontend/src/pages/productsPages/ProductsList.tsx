@@ -7,6 +7,10 @@ import SecondNavbarStore from "@/components/SecondNavbarStore"
 import { useContext, useEffect } from "react"
 import { LayoutContext } from "@/context/LayoutContext"
 import useProducts from "@/hooks/useProducts"
+// import { Products } from "@/types/products"
+// import ProductsMock from "@/mocks/productsMock"
+// const [productsState, setProductsState] = useState<Products>(ProductsMock)
+
 
 const ProductsList = () => {
 
@@ -18,6 +22,7 @@ const ProductsList = () => {
   }, [])
 
   const {productsState } =useProducts()
+
   return (
     <SecondNavbarStore>
 

@@ -13,22 +13,14 @@ const useProducts = (): ProductCardPortalProps => {
     const fetchAllProducts = async (): Promise<BodyResponse> => {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products`)
         const data = await response.json()
+        setProductsState(data.payload.ProductSearched);
         return data
     }
 
     
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const data: BodyResponse = await fetchAllProducts();
-                setProductsState(data.payload.ProductSearched);
-            } catch (error) {
-                console.error("Failed to fetch products:", error);
-            }
-        };
-
-        fetchData();
+        fetchAllProducts();
     }, []);
 
     return {
