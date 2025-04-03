@@ -36,7 +36,7 @@ export default function ProductCard({ product, addToCart }: {
           <img
             src={image_url}
             alt="Nature's Miracle Urine Destroyer"
-            className="object-fit h-full rounded-lg max-w-[120px]"
+            className="object-fit h-full rounded-lg max-w-[200px]"
           />
         </div>
 

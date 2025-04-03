@@ -21,7 +21,7 @@ const ProductsList = () => {
     setisSingleProduct(true)
   }, [])
 
-  const {productsState } =useProducts()
+  const { productsState } =useProducts()
 
   return (
     <SecondNavbarStore>
