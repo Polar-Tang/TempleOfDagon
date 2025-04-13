@@ -12,6 +12,7 @@
 import CartMenu from "./CartMenu"
 // import { Link } from "react-router-dom"
 import { Button } from "../ui/button"
+import SidebarCloser from "@/components/buttons/SidebarCloser"
 
 export function AppSidebar() {
 
@@ -19,11 +20,12 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
+          <SidebarCloser />
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <CartMenu />
+                <CartMenu/>
               </SidebarMenuItem>
               {/* {cartProducts && cartProducts.map((item) => (
                       <img src={item.image_url} alt={item.title} className="w-10 h-10 rounded-full" />

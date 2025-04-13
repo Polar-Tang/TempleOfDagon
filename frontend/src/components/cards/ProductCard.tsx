@@ -1,33 +1,17 @@
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Repeat } from "lucide-react"
 import type { Product } from "@/types/products"
-import { useContext, useEffect, useState } from "react"
-import { CartContext } from "@/context/CartContext"
-import { Link } from "react-router-dom"
+import ProcuctCardButons from "../buttons/ProcuctCardButons"
 
-export default function ProductCard({ product, addToCart }: {
+export default function ProductCard({ product }: {
   product: Product,
-  addToCart: (e: React.MouseEvent) => void,
+  // addToCart: (e: React.MouseEvent) => void,
 }) {
   const { _id,
     seller_id,
     title,
     price,
     image_url } = product
-
-    const { cartProductsState} = useContext(CartContext)
-
-    const [isSuccess, setIsSuccess] = useState<boolean>(false)
-    useEffect(() => {
-        setIsSuccess(true)
-    
-        // Reset back to original color after 2 seconds
-        setTimeout(() => {
-          setIsSuccess(false)
-        }, 2000)
-      }
-      , [cartProductsState])
 
   return (
     <Card key={_id} id={seller_id} className="justify-items-center w-full overflow-hidden border-none shadow-none bg-trasparent">
@@ -62,18 +46,7 @@ export default function ProductCard({ product, addToCart }: {
       </CardContent>
 
       <CardFooter className="p-4 pt-0">
-        <Button 
-        className={`w-full transition-colors duration-300 ease-in-out ${
-          isSuccess ? "bg-green-500 hover:bg-green-600 text-white" : "bg-navy-blue hover:bg-navy-blue/90 text-white"
-        }`}
-        onClick={addToCart}>Añadir al carrito</Button>
-        <Button 
-        className={`w-full transition-colors duration-300 ease-in-out`}
-        >
-          <Link to={`/tienda/${_id}`}>
-            <span className="text-sm text-white">Ver detalles</span>
-          </Link>
-        </Button>
+        <ProcuctCardButons id={_id} />
       </CardFooter>
     </Card>
   )

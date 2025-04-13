@@ -1,40 +1,49 @@
-import React, { useCallback, useContext } from 'react'
+import React, { useCallback, useContext, useState } from 'react'
 import type { ResponseCartObject } from "@/types/bodyResponse"
 import { CartContext } from '@/context/CartContext'
 import { Product } from '@/types/products'
 
 const useAddProductCart = () => {
 
-  const {setCartProductsState, cartProductsState} = useContext(CartContext)
+  const { setCartProductsState } = useContext(CartContext)
+  const [IsAddCartSuccess, setIsAddCartSuccess] = useState<boolean>(false)
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
+  // Add product to cart
   const addToCart = useCallback(async (e: React.MouseEvent) => {
-    // e.preventDefault()
     const product = e.target as HTMLButtonElement
     const grandparent = product.parentElement?.parentElement
-    console.log("Add to cart is running ", grandparent)
+    setIsAnimating(true);
     const resposHTTP = await fetch(`${import.meta.env.VITE_API_URL}/api/cart/add`, {
       method: 'POST',
       headers: {
         credentials: "include",
         'Content-Type': 'application/json',
-        // credentials: 'include',
       },
-      // headers: getAuthHeaders(),
       body: JSON.stringify({ "seller_id": grandparent?.id })
     })
+
+    // GET BODY
     const data = await resposHTTP.json();
     const CartObjetc = data.response.payload.ProductSearched as ResponseCartObject
     const cartProductsArray = CartObjetc.detailProducts as Product[]
-    setCartProductsState((prevState) => {
-      console.log("prevState: ", prevState)
-      const newState = [...prevState, cartProductsArray[0]]
-      
-      return newState
 
-    })
-    window.localStorage.setItem('cart', JSON.stringify(cartProductsState))
+    // button animation
+    setIsAddCartSuccess(true)
+    setTimeout(() => {
+      setIsAddCartSuccess(false)
+      setIsAnimating(false)
+    }, 2000)
+
+    // update state and session storage
+    setCartProductsState((prevProducts) => [...prevProducts, cartProductsArray[0]])
+    window.sessionStorage.setItem('cart', JSON.stringify(cartProductsArray[0]))
   }, [])
 
-  return addToCart
+  return {
+    addToCart,
+    IsAddCartSuccess,
+    isAnimating
+  }
 }
 export default useAddProductCart

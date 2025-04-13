@@ -1,6 +1,5 @@
 import ProductCard from "@/components/cards/ProductCard"
 import { SkeletonCard } from "@/components/cards/SkelectonCard"
-import useAddProductCart from "@/hooks/useAddProductCart"
 // import ProductsPage from "./ProductsPage"
 // import ProductsMock from "@/mocks/productsMock"
 import SecondNavbarStore from "@/components/SecondNavbarStore"
@@ -13,8 +12,6 @@ import useProducts from "@/hooks/useProducts"
 
 
 const ProductsList = () => {
-
-  const addToCart = useAddProductCart()
   
   const { setisSingleProduct } = useContext(LayoutContext)
   useEffect(() => {
@@ -34,7 +31,7 @@ const ProductsList = () => {
           )
           )
           : productsState.map((product) => (
-            <ProductCard product={product} addToCart={addToCart} />
+            <ProductCard product={product} />
           ))}
     </SecondNavbarStore>
   )
