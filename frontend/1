@@ -1,4 +1,0 @@
-
-(spotify:155651): libayatana-appindicator-WARNING **: 15:01:15.515: libayatana-appindicator is deprecated. Please use libayatana-appindicator-glib in newly written code.
-Warning: ../src/amd/vulkan/radv_physical_device.c:2010: Device '/dev/dri/renderD128' is not using the AMDGPU kernel driver: Invalid argument (VK_ERROR_INCOMPATIBLE_DRIVER)
-*** stack smashing detected ***: terminated

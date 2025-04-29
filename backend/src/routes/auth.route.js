@@ -20,7 +20,7 @@ authRouter.options('/login', cors(corsOptions))
 authRouter.post('/forgot-password', forgotPasswordController)
 authRouter.options('/forgot-password', cors(corsOptions))
 
-authRouter.put('/recovery-password/:reset_token', recoveryPasswordController)
+authRouter.post('/recovery-password/:reset_token', recoveryPasswordController)
 authRouter.options('/recovery-password/:reset_token', cors(corsOptions))
 
 // authRouter.get('/logout', authMiddleware(['admin', 'user']), logoutController)

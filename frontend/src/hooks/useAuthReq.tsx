@@ -29,9 +29,8 @@ const useAuthReq = ({endpoint}: {endpoint: string}) => {
           const messageDescription = data.response.payload.detail
     
           if (data.response.ok) {
-            console.log("Is ok?", data.response.ok)
             setIsUserHasLogged(true)
-            setMessage({ title: messageFromData, description: messageDescription, variant: "default" })
+            setMessage({ title: messageFromData, description: "Bienvenido a halloween", variant: "default" })
             return
             // setTimeout(() => {
             // 	login(data.response.payload.detail)
@@ -42,7 +41,7 @@ const useAuthReq = ({endpoint}: {endpoint: string}) => {
           return
         } catch (error) {
           setIsUserHasLogged(true)
-          setMessage({ title: "Error", description: "Ocurri&oacute un error, por favor intente de nuevo m&aacutes tarde ", variant: "destructive" })
+          setMessage({ title: "Error", description: "Ocurrió un error, por favor intente de nuevo más tarde ", variant: "destructive" })
         }
       }
 

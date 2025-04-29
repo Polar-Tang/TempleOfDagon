@@ -20,10 +20,6 @@ const productSchema = new mongoose.Schema({
     category: {
         type: String,
     },
-    seller_id: {
-        type: String, // mongoose.Schema.Types.ObjectId
-        default: Date.now
-    },
     active: {
         type: Boolean,
         default: true

@@ -1,133 +1,47 @@
-xdg-settings: default-url-scheme-handler not implemented for xfce
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_3D_FEATURES
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CAPSET_QUERY_FIX
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_RESOURCE_BLOB
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_HOST_VISIBLE
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CROSS_DEVICE
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CONTEXT_INIT
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_SUPPORTED_CAPSET_IDs
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_EXPLICIT_DEBUG_NAME
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_FENCE_PASSING
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_GUEST_HANDLE
-MESA: error: DRM_IOCTL_VIRTGPU_GET_CAPS failed with Permission denied
-MESA: error: DRM_IOCTL_VIRTGPU_CONTEXT_INIT failed with Invalid argument, continuing without context...
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-libva error: /usr/lib/x86_64-linux-gnu/dri/r600_drv_video.so init failed
-libva error: /usr/lib/x86_64-linux-gnu/dri/radeonsi_drv_video.so init failed
-[12437:0331/130822.147709:ERROR:viz_main_impl.cc(185)] Exiting GPU process due to errors during initialization
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_3D_FEATURES
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CAPSET_QUERY_FIX
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_RESOURCE_BLOB
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_HOST_VISIBLE
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CROSS_DEVICE
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CONTEXT_INIT
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_SUPPORTED_CAPSET_IDs
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_EXPLICIT_DEBUG_NAME
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_FENCE_PASSING
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_GUEST_HANDLE
-MESA: error: DRM_IOCTL_VIRTGPU_GET_CAPS failed with Permission denied
-MESA: error: DRM_IOCTL_VIRTGPU_CONTEXT_INIT failed with Invalid argument, continuing without context...
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-libva error: /usr/lib/x86_64-linux-gnu/dri/r600_drv_video.so init failed
-libva error: /usr/lib/x86_64-linux-gnu/dri/radeonsi_drv_video.so init failed
-[12492:0331/130823.343658:ERROR:viz_main_impl.cc(185)] Exiting GPU process due to errors during initialization
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_3D_FEATURES
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CAPSET_QUERY_FIX
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_RESOURCE_BLOB
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_HOST_VISIBLE
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CROSS_DEVICE
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CONTEXT_INIT
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_SUPPORTED_CAPSET_IDs
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_EXPLICIT_DEBUG_NAME
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_FENCE_PASSING
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_GUEST_HANDLE
-MESA: error: DRM_IOCTL_VIRTGPU_GET_CAPS failed with Permission denied
-MESA: error: DRM_IOCTL_VIRTGPU_CONTEXT_INIT failed with Invalid argument, continuing without context...
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-libva error: /usr/lib/x86_64-linux-gnu/dri/r600_drv_video.so init failed
-libva error: /usr/lib/x86_64-linux-gnu/dri/radeonsi_drv_video.so init failed
-[12508:0331/130823.662024:ERROR:viz_main_impl.cc(185)] Exiting GPU process due to errors during initialization
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_3D_FEATURES
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CAPSET_QUERY_FIX
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_RESOURCE_BLOB
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_HOST_VISIBLE
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CROSS_DEVICE
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CONTEXT_INIT
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_SUPPORTED_CAPSET_IDs
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_EXPLICIT_DEBUG_NAME
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_FENCE_PASSING
-MESA: info: virtgpu backend not enabling VIRTGPU_PARAM_CREATE_GUEST_HANDLE
-MESA: error: DRM_IOCTL_VIRTGPU_GET_CAPS failed with Permission denied
-MESA: error: DRM_IOCTL_VIRTGPU_CONTEXT_INIT failed with Invalid argument, continuing without context...
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-MESA: error: DRM_VIRTGPU_RESOURCE_CREATE_BLOB failed with Permission denied
-MESA: error: Failed to create virtgpu AddressSpaceStream
-MESA: error: vulkan: Failed to get host connection
-libva error: /usr/lib/x86_64-linux-gnu/dri/r600_drv_video.so init failed
-libva error: /usr/lib/x86_64-linux-gnu/dri/radeonsi_drv_video.so init failed
-[12478:0331/130824.952457:ERROR:command_buffer_proxy_impl.cc(131)] ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer.
+[50090:0427/104432.515957:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.516231:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.516300:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.516365:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.516424:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.516484:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.516547:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.516608:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.516672:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.516734:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.516796:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.516879:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.516938:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.516994:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.517090:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.517189:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.517282:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.517377:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.517506:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.517598:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.517686:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.517776:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.517866:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.517956:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.518046:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.518136:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.522975:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.523128:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.523189:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.523256:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.523315:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.523383:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.523452:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.523518:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.523586:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.523666:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.523733:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.523798:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.523864:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[50090:0427/104432.523928:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+(node:25449) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 child-process-gone listeners added to [App]. Use emitter.setMaxListeners() to increase limit
+(Use `code-oss --trace-warnings ...` to show where the warning was created)
+[91m[main 2025-04-27T13:49:58.448Z][0m [UtilityProcess id: 6, type: extensionHost, pid: 52328]: crashed with code 15 and reason 'killed'
+[91m[main 2025-04-27T13:49:58.538Z][0m [UtilityProcess id: 6, type: fileWatcher, pid: 52318]: crashed with code 15 and reason 'killed'
+[91m[main 2025-04-27T13:53:02.857Z][0m [UtilityProcess id: 7, type: extensionHost, pid: 53943]: crashed with code 15 and reason 'killed'
+[91m[main 2025-04-27T13:53:02.959Z][0m [UtilityProcess id: 7, type: fileWatcher, pid: 53933]: crashed with code 15 and reason 'killed'
+[91m[main 2025-04-27T14:15:24.035Z][0m [UtilityProcess id: 5, type: fileWatcher, pid: 50162]: crashed with code 15 and reason 'killed'
