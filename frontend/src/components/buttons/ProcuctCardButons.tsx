@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import useAddProductCart from '@/hooks/useAddProductCart'
 import { cn } from '@/lib/utils'
 
-export const ProcuctAddCardButton = ({id, classes}: {id: string, classes: string}) => {
+export const ProcuctAddCardButton = ({ classes}: {classes: string}) => {
     const {addToCart, IsAddCartSuccess, isAnimating} = useAddProductCart()
 
   return (
@@ -31,7 +31,7 @@ export const ProcuctAddCardButton = ({id, classes}: {id: string, classes: string
 export const ProductCardDetail = ({id, classes}: {id: string, classes: string}) => {
   return (
     <Button 
-    className={`w-full`}
+    className={`w-full ${classes}`}
     >
       <Link to={`/tienda/${id}`}>
         <span className="text-sm text-white">Ver detalles</span>

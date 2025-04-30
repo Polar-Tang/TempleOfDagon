@@ -47,7 +47,7 @@ const ProductCardPortal = () => {
             <span className="text-lg font-bold">$49.99</span>
             
 
-            <ProcuctAddCardButton classes={""} id={_id} />
+            <ProcuctAddCardButton classes={""} />
           </div>
         </div>
       </div>
