@@ -31,5 +31,6 @@ export interface BannerPorps {
     images: {
         src: string
         name: string
+        _id: string
     }[]
 }

@@ -7,7 +7,7 @@ export const ProductPortalContext = createContext({} as ProductCardPortalProps)
 export const ProductPortalProvider = ({ children }: {children: React.ReactNode}) => {
 
     const [isProductPortalOpen, setIsProductPortalOpen] = useState<boolean>(false)
-	const [selectedImage, setSelectedImage] = useState<selectedImage>({ src: '', name: '' })
+	const [selectedImage, setSelectedImage] = useState<selectedImage>({ src: '', name: '', _id:"" })
 
 
     return (

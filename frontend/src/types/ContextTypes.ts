@@ -16,6 +16,7 @@ export interface ProductCardPortalProps {
 export type selectedImage = {
     src: string
     name: string
+    _id: string
 }
 
 export interface ProductsCartContextProps {

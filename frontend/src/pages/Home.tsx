@@ -10,7 +10,8 @@ const Home = () => {
   const images = ProductsMock.map((image) => {
     return {
       src: image.image_url,
-      name: image.title
+      name: image.title,
+      _id: image._id
     }
   }
   )

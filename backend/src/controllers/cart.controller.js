@@ -15,8 +15,8 @@ export const addToCartController = async (req, res, next) => {
     }
     console.log(req.body)
 
-    const { seller_id } = req.body
-    const product = await ProductRepository.getProductById(seller_id)
+    const { _id } = req.body
+    const product = await ProductRepository.getProductById(_id)
     if (!product) {
         return next(new AppError("Producto no encontrado", 404))
     }
@@ -46,18 +46,18 @@ export const addToCartController = async (req, res, next) => {
 
 
 export const eliminateProductCart = async (req, res, next) => {
-    const { seller_id } = req.params
+    const { _id } = req.params
     const basketId = req.cookies.basketId
 
     if (!basketId) {
         return next(new AppError("No hay sesión del carrito", 400))
     }
 
-    if (!seller_id) {
+    if (!_id) {
         return next(new AppError("Parametro no encontrado", 400))
     }
 
-    const retriever = await CartProductRepository.deleteProductCart(seller_id, basketId)
+    const retriever = await CartProductRepository.deleteProductCart(_id, basketId)
     if (!retriever) {
         return next(new AppError("Cannot delete product", 400))
     }

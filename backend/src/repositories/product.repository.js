@@ -10,7 +10,7 @@ class ProductRepository {
     }
 
     static async updateProduct (product_id, update_data) {
-        return Product.findOneAndUpdate(product_id, update_data)
+        return Product.findOneAndUpdate({"_id":product_id}, update_data)
     } 
 
     static async getAllProducts (){
@@ -18,7 +18,7 @@ class ProductRepository {
     }
 
     static async getProductById (product_id){
-        return Product.findOne({"seller_id":product_id})
+        return Product.findOne({"_id":product_id})
     }
 
     static async deleteProduct (filter){

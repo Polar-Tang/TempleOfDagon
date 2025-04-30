@@ -1,10 +1,6 @@
 import mongoose from 'mongoose'
 
 const DetailProductSchema = new mongoose.Schema({
-    seller_id: {
-        type: String,
-        required: true
-    },
     title: {
         type: String,
         required: true

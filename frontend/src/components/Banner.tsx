@@ -20,10 +20,10 @@ export function ImageSection({ images }: BannerPorps): ReactElement<any | void, 
 		if (imgElement.tagName === 'IMG') {
 			const src: string = imgElement.src
 			const name: string = imgElement.alt
-
 			const dataProduct = {
 				src: src,
 				name: name,
+				_id: imgElement.id
 			}
 			
 			setSelectedImage(dataProduct)
@@ -34,11 +34,11 @@ export function ImageSection({ images }: BannerPorps): ReactElement<any | void, 
 
 	return (
 		<div className={`images`}>
-			{images.map(({ src, name }, index) => {
+			{images.map(({ src, name, _id }, index) => {
 				return (
 					<div className='image h-full' key={index}>
 						<button onClick={(e) => renderProductPortal(e)} >
-							<img src={src} alt={name} className='h-50 max-w-50' />
+							<img src={src} alt={name} id={_id} className='h-50 max-w-50' />
 						</button>
 					</div>
 				)

@@ -36,7 +36,7 @@ export const deleteProductController = async (req, res, next) => {
             return next(new AppError("You must provide an id", 400))
 
         }
-        const new_object = await ProductRepository.deleteProduct({ seller_id: id })
+        const new_object = await ProductRepository.deleteProduct({ "_id": id })
         
         if (isEmptyObject(new_object)) {
             return next(new AppError("Product not found", 404))
@@ -70,7 +70,7 @@ export const updateProductController = async (req, res, next) => {
             return next(new AppError("You have sent a wrong body", 400))
         }
 
-        const new_object = await ProductRepository.updateProduct({ seller_id: id }, req.body)
+        const new_object = await ProductRepository.updateProduct( id, req.body)
         
         const response = new ResponseBuilder()
         .setOk(true)
@@ -97,7 +97,7 @@ export const getProductByIdController = async (req, res, next) => {
             return next(new AppError("There's no id", 400))
         }
 
-        const ProductsSearched = await ProductRepository.getProductById({ "seller_id": id, }) // []
+        const ProductsSearched = await ProductRepository.getProductById(id) // []
 
         // if (isEmptyObject(object_searched)) {
         //     return next(new AppError("Product not found", 404))

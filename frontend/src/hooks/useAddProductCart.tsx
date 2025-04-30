@@ -14,13 +14,16 @@ const useAddProductCart = () => {
     const product = e.target as HTMLButtonElement
     const grandparent = product.parentElement?.parentElement
     setIsAnimating(true);
+    console.log("Event target", grandparent)
+    console.log("Event target id", grandparent?.id)
+
     const resposHTTP = await fetch(`${import.meta.env.VITE_API_URL}/api/cart/add`, {
       method: 'POST',
       headers: {
         credentials: "include",
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ "seller_id": grandparent?.id })
+      body: JSON.stringify({ "_id": grandparent?.id })
     })
 
     // GET BODY

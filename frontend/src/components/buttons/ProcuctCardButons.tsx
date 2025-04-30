@@ -3,23 +3,17 @@ import { Link } from 'react-router-dom'
 import useAddProductCart from '@/hooks/useAddProductCart'
 import { cn } from '@/lib/utils'
 
-const ProcuctCardButons = ({id}: {id: string}) => {
+export const ProcuctAddCardButton = ({id, classes}: {id: string, classes: string}) => {
     const {addToCart, IsAddCartSuccess, isAnimating} = useAddProductCart()
 
   return (
     <>
-    <Button 
-        className={`w-full`}
-        >
-          <Link to={`/tienda/${id}`}>
-            <span className="text-sm text-white">Ver detalles</span>
-          </Link>
-    </Button>
+   
     <Button 
     // onAnimationStart={IsAddCartSuccess} 
     onClick={addToCart}
     className={cn(
-      "w-full transition-all duration-300",
+      `${classes}`,
       isAnimating && "animate-pulse", // Tailwind's built-in pulse
       IsAddCartSuccess && "bg-green-500 scale-110" // Success state
     )}
@@ -32,4 +26,16 @@ const ProcuctCardButons = ({id}: {id: string}) => {
   )
 }
 
-export default ProcuctCardButons
+
+
+export const ProductCardDetail = ({id, classes}: {id: string, classes: string}) => {
+  return (
+    <Button 
+    className={`w-full`}
+    >
+      <Link to={`/tienda/${id}`}>
+        <span className="text-sm text-white">Ver detalles</span>
+      </Link>
+</Button>
+  )
+}

@@ -1,7 +1,7 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Repeat } from "lucide-react"
 import type { Product } from "@/types/products"
-import ProcuctCardButons from "../buttons/ProcuctCardButons"
+import { ProcuctAddCardButton, ProductCardDetail } from "../buttons/ProcuctCardButons"
 
 export default function ProductCard({ product }: {
   product: Product,
@@ -46,7 +46,9 @@ export default function ProductCard({ product }: {
       </CardContent>
 
       <CardFooter className="p-4 pt-0">
-        <ProcuctCardButons id={_id} />
+      <ProductCardDetail classes={"w-full"} id={_id} />
+
+      <ProcuctAddCardButton classes={"w-full transition-all duration-300"} id={_id} />
       </CardFooter>
     </Card>
   )

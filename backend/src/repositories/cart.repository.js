@@ -11,7 +11,7 @@ class CartProductRepository {
                 cartId: cartId,
                 detailProducts: [
                     {
-                        seller_id: product.seller_id,
+                        _id: product._id,
                         title: product.title,
                         price: product.price,
                         stock: product.stock,
@@ -23,13 +23,13 @@ class CartProductRepository {
         } else {
             
             const filtering = cartSession.detailProducts.filter(
-                (element ) => element.seller_id == product.seller_id 
+                (element ) => element._id == product._id 
             )
             if (filtering.length <= product.stock ){
             console.log("filtering great than products")
 
                 cartSession.detailProducts.push({
-                    seller_id: product.seller_id,
+                    _id: product._id,
                     title: product.title,
                     price: product.price,
                     stock: product.stock,
@@ -47,7 +47,7 @@ class CartProductRepository {
 
 
     static async getAllProductsDetails(cartId) {
-        let cartSession = await CartProduct.findOne({ cartId })
+        let cartSession = await CartProduct.findOne({ "_id": cartId })
         
         if (!cartSession) {
             return false
@@ -58,14 +58,14 @@ class CartProductRepository {
 
     
     static async deleteProductCart(product_id, cartId ) {
-        const cartSession = await CartProduct.findOne({ cartId });
+        const cartSession = await CartProduct.findOne({ "_id": cartId });
 
         if (!cartSession) {
           return "Cart not found";
         }
       
         const existingProductIndex = cartSession.detailProducts.findIndex(
-          (item) => item.seller_id === product_id
+          (item) => item._id === product_id
         );
       
         if (existingProductIndex === -1) {
