@@ -1,7 +1,7 @@
 import type { Products } from "@/types/products"
 
 const ProductsMock: Products = [{
-    "_id": "67ede7b5a955d13f89e32f9b",
+    "_id": "6812424f01fbd13fcf8f1c09",
     "title": "image 1",
     "price": 300,
     "stock": 5,
@@ -13,7 +13,7 @@ const ProductsMock: Products = [{
     "updatedAt": "2025-04-03T01:43:17.076Z"
 },
 {
-    "_id": "67ede7b5a955d13f89e32f9c",
+    "_id": "6812424f01fbd13fcf8f1c0a",
     "title": "image 2",
     "price": 460,
     "stock": 50,
@@ -25,7 +25,7 @@ const ProductsMock: Products = [{
     "updatedAt": "2025-04-03T01:43:17.076Z"
 },
 {
-    "_id": "67ede7b5a955d13f89e32f9d",
+    "_id": "6812424f01fbd13fcf8f1c0b",
     "title": "image 3",
     "price": 60,
     "stock": 30,
@@ -37,7 +37,7 @@ const ProductsMock: Products = [{
     "updatedAt": "2025-04-03T01:43:17.077Z"
 },
 {
-    "_id": "67ede7b5a955d13f89e32f9e",
+    "_id": "6812424f01fbd13fcf8f1c0c",
     "title": "image 4",
     "price": 80,
     "stock": 100,
@@ -49,7 +49,7 @@ const ProductsMock: Products = [{
     "updatedAt": "2025-04-03T01:43:17.077Z"
 },
 {
-    "_id": "67ede7b5a955d13f89e32f9f",
+    "_id": "6812424f01fbd13fcf8f1c0d",
     "title": "image 5",
     "price": 50,
     "stock": 40,
@@ -61,7 +61,7 @@ const ProductsMock: Products = [{
     "updatedAt": "2025-04-03T01:43:17.077Z"
 },
 {
-    "_id": "67ede7b5a955d13f89e32fa0",
+    "_id": "6812424f01fbd13fcf8f1c0e",
     "title": "image 6",
     "price": 40,
     "stock": 70,
@@ -73,7 +73,7 @@ const ProductsMock: Products = [{
     "updatedAt": "2025-04-03T01:43:17.077Z"
 },
 {
-    "_id": "67ede7b5a955d13f89e32fa1",
+    "_id": "6812424f01fbd13fcf8f1c0f",
     "title": "image 7",
     "price": 70,
     "stock": 25,
@@ -85,7 +85,7 @@ const ProductsMock: Products = [{
     "updatedAt": "2025-04-03T01:43:17.077Z"
 },
 {
-    "_id": "67ede7b5a955d13f89e32fa2",
+    "_id": "6812424f01fbd13fcf8f1c10",
     "title": "image 8",
     "price": 100,
     "stock": 25,
@@ -97,7 +97,7 @@ const ProductsMock: Products = [{
     "updatedAt": "2025-04-03T01:43:17.077Z"
 },
 {
-    "_id": "67ede7b5a955d13f89e32fa3",
+    "_id": "6812424f01fbd13fcf8f1c11",
     "title": "image 9",
     "price": 10,
     "stock": 75,
@@ -109,7 +109,7 @@ const ProductsMock: Products = [{
     "updatedAt": "2025-04-03T01:43:17.077Z"
 },
 {
-    "_id": "67ede7b5a955d13f89e32fa4",
+    "_id": "6812424f01fbd13fcf8f1c12",
     "title": "image 10",
     "price": 10,
     "stock": 90,
