@@ -48,7 +48,7 @@ export default function ProductCard({ product }: {
       <CardFooter className="p-4 pt-0">
       <ProductCardDetail classes={"w-full"} id={_id} />
 
-      <ProcuctAddCardButton classes={"w-full transition-all duration-300"} id={_id} />
+      <ProcuctAddCardButton classes={"w-full transition-all duration-300"} />
       </CardFooter>
     </Card>
   )
