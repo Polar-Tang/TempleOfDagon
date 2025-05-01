@@ -4,7 +4,9 @@ import type {AuthTypeProps} from "@/types/AuthProps"
 
 const RecoveryPassPage = () => {
   const { reset_token } = useParams()
-
+  if (!reset_token) {
+    return <div className="text-red-500">Error, not found</div>
+  }
     const auth_card_props: AuthTypeProps = {
 		titleH1: "Recuperar Contraseña",
 		cardDescription: "Escibe tu nueva contraseña",

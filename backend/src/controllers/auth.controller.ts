@@ -75,7 +75,7 @@ export const registerController = async (req: request, res: response, next) => {
             const response = new ResponseBuilder()
                 .setOk(false)
                 .setStatus(400)
-                .setMessage('VALIDATION_ERROR')
+                .setMessage('Error de validación')
                 .setPayload(
                     {
                         registerState: registerConfig
@@ -106,7 +106,6 @@ export const registerController = async (req: request, res: response, next) => {
             })
 
         const redirectURL = `${process.env.FRONTENDURL}/recuperar-contraseña/${validationToken}`
-
         // SEND MAIL
         const mailOptions = {
             from: {
@@ -119,13 +118,7 @@ export const registerController = async (req: request, res: response, next) => {
                  <h1>Verify Your Email</h1>
                 <p>Please click the link below to verify your email </p>
                 <a href=${redirectURL} >Verify</a>
-                `,
-            attachments: [
-                {
-                    filename: '/home/pull/labs/clases-backend/backend/images.jpeg',
-                    contentType: 'image/jpeg'
-                }
-            ]
+                `
         }
         const result = transportEmail.sendMail(mailOptions)
 
@@ -285,7 +278,6 @@ export const forgotPasswordController = async (req: request, res: response, next
             return res.status(400).json({ response })
         }
 
-        console.log("Passwor to verify FORGOT PASS:", user.password)
         const reset_token = jwt.sign({
             user_id: user._id,
             name: user.name,
@@ -297,7 +289,6 @@ export const forgotPasswordController = async (req: request, res: response, next
                 expiresIn: '1h'
             })
         const redirectURL = `${process.env.FRONTENDURL}/recuperar-contraseña/${reset_token}`
-        console.log("The password signed", user.password)
 
 
         const mailOptions = {
@@ -311,13 +302,7 @@ export const forgotPasswordController = async (req: request, res: response, next
                 <h1>Hello ${user.name}</h1>
                 <p>CLick here and you could verify your password </p>
                 <a href=${redirectURL} >Reset password</a>
-                `,
-            attachments: [
-                {
-                    filename: '/home/pull/labs/clases-backend/backend/images.jpeg',
-                    contentType: 'image/jpeg'
-                }
-            ]
+                `
         }
         const result = transportEmail.sendMail(mailOptions)
 

@@ -6,8 +6,8 @@ dotenv.config()
 
 console.log(process.env.MONGO_URI)
 const ENVIRONMENT = {
-    EMAIL_PASSWORD: process.env.EMAIL_PASSWORD || '',
-    EMAIL_USER: process.env.EMAIL_USER || '',
+    EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
+    EMAIL_USER: process.env.EMAIL_USER,
     JWT_SECRET: process.env.JWT_SECRET,
     MONGO_URI: process.env.MONGO_URI,
     MYSQL: {

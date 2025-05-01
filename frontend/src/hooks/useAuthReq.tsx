@@ -13,6 +13,7 @@ const useAuthReq = ({endpoint}: {endpoint: string}) => {
     
         const form_state = {
           password: formValues.get("password"),
+          name: formValues.get("name"),
           email: formValues.get("email")
         }
         try {
@@ -36,7 +37,7 @@ const useAuthReq = ({endpoint}: {endpoint: string}) => {
             // 	login(data.response.payload.detail)
             // }, 2000)
           }
-          setIsUserHasLogged(true)
+          setIsUserHasLogged(false)
           setMessage({ title: messageFromData, description: messageDescription, variant: "destructive" })
           return
         } catch (error) {
