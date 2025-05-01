@@ -105,7 +105,7 @@ export const registerController = async (req: request, res: response, next) => {
                 expiresIn: '1d'
             })
 
-        const redirectURL = `${process.env.FRONTENDURL}/recuperar-contraseña/${validationToken}`
+        const redirectURL = `${process.env.FRONTENDURL}/verify-email/${validationToken}`
         // SEND MAIL
         const mailOptions = {
             from: {
@@ -288,7 +288,7 @@ export const forgotPasswordController = async (req: request, res: response, next
             {
                 expiresIn: '1h'
             })
-        const redirectURL = `${process.env.FRONTENDURL}/recuperar-contraseña/${reset_token}`
+        const redirectURL = `${process.env.FRONTENDURL}/recuperar-password/${reset_token}`
 
 
         const mailOptions = {
