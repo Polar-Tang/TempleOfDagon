@@ -288,7 +288,7 @@ export const forgotPasswordController = async (req: request, res: response, next
             {
                 expiresIn: '1h'
             })
-        const redirectURL = `${process.env.FRONTENDURL}/recuperar-password/${reset_token}`
+        const redirectURL = `${process.env.FRONTENDURL}/recuperarpass/${reset_token}`
 
 
         const mailOptions = {
