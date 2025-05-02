@@ -39,7 +39,7 @@ const Navbar = () => {
 
     return (
         <div className="fixed top-0 w-full z-20 bg-transparent absolute top-0 left-0 right-0">
-            <nav className={`bg-transparent w-full h-15 text-white flex justify-between items-center px-4 py-2  ${isVisible ? 'translate-y-0' : 'transform -translate-y-full'}`}>
+            <nav className={`bg-transparent w-full h-15 text-white flex justify-between items-center px-4 py-2  ${isVisible ? 'translate-y-0' : 'hidden'}`}>
             <DropdownMenuCheckboxes />
             <Link className={`text-blue-500 hover:text-blue-700 font-medium px-2 py-1 rounded-md hover:bg-gray-100 text-lg`} to="/">
                 <img className="h-10 w-40" alt="Logo de la empresa" src="/LOGO.png" />

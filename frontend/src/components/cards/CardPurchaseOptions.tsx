@@ -1,5 +1,5 @@
 import { Card, CardContent } from '../ui/card'
-import { Button } from '../ui/button'
+import { ProcuctAddCardButton } from '../buttons/ProcuctCardButons'
 
 const CardPurchaseOptions = () => {
     return (
@@ -22,11 +22,7 @@ const CardPurchaseOptions = () => {
                     <p className="font-medium text-lg">¡Última disponible!</p>
                 </div>
 
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-6">Comprar ahora</Button>
-
-                <Button variant="outline" className="w-full border-blue-500 text-blue-500 hover:bg-blue-50 py-6">
-                    Agregar al carrito
-                </Button>
+                <ProcuctAddCardButton classes="w-full border-blue-500 text-blue-500 hover:bg-blue-50 py-6" />
 
                 <div className="pt-4">
                     <p className="text-gray-600">

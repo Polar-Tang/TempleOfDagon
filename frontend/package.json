@@ -23,7 +23,7 @@
     "@tailwindcss/vite": "^4.0.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "gsap": "^3.12.7",
+    "gsap": "^3.13.0",
     "lucide-react": "^0.476.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, createContext } from 'react'
 import type { Products } from "@/types/products"
 // import type {BodyResponse} from "@/types/bodyResponse"
 import ProductsMock from '@/mocks/productsMock'
+import type {ProductUseState} from '@/types/ProductUseState'
 
-interface ProductCardPortalProps {
-    productsState: Products
-    setProductsState: React.Dispatch<React.SetStateAction<Products>>,
-}
 
-const useProducts = (): ProductCardPortalProps => {
+export const ProductSearchContext = createContext({} as ProductUseState)
+
+
+export const ProductSearchProvider = ({ children }: {children: React.ReactNode}) => {
 
     const [productsState, setProductsState] = useState<Products>(ProductsMock as Products)
     // const fetchAllProducts = async (): Promise<BodyResponse> => {
@@ -25,10 +25,13 @@ const useProducts = (): ProductCardPortalProps => {
         setProductsState(ProductsMock)
     }, []);
 
-    return {
+    return (
+        <ProductSearchContext.Provider value={{
             productsState,
-            setProductsState,
-        }
+            setProductsState
+        }}>
+            {children}
+            
+        </ProductSearchContext.Provider>
+    )
 }
-
-export default useProducts

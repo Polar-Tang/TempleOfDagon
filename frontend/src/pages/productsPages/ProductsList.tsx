@@ -5,7 +5,7 @@ import { SkeletonCard } from "@/components/cards/SkelectonCard"
 import SecondNavbarStore from "@/components/SecondNavbarStore"
 import { useContext, useEffect } from "react"
 import { LayoutContext } from "@/context/LayoutContext"
-import useProducts from "@/hooks/useProducts"
+import { ProductSearchContext } from "@/context/ProductSearchContext"
 // import { Products } from "@/types/products"
 // import ProductsMock from "@/mocks/productsMock"
 // const [productsState, setProductsState] = useState<Products>(ProductsMock)
@@ -18,7 +18,8 @@ const ProductsList = () => {
     setisSingleProduct(true)
   }, [])
 
-  const { productsState } =useProducts()
+  const { productsState } = useContext(ProductSearchContext)
+
 
   return (
     <SecondNavbarStore>

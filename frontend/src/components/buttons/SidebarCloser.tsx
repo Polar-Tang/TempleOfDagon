@@ -18,7 +18,7 @@ function SidebarCloser({
       data-slot="sidebar-trigger"
       variant="ghost"
       size="icon"
-      className={cn("size-7 z-1000 hover:cursor-pointer", className)}
+      className={cn("size-7 z-50 hover:cursor-pointer text-black", className)}
       onClick={() => {
         setOpen(false)
         toggleSidebar()
