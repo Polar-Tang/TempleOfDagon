@@ -25,7 +25,7 @@ export function DropdownMenuCheckboxes() {
   }, [location])
   
   return (
-    <DropdownMenu open={isOpen} onOpenChange={setIsOpen} modal={true} >
+    <DropdownMenu open={isOpen} onOpenChange={setIsOpen} modal={false} >
       <DropdownMenuTrigger asChild>
         <Button className="flex justify-center items-center p-0 text-center" variant="outline">
           <FaBars className="h-25 w-full justify-center items-center p-0 text-center" />
