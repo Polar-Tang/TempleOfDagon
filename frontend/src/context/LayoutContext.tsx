@@ -9,7 +9,7 @@ import { io, Socket } from 'socket.io-client';
 export const LayoutContext = createContext({} as LayoutContextProps)
 
 export const LayoutProvider = ({ children }: ParentProps) => {
-    const [socket, setSocket] = useState<Socket | null>(null)
+    const [_, setSocket] = useState<Socket | null>(null)
     useEffect(() => {
         const newSocket = io('http://localhost:3000', {
           transports: ['websocket', 'polling'],
