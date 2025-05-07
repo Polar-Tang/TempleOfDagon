@@ -7,41 +7,46 @@ import CheckoutSessionRepository from "../repositories/checkout.repository.js"
 
 
 export const addToCartController = async (req, res, next) => {
-    let basketId = req.cookies.basketId
-    console.log("Basket ID", basketId)
-    if (!basketId) {
-        basketId = crypto.randomBytes(16).toString("hex")
-        res.cookie("basketId", basketId, { httpOnly: true, secure: true, sameSite: "strict" })
-    }
-    console.log(req.body)
-
-    const { _id } = req.body
-    const product = await ProductRepository.getProductById(_id)
-    if (!product) {
-        return next(new AppError("Producto no encontrado", 404))
-    }
-    const newProduct = await CartProductRepository.createProductCart(product, basketId)
-    if (!newProduct) {
+    try {
+        let basketId = req.cookies.basketId
+        console.log("Basket ID", basketId)
+        if (!basketId) {
+            basketId = crypto.randomBytes(16).toString("hex")
+            res.cookie("basketId", basketId, { httpOnly: true, secure: true, sameSite: "strict" })
+        }
+        console.log(req.body)
+    
+        const { _id } = req.body
+        const product = await ProductRepository.getProductById(_id)
+        if (!product) {
+            return next(new AppError("Producto no encontrado", 404))
+        }
+        const newProduct = await CartProductRepository.createProductCart(product, basketId)
+        if (!newProduct) {
+            const response = new ResponseBuilder()
+                .setOk(true)
+                .setStatus(200)
+                .setMessage(`No hay más productos`)
+                .setPayload({
+                    detail: "No hay más productos, el stock está agotado"
+                })
+                .build()
+            return res.status(200).json({ response })
+        }
         const response = new ResponseBuilder()
             .setOk(true)
             .setStatus(200)
-            .setMessage(`No hay más productos`)
+            .setMessage(`El producto ha sido añadido al carrito con éxito`)
             .setPayload({
-                detail: "No hay más productos, el stock está agotado"
+                detail: "Producto añadido",
+                ProductSearched: newProduct
             })
             .build()
         return res.status(200).json({ response })
+    } catch (err) {
+        console.log(err)
+        return next(new AppError("Ocurrió un error, intenta denuevo luego", 500))
     }
-    const response = new ResponseBuilder()
-        .setOk(true)
-        .setStatus(200)
-        .setMessage(`El producto ha sido añadido al carrito con éxito`)
-        .setPayload({
-            detail: "Producto añadido",
-            ProductSearched: newProduct
-        })
-        .build()
-    return res.status(200).json({ response })
 }
 
 
@@ -90,6 +95,7 @@ export const getAllCartProducts = async (req, res, next) => {
             .build()
         return res.status(200).json({ response })
     } catch(err){
+        console.error(err)
         return next(new AppError("Ocurrió un error, intenta denuevo luego", 500))
     }
 }

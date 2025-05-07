@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { ForgotPassPage, Home, LoginPage, ProductDetailPage, ProductsList, RecoveryPassPage, RegisterPage } from './pages'
+import { ForgotPassPage, Home, LoginPage, ProductDetailPage, ProductsList, RecoveryPassPage, RegisterPage, SocketPage } from './pages'
 
 export default function App() {
 
@@ -12,6 +12,7 @@ return (
             <Route path='/tienda' element={<ProductsList/>} /> 
             <Route path='/tienda/:id' element={<ProductDetailPage/>} />
             <Route path="/recuperarpass/:reset_token" element={<RecoveryPassPage />} />
+            <Route path='/chat' element={<SocketPage/>} />
 
         </Routes>
     )

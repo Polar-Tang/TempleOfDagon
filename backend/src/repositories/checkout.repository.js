@@ -20,13 +20,14 @@ class CheckoutSessionRepository {
     }
 
     static async findCheckoutSession(checkoutId){
-        const checkoutSession = await CheckoutSession.findOne({ checkoutId: checkoutId })
+        console.log("checkoutId: ", checkoutId)
+        console.log("is checkoutId?: ", Boolean(checkoutId))
+        
+        const checkoutSession = await CheckoutSession.findOne({ "checkoutId": checkoutId })
         console.log(checkoutSession)
         console.log("The complete session",checkoutSession)
 
-        if (!checkoutSession.active ){
-            return false
-        }
+       
         // checkoutSession.active = false
         // checkoutSession.save()
         return checkoutSession
@@ -35,3 +36,16 @@ class CheckoutSessionRepository {
 }
 
 export default CheckoutSessionRepository
+
+
+// {
+//     "checkoutId": "f76759e85b150d054acbe90408fae60b",
+//                 cartId: cartId,
+//                 cardNumber: body.cardNumber, 
+//                 expiryMonth: body.expiryMonth, 
+//                 expiryYear: body.expiryYear, 
+//                 cvv: body.cvv, 
+//                 country: body.country, 
+//                 address: body.address, 
+//                 active: true
+//     }

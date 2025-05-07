@@ -12,11 +12,14 @@ import corsOptions from './helpers/utils/corsOptions.js'
 import Product from './models/product.models.js'
 import createProducts from './helpers/scripts/seedMongod.js'
 // import userRouter from './routes/users.route.js'
-
-
+import http from 'http';
+import { Server } from 'socket.io';
+import ENVIRONMENT from './config/environment.js'
 
 const port = 3000
 const app = express()
+
+
 
 app.use(cors(corsOptions))
 
@@ -40,6 +43,13 @@ app.use('/api/cart', cartRouter)
 // THE MIDDLEWARE OF ERROR AT LAST
 app.use(errorHandlerMiddleware)
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`Example app listening on local host  http://localhost:${port}`)
 })
+
+// Create Socket.IO server with CORS configuration
+export const io = new Server(server, {
+    path: '/socket.io/',
+    cors: { origin : process.env.FRONTENDURL},
+    methods: ["GET", "POST"],
+});

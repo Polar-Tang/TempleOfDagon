@@ -1,9 +1,9 @@
 // import '../output.css'
 // import "../pages/home.css"
+// import { Input } from "@/components/ui/input"
+// import { FaMagnifyingGlass } from "react-icons/fa6";
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react';
-import { Input } from "@/components/ui/input"
-import { FaMagnifyingGlass } from "react-icons/fa6";
 
 const SectionHero = () => {
   gsap.registerPlugin(useGSAP);
@@ -24,12 +24,12 @@ const SectionHero = () => {
       Welcome to Halloween
     </h1>
   
-    <div className="w-70 flex items-center z-10">
+    {/* <div className="w-70 flex items-center z-10">
       <Input type="text" placeholder="Cositas maravillosas" 
         className="w-50 text-white rounded-md border-purple-500 focus:border-purple-500/50 focus:outline-none z-20" 
       />
       <FaMagnifyingGlass className="w-20 text-white z-20" />
-    </div>
+    </div> */}
   </div>
   
 

@@ -17,6 +17,8 @@ import {
     verifyNumber,
     verifyEmail,
 } from "../helpers/validations/auth.validators.js"
+import ChallengeBuilder from '../helpers/builders/challenge.builder.js'
+import sendNotification from '../helpers/sockets/sendNotification.js'
 // const searchUserByEmail = (): (Document & {
 //     name: string;
 //     email: string;
@@ -235,6 +237,14 @@ export const loginController = async (req: request, res: response, next) => {
                 expiresIn: '1d'
             })
 
+            const connectedChallenge = new ChallengeBuilder()
+            .setDescription("You just login")
+            .setIsSolved(true)
+            .setKey("Login")
+            .setMessage("Actually this were made for testing purpose")
+            .setName("Logged successfully")
+            .build()
+            sendNotification(connectedChallenge)
         const response = new ResponseBuilder()
             .setOk(true)
             .setStatus(200)

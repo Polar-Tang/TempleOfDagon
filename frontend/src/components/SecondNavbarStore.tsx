@@ -1,20 +1,21 @@
 import React, { useContext, useEffect } from 'react'
 import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
-import useProducts from '@/hooks/useProducts'
+import { ProductSearchContext } from '@/context/ProductSearchContext'
 import ProductsMock from '@/mocks/productsMock'
-import ProductsNavbar from './menus/ProductsNavbar'
 import BreadCrumbsNav from './menus/BreadCrumbsNav'
 import { LayoutContext } from '@/context/LayoutContext'
+// import ProductsNavbar from './menus/ProductsNavbar'
 
 const SecondNavbarStore = ({ children }: { children: React.ReactNode}) => {
-    const { setProductsState, productsState } = useProducts()
+    const { setProductsState, productsState } = useContext(ProductSearchContext)
     // console.log("Children", setProductsState(searchIpunt?.value))
     const {isSingleProduct} = useContext(LayoutContext)
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value
         const results = ProductsMock.filter((product) => {
+            console.log("Value ", value) 
             return product.title.toLowerCase().includes(value.toLowerCase())
         })
 
@@ -52,7 +53,7 @@ const SecondNavbarStore = ({ children }: { children: React.ReactNode}) => {
                                         <span>K</span>
                                     </div>
                                 </div>
-                                    <ProductsNavbar />
+                                    {/* <ProductsNavbar /> */}
                                 </>
 
                                 : <BreadCrumbsNav />}

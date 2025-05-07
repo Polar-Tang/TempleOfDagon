@@ -27,8 +27,8 @@ function SidebarTrigger({
       {...props}
     >
       {open
-      ? <AiOutlineClose className="z-100 text-black"/>
-      : <FaCartShopping className="z-100 text-white"/>}
+      ? <AiOutlineClose className="z-30 text-black"/>
+      : <FaCartShopping className="z-30 text-white"/>}
       <span className="sr-only">Toggle Sidebar</span>
 
     </Button>

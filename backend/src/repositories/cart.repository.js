@@ -47,8 +47,10 @@ class CartProductRepository {
 
 
     static async getAllProductsDetails(cartId) {
-        let cartSession = await CartProduct.findOne({ "_id": cartId })
-        
+        console.log(`.findOne({ "cartId": ${cartId} })`) // OUTPUT: .findOne({ "cartId": {"$ne":""} })
+        console.log(typeof cartId) // string
+        let cartSession = await CartProduct.findOne({ "cartId": cartId })
+        console.log(cartSession) // NULL
         if (!cartSession) {
             return false
         }

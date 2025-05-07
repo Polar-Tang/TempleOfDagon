@@ -1,47 +1,38 @@
-  import {
+import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuButton,
+  // SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 // import { Products } from "@/types/products"
 import CartMenu from "./CartMenu"
 // import { Link } from "react-router-dom"
-import { Button } from "../ui/button"
+// import { Button } from "../ui/button"
 import SidebarCloser from "@/components/buttons/SidebarCloser"
+// import SidebarTrigger from "../buttons/SidebarTrigger"
 
 export function AppSidebar() {
 
   return (
     <Sidebar>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarCloser />
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+      <SidebarGroup className="flex flex-row items-start justify-between">
+          <div className="flex flex-col">
+          <SidebarGroupLabel>Productos en el carrito</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <CartMenu/>
+                <CartMenu />
               </SidebarMenuItem>
-              {/* {cartProducts && cartProducts.map((item) => (
-                      <img src={item.image_url} alt={item.title} className="w-10 h-10 rounded-full" />
-                      <div className="flex align-center" >
-                      <p className="text-sm " >{item.title}</p>
-                      <span className="text-sm text-gray-500 ">{item.price}</span>
-                      </div>
-                      </SidebarMenuItem>
-                      ))} */}
-                      <SidebarMenuButton asChild>
-                        <Button asChild variant="outline" className="w-full">
-                            <span className="text-sm">Ver todos los productos</span>
-                            </Button>
-                        </SidebarMenuButton>
+
             </SidebarMenu>
           </SidebarGroupContent>
+          </div>
+          <SidebarCloser className="mt-2 mr-2" />
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
