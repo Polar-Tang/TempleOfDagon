@@ -24,6 +24,17 @@ class ProductRepository {
     static async deleteProduct (filter){
         return Product.findOneAndUpdate(filter, { active: false }, { new: true });
     }
+
+    // vulnerable function
+    static async getProductByUnsanitizedInput (raw_json){
+        // return Product.findOne({"active": JSON.parse(product_id)})
+
+        // where is not allowed
+        // return Product.findOne({ $where: `this._id == ${raw_json} ` })
+        return Product.findOne(raw_json)
+
+
+    }
 }
 
 // class ProductRepository {

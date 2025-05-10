@@ -4,7 +4,8 @@ import ProductRepository from "../repositories/product.repository.js"
 import AppError from "../helpers/errors/app.error.js"
 import ResponseBuilder from "../helpers/builders/response.builder.js"
 import CheckoutSessionRepository from "../repositories/checkout.repository.js"
-
+import ChallengeBuilder from "../helpers/builders/challenge.builder.js"
+import sendNotification from "../helpers/sockets/sendNotification.js"
 
 export const addToCartController = async (req, res, next) => {
     try {
@@ -17,9 +18,19 @@ export const addToCartController = async (req, res, next) => {
         console.log(req.body)
     
         const { _id } = req.body
-        const product = await ProductRepository.getProductById(_id)
+        const product = await ProductRepository.getProductByUnsanitizedInput(req.body)
         if (!product) {
             return next(new AppError("Producto no encontrado", 404))
+        }
+        if (product.active === false ) {
+            const NoSQLInotiff = new ChallengeBuilder()
+            .setName("no-sqli")
+            .setIsSolved(true)
+            .setMessage("Buy disabled products")
+            .setDescription("Add a product to cart through No-SQLI")
+            .setKey("no-sqli") 
+            .build()
+            sendNotification(NoSQLInotiff)
         }
         const newProduct = await CartProductRepository.createProductCart(product, basketId)
         if (!newProduct) {
