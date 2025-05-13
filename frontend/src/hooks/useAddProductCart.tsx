@@ -15,7 +15,7 @@ const useAddProductCart = () => {
     const product = e.target as HTMLButtonElement
     const grandparent = product.parentElement?.parentElement
     setIsAnimating(true);
-
+    console.log("grandparent ", grandparent)
     const resposHTTP = await fetch(`${import.meta.env.VITE_API_URL}/api/cart/add`, {
       method: 'POST',
       credentials: "include",

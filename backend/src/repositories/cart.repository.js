@@ -4,10 +4,6 @@ import CartProduct from "../models/cart.models.js"
 class CartProductRepository {
     static async createProductCart(product, cartId) {
         let cartSession = await CartProduct.findOne({ cartId })
-    
-    
-        
-        
         
         if (!cartSession) {    
             console.log("THe _id ", product._id)
@@ -65,6 +61,10 @@ class CartProductRepository {
         return cartSession.detailProducts
     }
 
+    static async findSessionAndDelete(cartId) {
+        let cartSession = await CartProduct.findOneAndDelete({ "cartId": cartId })
+        return cartSession
+    }
     
     static async deleteProductCart(product_id, cartId ) {
         const cartSession = await CartProduct.findOne({ "cartId": cartId });

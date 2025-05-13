@@ -1,8 +1,8 @@
 import { CartContext } from "@/context/CartContext";
-import { useCallback, useContext } from "react";
+import { useContext } from "react";
 import { toast } from "sonner";
 
-export const deleteProductCart = useCallback(async (id: string, position: number) => {
+export const deleteProductCart = async (id: string, position: number) => {
   const { setCartProductsState } = useContext(CartContext)
 
     try {
@@ -42,4 +42,4 @@ export const deleteProductCart = useCallback(async (id: string, position: number
 
     }
 
-  }, [])
+  }

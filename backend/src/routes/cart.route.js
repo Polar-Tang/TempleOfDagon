@@ -1,5 +1,5 @@
 import express from 'express'
-import { addToCartController, eliminateProductCart, getAllCartProducts, checkoutController, checkoutRouterController } from '../controllers/cart.controller.js'
+import { addToCartController, eliminateProductCart, getAllCartProducts, checkoutController, checkoutRouterController, eliminateSessionCartController } from '../controllers/cart.controller.js'
 import authMiddleware from '../middlewares/auth.middleware.js'
 import cookieParser from "cookie-parser";
 import cors from 'cors'
@@ -22,6 +22,8 @@ cartRouter.post('/add', addToCartController)
 cartRouter.options('/add', cors(corsOptions))
 
 cartRouter.get('/', getAllCartProducts)
+cartRouter.delete('/', eliminateSessionCartController)
+
 cartRouter.options('/', cors(corsOptions))
 
 

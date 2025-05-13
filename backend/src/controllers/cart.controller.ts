@@ -94,6 +94,34 @@ export const eliminateProductCart = async (req, res, next) => {
     }
 }
 
+export const eliminateSessionCartController = async (req, res, next) => {
+    try {
+        const basketId = req.cookies.cartId
+    
+        if (!basketId) {
+            return next(new AppError("No session cart", 400))
+        }
+    
+       
+        const retriever = await CartProductRepository.findSessionAndDelete(basketId)
+        if (!retriever) {
+            return next(new AppError("No session", 404))
+        }
+        const response = new ResponseBuilder()
+            .setOk(true)
+            .setStatus(200)
+            .setMessage(`The product has been deleted successfully`)
+            .setPayload({
+                detail: retriever
+            })
+            .build()
+        return res.status(200).json({ response })
+    } catch(err){
+        console.log(err)
+        res.send("Error happened")
+    }
+}
+
 export const getAllCartProducts = async (req, res, next) => {
     try {
         const basketId = req.cookies.cartId

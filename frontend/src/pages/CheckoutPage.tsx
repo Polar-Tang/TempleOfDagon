@@ -6,10 +6,11 @@ import { Separator } from "@/components/ui/separator"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { toast } from "sonner"
 import { CartContext } from "@/context/CartContext"
-import { ProductCardDelete } from "@/components/buttons/ProcuctCardButons"
 import type { Product } from "@/types/products"
-import { generateInvoice} from "@/lib/helpers/generateIncoive"
-import { deleteProductCart } from "@/hooks/deleteProductCart"
+// import { generateInvoice} from "@/lib/helpers/generateIncoive"
+import useAddProductCart from '@/hooks/useAddProductCart'
+import ImgComponent from "@/components/ImageComponent"
+
 
 type ProductWithQuantity = {
   product: Product;
@@ -34,34 +35,33 @@ export default function CartPage() {
   useEffect(() => {
     const updatedList: ProductWithQuantity[] = [];
 
-      cartProductsState.forEach((element) => {
-        let roundNoRepeat = true;
+    cartProductsState.forEach((element) => {
+      let roundNoRepeat = true;
 
-        updatedList.forEach(productList => {
-          if (element.title === productList.product.title) {
-            productList.quantity++;
-            roundNoRepeat = false;
-          }
-        });
-
-        if (roundNoRepeat) {
-          const newProduct: ProductWithQuantity = {
-            product: element,
-            quantity: 1
-          };
-
-          updatedList.push(newProduct);
+      updatedList.forEach(productList => {
+        if (element.title === productList.product.title) {
+          productList.quantity++;
+          roundNoRepeat = false;
         }
       });
 
-      setProductsListWithQuantity(updatedList);
-  }, [cartProductsState])
-  
+      if (roundNoRepeat) {
+        const newProduct: ProductWithQuantity = {
+          product: element,
+          quantity: 1
+        };
 
-  // Load cart items from session storage
+        updatedList.push(newProduct);
+      }
+    });
+
+    setProductsListWithQuantity(updatedList);
+  }, [cartProductsState])
+
+
   useEffect(() => {
     try {
-      
+
       fetchAllCartProducts().then(
         (products) => {
           let productsDetail = products.response.payload.detail
@@ -83,14 +83,14 @@ export default function CartPage() {
   }, [])
 
 
-
-  // Generate invoice
-  
-
   // Clear cart
-  const clearCart = () => {
+  const clearCart = async () => {
     setCartProductsState([])
     try {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/cart/`, {
+        method: "DELETE",
+        credentials: "include"
+      })
       sessionStorage.removeItem("cart")
       toast("Cart clear", {
         description: "All items have been removed from your cart",
@@ -112,11 +112,9 @@ export default function CartPage() {
   }
   const subtotal = cartProductsState.reduce((sum, item) => sum + item.price * cartProductsState.length, 0)
   const tax = subtotal * 0.1
-  
+
   const total = subtotal + tax
-  const decreaseQuantity = (_id: string, index: number) => { 
-    deleteProductCart(_id, index)
-  }
+  
 
   return (
     // <SecondNavbarStore>
@@ -163,57 +161,9 @@ export default function CartPage() {
                               <TableHead className="text-white text-right">Price</TableHead>
                               <TableHead className="text-white text-center">Quantity</TableHead>
                               <TableHead className="text-white text-right">Total</TableHead>
-                              <TableHead className="text-white w-[50px]"></TableHead>
                             </TableRow>
                           </TableHeader>
-                          <TableBody>
-                            {productsListWithQuantity.map((item, index) => 
-                            {  const {_id, title, price, image_url} = item.product
-                            return (
-                              <TableRow key={_id} className="border-zinc-800">
-                                <TableCell className="font-medium flex flex-col">
-                                  <div>
-                                  {title}
-                                  </div>
-                                  <div>
-                                    <img src={image_url} />
-                                  </div>
-                                </TableCell>
-                                <TableCell className="text-right">${price.toFixed(2)}</TableCell>
-                                <TableCell className="text-center">
-                                  <div className="flex items-center justify-center">
-                                    <Button
-                                      variant="outline"
-                                      size="icon"
-                                      className="h-8 w-8 rounded-full bg-zinc-800 border-zinc-700 text-white"
-                                      onClick={() => decreaseQuantity(_id, index)}
-                                    >
-                                      <span className="sr-only">Decrease quantity</span>
-                                      <span>-</span>
-                                    </Button>
-                                    <span className="mx-2 w-8 text-center">{item.quantity}</span>
-                                    <Button
-                                      variant="outline"
-                                      size="icon"
-                                      className="h-8 w-8 rounded-full bg-zinc-800 border-zinc-700 text-white"
-                                      // onClick={() => decreaseQuantity(_id, item.quantity + 1)}
-                                    >
-                                      <span className="sr-only">Increase quantity</span>
-                                      <span>+</span>
-                                    </Button>
-                                  </div>
-                                </TableCell>
-                                <TableCell className="text-right">${(price * item.quantity).toFixed(2)}</TableCell>
-                                <TableCell>
-                                  <ProductCardDelete
-                                    className="text-zinc-400 hover:text-white hover:bg-red-400"
-                                    id={_id}
-                                    position={index}
-                                  />
-                                </TableCell>
-                              </TableRow>)}
-                            )}
-                          </TableBody>
+                          <TableCartProducts productsList={productsListWithQuantity} /> 
                         </Table>
                       </CardContent>
                       <CardFooter className="flex justify-between">
@@ -251,7 +201,9 @@ export default function CartPage() {
                         </div>
                       </CardContent>
                       <CardFooter className="flex flex-col gap-4">
-                        <Button className="w-full" onClick={generateInvoice}>
+                        <Button className="w-full"
+                        // onClick={generateInvoice}
+                        >
                           <Download className="mr-2 h-4 w-4" />
                           Generate Invoice
                         </Button>
@@ -269,4 +221,101 @@ export default function CartPage() {
     </div >
     // </SecondNavbarStore>
   )
+}
+
+
+const TableCartProducts = ({productsList}: {productsList: ProductWithQuantity[]}) => {
+  const { addToCart } = useAddProductCart()
+  const { cartProductsState, setCartProductsState } = useContext(CartContext)
+
+
+  const decreaseQuantity = (_id: string) => {
+    const indexFound = cartProductsState.findIndex((e) => e._id === _id)
+    const deleteProductCart = async (id: string, position: number) => {
+
+      try {
+        const resposHTTP = await fetch(`${import.meta.env.VITE_API_URL}/api/cart/${id}`, {
+          method: 'DELETE',
+          credentials: "include",
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+
+        // GET BODY
+        await resposHTTP.json();
+        const cartStorageString = sessionStorage.getItem('cart')
+        if (cartStorageString) {
+          const cartStorage = JSON.parse(cartStorageString)
+          cartStorage.splice(position, 1)
+          sessionStorage.setItem("cart", cartStorage)
+
+          setCartProductsState(cartStorage)
+          toast("Item removed", {
+            description: "The item has been removed from your cart",
+            action: {
+              label: "Undo",
+              onClick: () => console.log("Undo"),
+            },
+          })
+        }
+      } catch (err) {
+        toast("Item removed", {
+          description: "The item has been removed",
+          action: {
+            label: "Undo",
+            onClick: () => console.log("Undo"),
+          },
+        })
+
+      }
+
+    }
+    deleteProductCart(_id, indexFound)
+  }
+
+  return (
+    <TableBody>
+      {productsList.map((item) => {
+        const { _id, title, price, image_url } = item.product
+        return (
+          <TableRow key={_id} className="border-zinc-800 gap-x-10 overflow-hidden">
+            <TableCell className="font-medium flex flex-col items-center">
+
+              <div className="border-radius w-20 h-auto items-right">
+                <ImgComponent alt={title} src={image_url} className="object-contain -ml-5 md:-ml-4" />
+              </div>
+            </TableCell>
+            <TableCell className="text-right">${price.toFixed(2)}</TableCell>
+            <TableCell className="text-center" id={_id}>
+              <div className="flex items-center justify-center" id={_id}>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="h-8 w-8 rounded-full bg-zinc-800 border-zinc-700 text-white"
+                  onClick={() => decreaseQuantity(_id)}
+                >
+                  <span className="sr-only">Decrease quantity</span>
+                  <span>-</span>
+                </Button>
+                <span className="mx-2 w-8 text-center">{item.quantity}</span>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="h-8 w-8 rounded-full bg-zinc-800 border-zinc-700 text-white"
+                  onClick={addToCart}
+                >
+                  <span className="sr-only">Increase quantity</span>
+                  <span>+</span>
+                </Button>
+              </div>
+            </TableCell>
+            <TableCell className="text-right">${(price * item.quantity).toFixed(2)}</TableCell>
+
+          </TableRow>)
+      }
+      )}
+    </TableBody>
+  )
+
 }

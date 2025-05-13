@@ -1,6 +1,7 @@
 import { CartContext } from '@/context/CartContext'
 import { useContext, useEffect } from 'react'
 import { ProductCardDelete } from '../buttons/ProcuctCardButons'
+import ImgComponent from '../ImageComponent'
 
 const CartMenu = () => {
   const { cartProductsState, setCartProductsState } = useContext(CartContext)
@@ -20,7 +21,7 @@ const CartMenu = () => {
     cartProductsState &&
     cartProductsState.map((item, index) => (
       <div key={index}  className="flex justify-between m-auto pb-2 border-b border-gray-200">
-      <img src={item.image_url} alt={item.title} className="w-24 h-24 rounded-full " />
+      <ImgComponent src={item.image_url} alt={item.title} className="w-24 h-24 rounded-full " />
       <div className="flex flex-col">
         <h3 className="text-xl">{item.title}</h3>
         <span className="text-xl text-gray-500">${item.price}</span>
