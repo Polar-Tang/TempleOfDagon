@@ -33,8 +33,8 @@ import { Link } from "react-router-dom";
         </AccordionItem> */}
         <AccordionItem className="w-full flex py-[0.6em] px-[1.2em] items-center space-x-4" value="item-4">  
           <FaStore className="px-[1.2] py-[0.6]"/>
-          <Link to={"/tienda"} className="text-black hover:underline"> 
-          Tienda
+          <Link to={"/store"} className="text-black hover:underline"> 
+          store
           </Link> 
         </AccordionItem>
         <AccordionItem className="w-full flex text-start py-[0.6em] px-[1.2em] items-center space-x-4" value="item-4">          

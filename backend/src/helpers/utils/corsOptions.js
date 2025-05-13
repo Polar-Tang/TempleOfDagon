@@ -2,10 +2,10 @@ import ENVIRONMENT from '../../config/environment.js'
 
 const corsOptions = {
     origin: `${process.env.FRONTENDURL}`,
-    credentials: true, 
+    credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
     allowedHeaders: ['Content-Type', 'Authorization', "Credentials", "X-Basket-Id"],
-    exposedHeaders: ['X-Basket-Id'],
+    exposedHeaders: ['X-Basket-Id', "X-Order-Id", ],
     // preflightContinue: false, 
 }
 export default corsOptions

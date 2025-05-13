@@ -1,22 +1,14 @@
 import mongoose from "mongoose"
 import CheckoutSession from "../models/checkout.model.js"
+import CartProductRepository from "./cart.repository.js"
 
 class CheckoutSessionRepository {
 
-    static async createCheckoutSession(checkoutId, cartId, body){
-        const small = new CheckoutSession({ 
-            checkoutId: checkoutId,
-            cartId: cartId,
-            cardNumber: body.cardNumber, 
-            expiryMonth: body.expiryMonth, 
-            expiryYear: body.expiryYear, 
-            cvv: body.cvv, 
-            country: body.country, 
-            address: body.address, 
-            active: true
-         })
-         console.log("The new thing: ",small)
-        await small.save()
+    static async createCheckoutSession(cardDetails){
+        // const productsDetail = CartProductRepository.getAllProductsDetails(cartId)
+        const new_product = new CheckoutSession(cardDetails)
+         await new_product.save()
+         return
     }
 
     static async findCheckoutSession(checkoutId){

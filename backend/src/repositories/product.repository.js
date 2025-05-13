@@ -3,7 +3,7 @@ import Product from "../models/product.models.js"
 
 class ProductRepository {
     static async createProduct( new_product_data ) {
-        console.log( new_product_data)
+        // console.log( new_product_data)
         const new_product = new Product(new_product_data)
          await new_product.save()
          return
@@ -31,9 +31,8 @@ class ProductRepository {
 
         // where is not allowed
         // return Product.findOne({ $where: `this._id == ${raw_json} ` })
-        return Product.findOne(raw_json)
-
-
+        const product = Product.findOne(raw_json)
+        return product
     }
 }
 

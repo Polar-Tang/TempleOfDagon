@@ -5,8 +5,12 @@ class CartProductRepository {
     static async createProductCart(product, cartId) {
         let cartSession = await CartProduct.findOne({ cartId })
     
+    
+        
+        
         
         if (!cartSession) {    
+            console.log("THe _id ", product._id)
             cartSession = new CartProduct({
                 cartId: cartId,
                 detailProducts: [
@@ -15,6 +19,7 @@ class CartProductRepository {
                         title: product.title,
                         price: product.price,
                         stock: product.stock,
+                        image_url: product.image_url
                     },
                 ],
             })
@@ -33,6 +38,8 @@ class CartProductRepository {
                     title: product.title,
                     price: product.price,
                     stock: product.stock,
+                    image_url: product.image_url
+
                 })
                 return await cartSession.save()
             } else{
@@ -60,16 +67,18 @@ class CartProductRepository {
 
     
     static async deleteProductCart(product_id, cartId ) {
-        const cartSession = await CartProduct.findOne({ "_id": cartId });
+        const cartSession = await CartProduct.findOne({ "cartId": cartId });
 
+        console.log("The cartSession is: ", cartSession)
         if (!cartSession) {
           return "Cart not found";
         }
       
         const existingProductIndex = cartSession.detailProducts.findIndex(
-          (item) => item._id === product_id
+          (item) => {
+            console.log("THE _ID ", String(item._id) )
+            return String(item._id) === product_id}
         );
-      
         if (existingProductIndex === -1) {
           return "Product not found in cart";
         }
@@ -77,8 +86,10 @@ class CartProductRepository {
         if (cartSession.detailProducts[existingProductIndex].stock < cartSession.detailProducts[existingProductIndex].stock){
             return "No more products to delete"
         }
+        console.log(cartSession.length)
+
         cartSession.detailProducts.splice(existingProductIndex, 1);
-      
+        console.log(cartSession.length)
         await cartSession.save();
       
         return cartSession.detailProducts

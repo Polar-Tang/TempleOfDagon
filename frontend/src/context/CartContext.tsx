@@ -8,15 +8,18 @@ export const CartContext = createContext({} as ProductsCartContextProps)
 export const CartProvider = ({ children }: ParentProps) => {
 
     const [cartProductsState, setCartProductsState] = useState([] as Products )
-    
+    const [basketIdState, setbasketIdState] = useState("")
+
     // const {} = useAddProductCart()
     useEffect(() => {
         const storedCart = sessionStorage.getItem('cart');
+        console.log("storedCart: ", storedCart)
         if (storedCart) {
         setCartProductsState(JSON.parse(storedCart));
         }
       }, []);
-    
+      
+
       // Save cart to sessionStorage whenever it changes
       useEffect(() => {
         sessionStorage.setItem('cart', JSON.stringify(cartProductsState));
@@ -24,7 +27,9 @@ export const CartProvider = ({ children }: ParentProps) => {
     return (
         <CartContext.Provider value={{
             cartProductsState, 
-            setCartProductsState
+            setCartProductsState,
+            basketIdState,
+            setbasketIdState
         }}>
             {children}
         </CartContext.Provider>

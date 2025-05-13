@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const BreadCrumbsNav = () => {
   return (
       <div className="flex items-center gap-2 text-sm mb-6">
-        <Link to={"/tienda"} className="text-blue-500 hover:underline">
+        <Link to={"/store"} className="text-blue-500 hover:underline">
           Volver al listado
           
         </Link>

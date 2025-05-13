@@ -22,6 +22,9 @@ export type selectedImage = {
 export interface ProductsCartContextProps {
     cartProductsState: Products
     setCartProductsState: React.Dispatch<React.SetStateAction<Products>>,
+    basketIdState: string,
+    setbasketIdState: React.Dispatch<React.SetStateAction<string>>,
+
 }
 
 export interface ParentProps {

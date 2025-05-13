@@ -8,13 +8,12 @@ export default function ProductCard({ product }: {
   // addToCart: (e: React.MouseEvent) => void,
 }) {
   const { _id,
-    seller_id,
     title,
     price,
     image_url } = product
 
   return (
-    <Card key={_id} id={seller_id} className="justify-items-center w-full overflow-hidden border-none shadow-none bg-trasparent">
+    <Card key={_id} id={_id} className="justify-items-center w-full overflow-hidden border-none shadow-none bg-trasparent">
       <CardContent className="p-4 flex flex-col items-center">
         <div className="mb-2 h-48 w-full relative flex items-center justify-center">
           <img

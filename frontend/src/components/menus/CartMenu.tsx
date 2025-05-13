@@ -1,21 +1,38 @@
 import { CartContext } from '@/context/CartContext'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
+import { ProductCardDelete } from '../buttons/ProcuctCardButons'
 
 const CartMenu = () => {
-    const {cartProductsState} = useContext(CartContext)
-    
-  // const cartProducts: Products = JSON.parse(window.localStorage.getItem('cart') || '[]')
+  const { cartProductsState, setCartProductsState } = useContext(CartContext)
+  useEffect(() => {
+    const cartProductStoredString = sessionStorage.getItem("cart")
+    if (cartProductStoredString) {
+      const cardProdutcsStored = JSON.parse(cartProductStoredString)
+      setCartProductsState(cardProdutcsStored)
+    }
+  }, [])
 
+ 
+
+  // const cartProducts: Products = JSON.parse(window.localStorage.getItem('cart') || '[]')
+  console.log("The product is:", cartProductsState)
   return (
     cartProductsState &&
-    cartProductsState.map((item) => (
-      <div key={item._id} id={item.seller_id} className="flex items-center justify-between p-2 border-b border-gray-200">
-        <img src={item.image_url} alt={item.title} className="w-10 h-10 rounded-full" />
-        <div className="flex flex-col">
-          <p className="text-sm">{item.title}</p>
-          <span className="text-sm text-gray-500">{item.price}</span>
-        </div>
+    cartProductsState.map((item, index) => (
+      <div key={index}  className="flex justify-between m-auto pb-2 border-b border-gray-200">
+      <img src={item.image_url} alt={item.title} className="w-24 h-24 rounded-full " />
+      <div className="flex flex-col">
+        <h3 className="text-xl">{item.title}</h3>
+        <span className="text-xl text-gray-500">${item.price}</span>
       </div>
+      <div className="flex align-middle items-center justify-center"> 
+      {/* <Button className='md:ml-4 hover:bg-red-400' onClick={() => deleteProductCart(item._id, index)}>
+        <Trash2 />
+
+      </Button> */}
+      <ProductCardDelete className='md:ml-4 hover:bg-red-400' id={item._id} position={index}/>
+      </div>
+    </div>
     ))
   )
 }

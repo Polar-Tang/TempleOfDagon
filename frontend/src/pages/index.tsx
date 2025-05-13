@@ -8,5 +8,7 @@ import ProductsPage from './productsPages/ProductsPage'
 import ProductDetailPage from "./productsPages/ProductDetailPage"
 import ProductsList from './productsPages/ProductsList'
 import SocketPage from "./SocketPage"
+import Questionnaire from "./Questionnaire"
+import CheckoutPage from "./CheckoutPage"
 
-export { Hell, Home, LoginPage, RegisterPage, ForgotPassPage, RecoveryPassPage, ProductsPage, ProductDetailPage, ProductsList, SocketPage }
+export { Hell, Home, LoginPage, RegisterPage, ForgotPassPage, RecoveryPassPage, ProductsPage, ProductDetailPage, ProductsList, SocketPage, Questionnaire, CheckoutPage }

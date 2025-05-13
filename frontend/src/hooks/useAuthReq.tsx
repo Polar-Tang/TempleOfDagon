@@ -28,18 +28,20 @@ const useAuthReq = ({endpoint}: {endpoint: string}) => {
           const data = await responseHTTP.json()
           const messageFromData = data.response.message
           const messageDescription = data.response.payload.detail
-    
           if (data.response.ok) {
             setIsUserHasLogged(true)
             setMessage({ title: messageFromData, description: "Bienvenido a halloween", variant: "default" })
             return
             // setTimeout(() => {
-            // 	login(data.response.payload.detail)
-            // }, 2000)
-          }
-          setIsUserHasLogged(false)
-          setMessage({ title: messageFromData, description: messageDescription, variant: "destructive" })
-          return
+              // 	login(data.response.payload.detail)
+              // }, 2000)
+            }
+            if (!data.response.ok){
+              setIsUserHasLogged(false)
+              setMessage({ title: messageFromData, description: messageDescription, variant: "destructive" })
+              return
+
+            }
         } catch (error) {
           setIsUserHasLogged(true)
           setMessage({ title: "Error", description: "Ocurrió un error, por favor intente de nuevo más tarde ", variant: "destructive" })

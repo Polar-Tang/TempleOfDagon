@@ -1,4 +1,5 @@
-[13441:0510/175407.554948:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
+[12657:0510/192212.589480:ERROR:atom_cache.cc(229)] Add chromium/from-privileged to kAtomsToCache
+ile or directory (2)
 [13441:0510/175407.555141:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
 [13441:0510/175407.555206:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)
 [13441:0510/175407.555268:ERROR:gbm_wrapper.cc(258)] Failed to export buffer to dma_buf: No such file or directory (2)

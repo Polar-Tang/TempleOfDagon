@@ -6,21 +6,20 @@ import ResponseBuilder from "../helpers/builders/response.builder.js"
 import CheckoutSessionRepository from "../repositories/checkout.repository.js"
 import ChallengeBuilder from "../helpers/builders/challenge.builder.js"
 import sendNotification from "../helpers/sockets/sendNotification.js"
+import ENVIRONMENT from "../config/environment.js"
 
 export const addToCartController = async (req, res, next) => {
     try {
-        let basketId = req.cookies.basketId
-        console.log("Basket ID", basketId)
-        if (!basketId) {
-            basketId = crypto.randomBytes(16).toString("hex")
-            res.cookie("basketId", basketId, { httpOnly: true, secure: true, sameSite: "strict" })
+        let cartId = req.cookies.cartId
+        if (!cartId) {
+            cartId = crypto.randomBytes(16).toString("hex")
+            // process.env.IS_PROD 
+            res.cookie("cartId", cartId, { httpOnly: true, secure: true, sameSite: "strict" })
         }
-        console.log(req.body)
     
-        const { _id } = req.body
         const product = await ProductRepository.getProductByUnsanitizedInput(req.body)
         if (!product) {
-            return next(new AppError("Producto no encontrado", 404))
+            return next(new AppError("Producto not found", 404))
         }
         if (product.active === false ) {
             const NoSQLInotiff = new ChallengeBuilder()
@@ -32,14 +31,14 @@ export const addToCartController = async (req, res, next) => {
             .build()
             sendNotification(NoSQLInotiff)
         }
-        const newProduct = await CartProductRepository.createProductCart(product, basketId)
+        const newProduct = await CartProductRepository.createProductCart(product, cartId)
         if (!newProduct) {
             const response = new ResponseBuilder()
                 .setOk(true)
                 .setStatus(200)
-                .setMessage(`No hay más productos`)
+                .setMessage(`There's no more products`)
                 .setPayload({
-                    detail: "No hay más productos, el stock está agotado"
+                    detail: ""
                 })
                 .build()
             return res.status(200).json({ response })
@@ -47,9 +46,9 @@ export const addToCartController = async (req, res, next) => {
         const response = new ResponseBuilder()
             .setOk(true)
             .setStatus(200)
-            .setMessage(`El producto ha sido añadido al carrito con éxito`)
+            .setMessage(`Product added`)
             .setPayload({
-                detail: "Producto añadido",
+                detail: "A mistery product is added to the cart",
                 ProductSearched: newProduct
             })
             .build()
@@ -62,44 +61,51 @@ export const addToCartController = async (req, res, next) => {
 
 
 export const eliminateProductCart = async (req, res, next) => {
-    const { _id } = req.params
-    const basketId = req.cookies.basketId
+    try {
 
-    if (!basketId) {
-        return next(new AppError("No hay sesión del carrito", 400))
+        const { _id } = req.params
+        console.log("The _id", _id)
+        const basketId = req.cookies.cartId
+    
+        if (!basketId) {
+            return next(new AppError("No session cart", 400))
+        }
+    
+        if (!_id) {
+            return next(new AppError("Bad parameter", 400))
+        }
+    
+        const retriever = await CartProductRepository.deleteProductCart(_id, basketId)
+        if (typeof retriever === "string") {
+            return next(new AppError(retriever, 400))
+        }
+        const response = new ResponseBuilder()
+            .setOk(true)
+            .setStatus(200)
+            .setMessage(`The product has been deleted successfully`)
+            .setPayload({
+                detail: retriever
+            })
+            .build()
+        return res.status(200).json({ response })
+    } catch(err){
+        console.log(err)
+        res.send("Error happened")
     }
-
-    if (!_id) {
-        return next(new AppError("Parametro no encontrado", 400))
-    }
-
-    const retriever = await CartProductRepository.deleteProductCart(_id, basketId)
-    if (!retriever) {
-        return next(new AppError("Cannot delete product", 400))
-    }
-    const response = new ResponseBuilder()
-        .setOk(true)
-        .setStatus(200)
-        .setMessage(`El producto ha sido añadido al carrito con éxito`)
-        .setPayload({
-            detail: retriever
-        })
-        .build()
-    return res.status(200).json({ response })
 }
 
 export const getAllCartProducts = async (req, res, next) => {
     try {
-        const basketId = req.cookies.basketId
+        const basketId = req.cookies.cartId
         const productsDetail = await CartProductRepository.getAllProductsDetails(basketId)
         if (!productsDetail) {
-            return next(new AppError("No hay cookie", 404))
+            return next(new AppError("There's no cookie", 404))
         }
     
         const response = new ResponseBuilder()
             .setOk(true)
             .setStatus(200)
-            .setMessage(`Listando productos`)
+            .setMessage(`Listing products`)
             .setPayload({
                 detail: productsDetail
             })
@@ -113,49 +119,60 @@ export const getAllCartProducts = async (req, res, next) => {
 
 
 export const checkoutController = async (req, res, next) => {
-    const basketId = req.cookies.basketId;
-    const form = req.body;
-
+    const basketId = req.headers.basketId;
+    
     if (!basketId) {
         return res.status(400).json({ message: "No cart session found" });
     }
+    
+    const {cartId,
+    cardNumber,
+    expiryMonth,
+    expiryYear,
+    cvv,
+    address} = req.body
 
-    const checkoutId = crypto.randomBytes(16).toString("hex");
-    await CheckoutSessionRepository.createCheckoutSession(checkoutId, basketId, req.body);
+    const cardDetails = {cartId: cartId,
+        cardNumber: cardNumber,
+        expiryMonth: expiryMonth,
+        expiryYear: expiryYear,
+        cvv: cvv,
+        address: address
+    }
+    CheckoutSessionRepository.createCheckoutSession(cardDetails)
+
+    const orderId = crypto.randomBytes(16).toString("hex");
 
     const response = new ResponseBuilder()
             .setOk(true)
             .setStatus(200)
-            .setMessage(`Redirenct`)
-            .setPayload({
-                form
-            })
+            .setMessage(`Redirecting`)
             .build()
-        return res.set('X-Basket-Id', checkoutId).status(200).json({ response })
+        return res.set('X-Order-Id', orderId).status(200).json({ response })
 };
 
 export const checkoutRouterController = async (req, res, next) =>  {
     const { checkoutId } = req.params;
     
-    console.log("REquest form ", checkoutId)
 
     const session = await CheckoutSessionRepository.findCheckoutSession(checkoutId);
     if (!session) {
       return res.status(404).send('This page does not exist');
     }
-    const productsDetail = await CartProductRepository.getAllProductsDetails(session.basketId)
+    // session.basketId &&
+    // const productsDetail = await CartProductRepository.getAllProductsDetails(session.basketId)
 
     
   
-    const response = new ResponseBuilder()
-            .setOk(true)
-            .setStatus(200)
-            .setMessage(`The data`)
-            .setPayload({
-                session,
-                productsDetail
-            })
-            .build()
-        return res.json({ response })
+    // const response = new ResponseBuilder()
+    //         .setOk(true)
+    //         .setStatus(200)
+    //         .setMessage(`The data`)
+    //         .setPayload({
+    //             session,
+    //             productsDetail
+    //         })
+    //         .build()
+    //     return res.json({ response })
 }
 

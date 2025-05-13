@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import cors from 'cors'
 import corsOptions from '../helpers/utils/corsOptions.js'
 import crypto from 'crypto'
+import validateId from '../middlewares/valid_id.js';
 
 const cartRouter = express.Router()
 
@@ -14,20 +15,21 @@ const cartRouter = express.Router()
 // });
 cartRouter.use(cookieParser());
 
+cartRouter.delete('/:_id', validateId, eliminateProductCart )
+cartRouter.options('/:_id', cors(corsOptions))
+
 cartRouter.post('/add', addToCartController)
 cartRouter.options('/add', cors(corsOptions))
-
-cartRouter.delete('/:seller_id', authMiddleware(['admin', 'user']), eliminateProductCart )
-cartRouter.options('/:seller_id', cors(corsOptions))
-
 
 cartRouter.get('/', getAllCartProducts)
 cartRouter.options('/', cors(corsOptions))
 
-cartRouter.post('/checkout', authMiddleware(['admin', 'user']), checkoutController)
+
+cartRouter.post('/checkout', checkoutController)
 cartRouter.options('/checkout', cors(corsOptions))
 
-cartRouter.get('/checkout-router/:checkoutId', authMiddleware(['admin', 'user']), checkoutRouterController)
+cartRouter.get('/checkout-router/:checkoutId', checkoutRouterController)
 cartRouter.options('/checkout-router/:checkoutId', cors(corsOptions))
+
 
 export default cartRouter

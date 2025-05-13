@@ -12,6 +12,10 @@ const DetailProductSchema = new mongoose.Schema({
     stock: {
         type: Number,
         required: true
+    },
+    image_url: {
+        type: String,
+        required: true
     }
 });
 

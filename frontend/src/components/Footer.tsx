@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-10">
       <div className="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-8">
         <div>
           <h2 className="text-lg font-semibold flex items-center">
-            <span className="mr-2">⚡</span> ShadcnKit
+            <span className="mr-2">⚡</span>The Esoteric Order of Dagon 
           </h2>
           <p className="text-gray-400 text-sm mt-2">
             ShadcnKit SaaS template is a powerful and versatile software
@@ -29,7 +31,11 @@ const Footer = () => {
         <div>
           <h3 className="text-md font-semibold mb-3">Features</h3>
           <ul className="text-gray-400 space-y-2 text-sm">
-            <li>User management</li>
+            <li>
+              <Link to="/questionarie">
+              Sould sacrifice volunteer
+              </Link>
+              </li>
             <li>Workflow automation</li>
             <li>API access</li>
             <li>Data visualization</li>
