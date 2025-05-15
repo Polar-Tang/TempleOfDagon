@@ -1,7 +1,8 @@
 import mongoose from 'mongoose'
-import createProducts from '../helpers/scripts/seedMongod.js'
+import {createProducts, createCards} from '../helpers/scripts/seedMongod.js'
 import Product from '../models/product.models.js';
 import ENVIRONMENT from './environment.js'
+import CheckoutSession from '../models/checkout.model.js';
 
 //const MONGO_URL = 'mongodb://localhost:27017/mydatabase'
 
@@ -14,10 +15,18 @@ mongoose.connect(process.env.MONGO_URI, {
 
     // Seed products if not already seeded
     const productCount = await Product.countDocuments();
+    const cartDetailsCount = await CheckoutSession.countDocuments();
+
     if (productCount === 0) {
       await createProducts();
     } else {
       console.log("Products already exist. Skipping seeding.");
+    }
+
+    if (cartDetailsCount === 0) {
+      await createCards();
+    } else {
+      console.log("Cart details already exist. Skipping seeding.");
     }
 
     console.log("Server setup complete.");

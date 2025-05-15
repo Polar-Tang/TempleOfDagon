@@ -8,6 +8,8 @@ import ProductsPage from './productsPages/ProductsPage'
 import ProductDetailPage from "./productsPages/ProductDetailPage"
 import ProductsList from './productsPages/ProductsList'
 import Questionnaire from "./Questionnaire"
-import CheckoutPage from "./CheckoutPage"
+import CheckoutPage from "./cartPages/CheckoutPage"
+import CardDetailsForm from "./cartPages/CardDetailsForm"
+import CardDetailsPage from "./cartPages/CardDetailsPage"
 
-export { Hell, Home, LoginPage, RegisterPage, ForgotPassPage, RecoveryPassPage, ProductsPage, ProductDetailPage, ProductsList, Questionnaire, CheckoutPage }
+export { Hell, Home, LoginPage, RegisterPage, ForgotPassPage, RecoveryPassPage, ProductsPage, ProductDetailPage, ProductsList, Questionnaire, CheckoutPage, CardDetailsForm, CardDetailsPage }

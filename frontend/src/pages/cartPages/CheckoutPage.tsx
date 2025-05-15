@@ -10,6 +10,8 @@ import type { Product } from "@/types/products"
 // import { generateInvoice} from "@/lib/helpers/generateIncoive"
 import useAddProductCart from '@/hooks/useAddProductCart'
 import ImgComponent from "@/components/ImageComponent"
+import SecondNavbar from "@/components/SecondNavbar"
+import { Link } from "react-router-dom"
 
 
 type ProductWithQuantity = {
@@ -114,117 +116,111 @@ export default function CartPage() {
   const tax = subtotal * 0.1
 
   const total = subtotal + tax
-  
+
 
   return (
-    // <SecondNavbarStore>
-    <div className="min-h-screen w-screen bg-black text-white">
-      <header className="border-b border-gray-800 top-0 w-full h-15 px-4 py-2">
-      </header>
-      <main className="container mx-auto px-4 py-6">
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between"></div>
+    <SecondNavbar>
+      <div className="h-dvh flex bg-black text-white p-4 md:p-8 relative w-full container">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-3xl md:text-4xl font-bold mb-8 flex items-center gap-2">
+            <ShoppingCart className="h-8 w-8" />
+            Your Cart
+          </h1>
 
-          <div className="h-dvh flex bg-black text-white p-4 md:p-8 relative w-full container">
-            <div className="max-w-6xl mx-auto">
-              <h1 className="text-3xl md:text-4xl font-bold mb-8 flex items-center gap-2">
-                <ShoppingCart className="h-8 w-8" />
-                Your Cart
-              </h1>
-
-              {isLoading ? (
-                <div className="flex justify-center items-center h-64">
-                  <p>Loading your cart...</p>
+          {isLoading ? (
+            <div className="flex justify-center items-center h-64">
+              <p>Loading your cart...</p>
+            </div>
+          ) : productsListWithQuantity.length === 0 ? (
+            <Card className="bg-zinc-900 border-zinc-800 text-white">
+              <CardContent className="pt-6">
+                <div className="text-center py-12">
+                  <ShoppingCart className="h-12 w-12 mx-auto mb-4 text-zinc-500" />
+                  <h2 className="text-xl font-semibold mb-2">Your cart is empty</h2>
+                  <p className="text-zinc-400">Add some products to your cart to see them here.</p>
                 </div>
-              ) : productsListWithQuantity.length === 0 ? (
+              </CardContent>
+            </Card>
+          ) : (
+            <div className="grid gap-6 md:grid-cols-3">
+              <div className="md:col-span-2">
                 <Card className="bg-zinc-900 border-zinc-800 text-white">
-                  <CardContent className="pt-6">
-                    <div className="text-center py-12">
-                      <ShoppingCart className="h-12 w-12 mx-auto mb-4 text-zinc-500" />
-                      <h2 className="text-xl font-semibold mb-2">Your cart is empty</h2>
-                      <p className="text-zinc-400">Add some products to your cart to see them here.</p>
+                  <CardHeader>
+                    <CardTitle>Cart Items</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <Table>
+                      <TableHeader>
+                        <TableRow className="border-zinc-800">
+                          <TableHead className="text-white">Product</TableHead>
+                          <TableHead className="text-white text-right">Price</TableHead>
+                          <TableHead className="text-white text-center">Quantity</TableHead>
+                          <TableHead className="text-white text-right">Total</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableCartProducts productsList={productsListWithQuantity} />
+                    </Table>
+                  </CardContent>
+                  <CardFooter className="flex justify-between">
+                    <Button
+                      variant="outline"
+                      className="bg-zinc-800 border-zinc-700 text-white hover:bg-zinc-700"
+                      onClick={clearCart}
+                    >
+                      Clear Cart
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </div>
+
+              <div>
+                <Card className="bg-zinc-900 border-zinc-800 text-white">
+                  <CardHeader>
+                    <CardTitle>Order Summary</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="flex justify-between">
+                        <span className="text-zinc-400">Subtotal</span>
+                        <span>${subtotal.toFixed(2)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-zinc-400">Tax (10%)</span>
+                        <span>${tax.toFixed(2)}</span>
+                      </div>
+                      <Separator className="bg-zinc-800" />
+                      <div className="flex justify-between font-bold">
+                        <span>Total</span>
+                        <span>${total.toFixed(2)}</span>
+                      </div>
                     </div>
                   </CardContent>
+                  <CardFooter className="flex flex-col gap-4">
+                    <Button className="w-full"
+                    // onClick={generateInvoice}
+                    >
+                      <Download className="mr-2 h-4 w-4" />
+                      Generate Invoice
+                    </Button>
+                    <Button className="w-full">
+                      <Link to="/new/checkout/order">
+                      Proceed to Checkout
+                      </Link>      
+                      </Button>
+                  </CardFooter>
                 </Card>
-              ) : (
-                <div className="grid gap-6 md:grid-cols-3">
-                  <div className="md:col-span-2">
-                    <Card className="bg-zinc-900 border-zinc-800 text-white">
-                      <CardHeader>
-                        <CardTitle>Cart Items</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <Table>
-                          <TableHeader>
-                            <TableRow className="border-zinc-800">
-                              <TableHead className="text-white">Product</TableHead>
-                              <TableHead className="text-white text-right">Price</TableHead>
-                              <TableHead className="text-white text-center">Quantity</TableHead>
-                              <TableHead className="text-white text-right">Total</TableHead>
-                            </TableRow>
-                          </TableHeader>
-                          <TableCartProducts productsList={productsListWithQuantity} /> 
-                        </Table>
-                      </CardContent>
-                      <CardFooter className="flex justify-between">
-                        <Button
-                          variant="outline"
-                          className="bg-zinc-800 border-zinc-700 text-white hover:bg-zinc-700"
-                          onClick={clearCart}
-                        >
-                          Clear Cart
-                        </Button>
-                      </CardFooter>
-                    </Card>
-                  </div>
-
-                  <div>
-                    <Card className="bg-zinc-900 border-zinc-800 text-white">
-                      <CardHeader>
-                        <CardTitle>Order Summary</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="space-y-4">
-                          <div className="flex justify-between">
-                            <span className="text-zinc-400">Subtotal</span>
-                            <span>${subtotal.toFixed(2)}</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-zinc-400">Tax (10%)</span>
-                            <span>${tax.toFixed(2)}</span>
-                          </div>
-                          <Separator className="bg-zinc-800" />
-                          <div className="flex justify-between font-bold">
-                            <span>Total</span>
-                            <span>${total.toFixed(2)}</span>
-                          </div>
-                        </div>
-                      </CardContent>
-                      <CardFooter className="flex flex-col gap-4">
-                        <Button className="w-full"
-                        // onClick={generateInvoice}
-                        >
-                          <Download className="mr-2 h-4 w-4" />
-                          Generate Invoice
-                        </Button>
-                        <Button className="w-full">Proceed to Checkout</Button>
-                      </CardFooter>
-                    </Card>
-                  </div>
-                </div>
-              )}
+              </div>
             </div>
-          </div>
-
+          )}
         </div>
-      </main >
-    </div >
-    // </SecondNavbarStore>
+      </div>
+    </SecondNavbar>
+
   )
 }
 
 
-const TableCartProducts = ({productsList}: {productsList: ProductWithQuantity[]}) => {
+const TableCartProducts = ({ productsList }: { productsList: ProductWithQuantity[] }) => {
   const { addToCart } = useAddProductCart()
   const { cartProductsState, setCartProductsState } = useContext(CartContext)
 

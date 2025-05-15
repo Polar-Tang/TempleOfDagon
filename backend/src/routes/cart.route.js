@@ -1,11 +1,11 @@
 import express from 'express'
-import { addToCartController, eliminateProductCart, getAllCartProducts, checkoutController, checkoutRouterController, eliminateSessionCartController } from '../controllers/cart.controller.js'
+import { addToCartController, eliminateProductCart, getAllCartProducts, checkoutController, checkoutRouterController, eliminateSessionCartController } from '../controllers/cart.controller.ts'
 import authMiddleware from '../middlewares/auth.middleware.js'
 import cookieParser from "cookie-parser";
 import cors from 'cors'
 import corsOptions from '../helpers/utils/corsOptions.js'
 import crypto from 'crypto'
-import validateId from '../middlewares/valid_id.js';
+import validateId from '../middlewares/valid_id.ts';
 
 const cartRouter = express.Router()
 
@@ -30,8 +30,10 @@ cartRouter.options('/', cors(corsOptions))
 cartRouter.post('/checkout', checkoutController)
 cartRouter.options('/checkout', cors(corsOptions))
 
-cartRouter.get('/checkout-router/:checkoutId', checkoutRouterController)
-cartRouter.options('/checkout-router/:checkoutId', cors(corsOptions))
+cartRouter.get('/checkout-router/:name', checkoutRouterController)
+cartRouter.options('/checkout-router/:name', cors(corsOptions))
 
+
+// cartRouter.get('/invoice', generatePdfCOntroller)
 
 export default cartRouter

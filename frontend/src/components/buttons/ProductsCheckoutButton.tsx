@@ -18,7 +18,7 @@ const ProductsCheckoutButton = () => {
         
   return (
     <Link 
-    to={`/new/checkout/order`}
+    to={`/new/checkout/cart`}
     // onClick={handleCheckout}
     >
       See all products

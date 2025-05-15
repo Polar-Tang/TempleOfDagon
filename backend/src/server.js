@@ -10,7 +10,7 @@ import ProductRepository from './repositories/product.repository.js'
 import cartRouter from './routes/cart.route.js'
 import corsOptions from './helpers/utils/corsOptions.js'
 import Product from './models/product.models.js'
-import createProducts from './helpers/scripts/seedMongod.js'
+// import createProducts from './helpers/scripts/seedMongod.js'
 // import userRouter from './routes/users.route.js'
 import http from 'http';
 import { Server } from 'socket.io';

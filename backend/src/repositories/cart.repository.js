@@ -24,7 +24,7 @@ class CartProductRepository {
         } else {
             
             const filtering = cartSession.detailProducts.filter(
-                (element ) => element._id == product._id 
+                (element ) => String(element._id) == String(product._id )
             )
             if (filtering.length <= product.stock ){
             console.log("filtering great than products")

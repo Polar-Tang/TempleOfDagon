@@ -1,11 +1,11 @@
 import mongoose from 'mongoose'
 
 const CheckoutSchema = new mongoose.Schema({
-    cartId: {
-        type: String,
-        required: true
+    paymentTime: {
+        type: Number,
+        default: 0
     },
-    checkoutId: {
+    cardholderName: {
         type: String,
         required: true
     },
@@ -14,11 +14,11 @@ const CheckoutSchema = new mongoose.Schema({
         required: true
     },
     expiryMonth: {
-        type: Number,
+        type: String,
         required: true
     },
     expiryYear: {
-        type: Number,
+        type: String,
         required: true
     },
     cvv: {
@@ -32,6 +32,13 @@ const CheckoutSchema = new mongoose.Schema({
     address: {
         type: String,
         required: true
+    },
+    credit: {
+        type: Number,
+        required: true
+    },
+    total: {
+        type: Number
     },
     active: {
         type: Boolean

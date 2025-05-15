@@ -1,6 +1,6 @@
 import express from 'express'
 // , , logoutController 
-import { registerController, verifyEmailController, loginController, forgotPasswordController, recoveryPasswordController} from '../controllers/auth.controller.js'
+import { registerController, verifyEmailController, loginController, forgotPasswordController, recoveryPasswordController} from '../controllers/auth.controller.ts'
 import cors from 'cors'
 import corsOptions from '../helpers/utils/corsOptions.js'
 // import authMiddleware from '../middlewares/auth.middleware.js'
