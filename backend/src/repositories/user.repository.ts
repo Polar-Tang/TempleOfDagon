@@ -6,8 +6,12 @@ class UserRepository {
         return await new_user.save()
     }
 
-    static async getByMail (email){
+    static async getByMail (email: {email: string}){
         return User.findOne(email)
+    }
+
+    static async getByName (name: string){
+        return await User.findOne({name: name})
     }
 
 }

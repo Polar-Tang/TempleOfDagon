@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { CardDetailsForm, CardDetailsPage, CheckoutPage, ForgotPassPage, Home, LoginPage, ProductDetailPage, ProductsList, Questionnaire, RecoveryPassPage, RegisterPage } from './pages'
+import { CardDetailsForm, CardDetailsPage, CheckoutPage, ForgotPassPage, Home, LoginPage, ProductDetailPage, ProductsList, ProfilePage, Questionnaire, RecoveryPassPage, RegisterPage } from './pages'
 
 
 export default function App() {
@@ -18,9 +18,9 @@ export default function App() {
                 <Route path='/new/checkout/cart' element={<CheckoutPage />} />
                 <Route path='/new/checkout/order' element={<CardDetailsForm />} />
                 <Route path="/new/checkout/:name" element={<CardDetailsPage />} />
-
+                <Route path='/profile/:name' element={<ProfilePage />} /> 
             </Routes>
-            
+
         </>
     )
 }

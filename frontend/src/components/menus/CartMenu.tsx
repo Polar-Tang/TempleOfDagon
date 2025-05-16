@@ -16,7 +16,6 @@ const CartMenu = () => {
  
 
   // const cartProducts: Products = JSON.parse(window.localStorage.getItem('cart') || '[]')
-  console.log("The product is:", cartProductsState)
   return (
     cartProductsState &&
     cartProductsState.map((item, index) => (

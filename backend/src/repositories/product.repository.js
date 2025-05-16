@@ -21,6 +21,10 @@ class ProductRepository {
         return Product.findOne({"_id":product_id})
     }
 
+    static async getProductBySellerId (product_id){
+        return Product.find({"seller_id":product_id})
+    }
+
     static async deleteProduct (filter){
         return Product.findOneAndUpdate(filter, { active: false }, { new: true });
     }

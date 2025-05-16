@@ -4,7 +4,6 @@ import { SkeletonCard } from "@/components/cards/SkelectonCard"
 // import ProductsMock from "@/mocks/productsMock"
 import SecondNavbarStore from "@/components/SecondNavbarStore"
 import { useContext, useEffect } from "react"
-import { LayoutContext } from "@/context/LayoutContext"
 import { ProductSearchContext } from "@/context/ProductSearchContext"
 // import { Products } from "@/types/products"
 // import ProductsMock from "@/mocks/productsMock"
@@ -13,7 +12,8 @@ import { ProductSearchContext } from "@/context/ProductSearchContext"
 
 const ProductsList = () => {
   
-  const { setisSingleProduct } = useContext(LayoutContext)
+    const {setisSingleProduct} = useContext(ProductSearchContext)
+
   useEffect(() => {
     setisSingleProduct(true)
   }, [])

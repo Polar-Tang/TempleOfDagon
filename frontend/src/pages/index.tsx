@@ -11,5 +11,6 @@ import Questionnaire from "./Questionnaire"
 import CheckoutPage from "./cartPages/CheckoutPage"
 import CardDetailsForm from "./cartPages/CardDetailsForm"
 import CardDetailsPage from "./cartPages/CardDetailsPage"
+import ProfilePage from "./user/ProfilePage"
 
-export { Hell, Home, LoginPage, RegisterPage, ForgotPassPage, RecoveryPassPage, ProductsPage, ProductDetailPage, ProductsList, Questionnaire, CheckoutPage, CardDetailsForm, CardDetailsPage }
+export { Hell, Home, LoginPage, RegisterPage, ForgotPassPage, RecoveryPassPage, ProductsPage, ProductDetailPage, ProductsList, Questionnaire, CheckoutPage, CardDetailsForm, CardDetailsPage, ProfilePage }

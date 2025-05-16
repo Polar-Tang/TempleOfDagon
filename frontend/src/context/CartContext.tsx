@@ -13,7 +13,6 @@ export const CartProvider = ({ children }: ParentProps) => {
     // const {} = useAddProductCart()
     useEffect(() => {
         const storedCart = sessionStorage.getItem('cart');
-        console.log("storedCart: ", storedCart)
         if (storedCart) {
         setCartProductsState(JSON.parse(storedCart));
         }

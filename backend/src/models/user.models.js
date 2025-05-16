@@ -33,6 +33,13 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         default: 'user'
+    },
+    bio: {
+        type: String,
+        default: "I love the Esoteric Order of Dagon and i do recommend this website to everyone i know, even if it's a topic out of context from what we are talking about."
+    },
+    location: {
+        type: String,
     }
 })
 

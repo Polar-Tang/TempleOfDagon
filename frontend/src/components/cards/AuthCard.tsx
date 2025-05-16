@@ -41,17 +41,20 @@ const AuthCard = ({ endpointInSuccessCase, titleH1, cardDescription, linkDirecti
     handleRegister,
     isUserHasLogged,
     setIsUserHasLogged,
-    message
+    message,
+    isReqSubmited,
+    setisReqSubmited
   } = useAuthReq({ endpoint })
   const navigate = useNavigate()
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout
 
-    if (isUserHasLogged) {
+    if (isUserHasLogged || isReqSubmited ) {
       timeoutId = setTimeout(() => {
         setIsUserHasLogged(false)
-        if (endpointInSuccessCase) {
+        setisReqSubmited(false)
+        if (endpointInSuccessCase && isUserHasLogged) {
           navigate(endpointInSuccessCase)
 
         }
@@ -73,7 +76,7 @@ const AuthCard = ({ endpointInSuccessCase, titleH1, cardDescription, linkDirecti
       </CardHeader>
       <CardContent>
         <form onSubmit={handleRegister} >
-          <div className="space-y-4">
+            <div className="space-y-4">
             <InputList field_data_props={field_data_props} />
             <hr />
 
@@ -81,8 +84,14 @@ const AuthCard = ({ endpointInSuccessCase, titleH1, cardDescription, linkDirecti
             <Button type="submit" className="w-full">
               {submit_bottom_text}
             </Button>
-            {isUserHasLogged && (<AlertDestructive title={message.title} description={message.description} variant={message.variant} />)}
-          </div>
+            {(isUserHasLogged || isReqSubmited) && (
+              <AlertDestructive
+              title={message.title}
+              description={message.description}
+              variant={message.variant}
+              />
+            )}
+            </div>
         </form>
       </CardContent>
     </Card>
@@ -167,7 +176,7 @@ const InputList = ({ field_data_props }: { field_data_props: FieldDataProps[] })
                   ? <div className="space-y-2 relative">
 
                     <Label htmlFor="password" >Password
-                    <DotCheck valueField={formState[inputName]} nameField={inputName} />
+                      <DotCheck valueField={formState[inputName]} nameField={inputName} />
 
                     </Label>
                     <div className="relative">
@@ -209,24 +218,24 @@ const InputList = ({ field_data_props }: { field_data_props: FieldDataProps[] })
 
 }
 
-const DotCheck = ({valueField, nameField}: {valueField: string | undefined, nameField: string}) => {
+const DotCheck = ({ valueField, nameField }: { valueField: string | undefined, nameField: string }) => {
   return (
     <>
-    {valueField ?
-      <div className="relative group">
-        <div
-          className={`w-3 h-3 rounded-full ${Boolean(valueField) ? 'bg-red-500' : 'bg-green-500'}`}
-          aria-label={Boolean(valueField) ? "Validation error" : "Validation passed"}
-        ></div>
-  
-        <div className="absolute left-0 bottom-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50 whitespace-nowrap pointer-events-none">
-          <div className="bg-gray-800 text-white text-xs rounded py-1 px-2 max-w-xs">
-            {Boolean(valueField) ? valueField : `${nameField} is valid`}
+      {valueField ?
+        <div className="relative group">
+          <div
+            className={`w-3 h-3 rounded-full ${Boolean(valueField) ? 'bg-red-500' : 'bg-green-500'}`}
+            aria-label={Boolean(valueField) ? "Validation error" : "Validation passed"}
+          ></div>
+
+          <div className="absolute left-0 bottom-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50 whitespace-nowrap pointer-events-none">
+            <div className="bg-gray-800 text-white text-xs rounded py-1 px-2 max-w-xs">
+              {Boolean(valueField) ? valueField : `${nameField} is valid`}
+            </div>
           </div>
         </div>
-      </div>
-      : <span></span>}
-    
+        : <span></span>}
+
     </>
   )
 }

@@ -2,8 +2,8 @@ import { Products } from "./products"
 import React from "react"
 
 export interface LayoutContextProps {
-    isSingleProduct: boolean
-    setisSingleProduct: React.Dispatch<React.SetStateAction<boolean>>,
+    string: string
+    setstring: React.Dispatch<React.SetStateAction<string>>,
 }
 
 export interface ProductCardPortalProps {
@@ -12,7 +12,7 @@ export interface ProductCardPortalProps {
     setIsProductPortalOpen: React.Dispatch<React.SetStateAction<boolean>>
     setSelectedImage: React.Dispatch<React.SetStateAction<selectedImage>>,
 
-  }
+}
 export type selectedImage = {
     src: string
     name: string
@@ -29,4 +29,27 @@ export interface ProductsCartContextProps {
 
 export interface ParentProps {
     children: React.ReactNode
+}
+
+export type accessToken = {
+    user_id: string,
+    name: string,
+    email: string,
+    role: string
+}
+
+export interface AuthContextProps {
+    isUserLogged: boolean,
+    setisUserLogged: React.Dispatch<React.SetStateAction<boolean>>,
+    jwe: accessToken,
+    setjwe: React.Dispatch<React.SetStateAction<accessToken>>,
+    token: string,
+    setToken: React.Dispatch<React.SetStateAction<string>>
+}
+
+export interface ProductsSearchContextProps {
+    productsState: Products
+    setProductsState: React.Dispatch<React.SetStateAction<Products>>,
+    isSingleProduct: boolean,
+    setisSingleProduct: React.Dispatch<React.SetStateAction<boolean>>,
 }

@@ -25,9 +25,7 @@ const CardDetailsPage = () => {
             }
             const data = await responseHTTP.json()
             let infoDataEntries = data.response.payload.productsDetail as paymentDetail
-
             setProducts(infoDataEntries)
-
 
         } catch (error) {
             console.error('Fetch error:', error)

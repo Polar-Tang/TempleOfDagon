@@ -6,15 +6,19 @@ import { BrowserRouter } from 'react-router-dom'
 import LayoutProvider from './context/LayoutContext.tsx'
 import CartProvider from './context/CartContext.tsx'
 import { ProductSearchProvider } from './context/ProductSearchContext.tsx'
+import AuthProvider from './context/AuthContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <CartProvider>
-      <LayoutProvider >
-        <ProductSearchProvider >
-          <App />
-        </ProductSearchProvider>
-      </LayoutProvider >
+      <AuthProvider>
+        <LayoutProvider >
+          <ProductSearchProvider >
+            <App />
+
+          </ProductSearchProvider>
+        </LayoutProvider >
+      </AuthProvider>
     </CartProvider>
   </BrowserRouter>
 )

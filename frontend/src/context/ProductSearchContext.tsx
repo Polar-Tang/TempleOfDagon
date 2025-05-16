@@ -2,13 +2,13 @@ import React, { useEffect, useState, createContext } from 'react'
 import type { Products } from "@/types/products"
 // import type {BodyResponse} from "@/types/bodyResponse"
 import ProductsMock from '@/mocks/productsMock'
-import type {ProductUseState} from '@/types/ProductUseState'
+import { ProductsSearchContextProps } from '@/types/ContextTypes'
 
 
-export const ProductSearchContext = createContext({} as ProductUseState)
+export const ProductSearchContext = createContext({} as ProductsSearchContextProps)
 
 
-export const ProductSearchProvider = ({ children }: {children: React.ReactNode}) => {
+export const ProductSearchProvider = ({ children }: { children: React.ReactNode }) => {
 
     const [productsState, setProductsState] = useState<Products>(ProductsMock as Products)
     // const fetchAllProducts = async (): Promise<BodyResponse> => {
@@ -17,21 +17,23 @@ export const ProductSearchProvider = ({ children }: {children: React.ReactNode})
     //     setProductsState(data.payload.ProductSearched);
     //     return data
     // }
+  const [isSingleProduct, setisSingleProduct] = useState<boolean>(false)
 
-    
+
 
     useEffect(() => {
-        // fetchAllProducts();
         setProductsState(ProductsMock)
     }, []);
 
     return (
         <ProductSearchContext.Provider value={{
             productsState,
-            setProductsState
+            setProductsState,
+            isSingleProduct,
+            setisSingleProduct,
         }}>
             {children}
-            
+
         </ProductSearchContext.Provider>
     )
 }

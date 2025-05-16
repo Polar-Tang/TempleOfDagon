@@ -11,7 +11,7 @@ import cartRouter from './routes/cart.route.js'
 import corsOptions from './helpers/utils/corsOptions.js'
 import Product from './models/product.models.js'
 // import createProducts from './helpers/scripts/seedMongod.js'
-// import userRouter from './routes/users.route.js'
+import userRouter from './routes/users.route.js'
 import http from 'http';
 import { Server } from 'socket.io';
 import ENVIRONMENT from './config/environment.js'
@@ -35,7 +35,7 @@ app.use('/api/auth', authRouter)
 
 app.use('/api/products', productRouter)
 
-// app.use('/api/users', userRouter )
+app.use('/api/users', userRouter )
 
 app.use('/api/cart', cartRouter)
 

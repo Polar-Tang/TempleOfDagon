@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom'
 import ProductsMock from '@/mocks/productsMock'
 import SecondNavbarStore from '@/components/SecondNavbarStore'
 import { useContext, useEffect } from 'react'
-import { LayoutContext } from '@/context/LayoutContext'
+import { ProductSearchContext } from '@/context/ProductSearchContext'
 
 export default function ProductDetailPage() {
 
-  const {setisSingleProduct} = useContext(LayoutContext)
+  const {setisSingleProduct} = useContext(ProductSearchContext)
   useEffect(() => {
     setisSingleProduct(false)
   }, [])
@@ -17,7 +17,7 @@ export default function ProductDetailPage() {
     return <div className="text-red-500">Product not found</div>
   }
 
-  
+    
 
   return (
     <SecondNavbarStore>

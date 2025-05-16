@@ -42,7 +42,7 @@ const naviteHome = () => {
         <div className="fixed top-0 w-full z-20 bg-transparent absolute top-0 left-0 right-0">
             <nav className={`bg-transparent w-full h-15 text-white flex justify-between items-center px-4 py-2  ${isVisible ? 'translate-y-0' : 'hidden'}`}>
                 <DropdownMenuCheckboxes />
-                <img className="h-full w-50 scale-95 hover:scale-120" alt="Logo de la empresa" onClick={naviteHome} src="/logo.png" />
+                <img className="h-full w-50 scale-95 hover:scale-120" alt="Temple of Dagon" onClick={naviteHome} src="/logo.png" />
                 <SidebarTrigger />
             </nav>
         </div>
