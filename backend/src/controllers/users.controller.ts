@@ -8,21 +8,63 @@ export const getUserController = async (req, res, next) => {
     try {
         const { name } = req.params
         // res.set("Cache-Control", "no-store")
+        const productsFilter = req.query.products
+
+        if (name && productsFilter) {
+            try {
+                console.log("Products filter is converted to: ")
+                console.log(productsFilter)
+
+                const userProfile = await UserRepository.getUserProductsByName(name, productsFilter)
+                if (!userProfile) {
+                    const response = new ResponseBuilder()
+                        .setOk(true)
+                        .setStatus(404)
+                        .setMessage(`User not found`)
+                        .setPayload({
+                            detail: userProfile,
+                            isOwner: false
+                        })
+                        .build()
+                    return res.json({ response })
+                }
+                const filteredUserProfile = {
+                    name: userProfile.name,
+                    email: userProfile.email,
+                    bio: userProfile.bio,
+                    location: userProfile.location
+                }
+                const response = new ResponseBuilder()
+                    .setOk(true)
+                    .setStatus(200)
+                    .setMessage(`User not found`)
+                    .setPayload({
+                        detail: filteredUserProfile,
+                        isOwner: false
+                    })
+
+                    .build()
+                return res.json({ response })
+            } catch (error) {
+                next(error)
+                return
+            }
+        }
 
         const userProfile = await UserRepository.getByName(name)
         console.log(userProfile)
 
         if (!userProfile) {
-             const response = new ResponseBuilder()
-            .setOk(true)
-            .setStatus(404)
-            .setMessage(`User not found`)
-            .setPayload({
-                detail: userProfile,
-                isOwner: false
-            })
-            .build()
-        return res.json({ response })
+            const response = new ResponseBuilder()
+                .setOk(true)
+                .setStatus(404)
+                .setMessage(`User not found`)
+                .setPayload({
+                    detail: userProfile,
+                    isOwner: false
+                })
+                .build()
+            return res.json({ response })
         }
 
         const productsByName = ProductRepository.getProductBySellerId(userProfile.name)
@@ -53,7 +95,7 @@ export const getUserController = async (req, res, next) => {
                         isOwner: true
                     })
                     .build()
-                    return res.json({ response })
+                return res.json({ response })
             }
 
         }
@@ -75,9 +117,37 @@ export const getUserController = async (req, res, next) => {
 }
 
 export const updateUserController = async (req, res, next) => {
-try {
-    
-} catch (error) {
-    
+    try {
+
+    } catch (error) {
+
+    }
 }
+
+const getUserDetailController = async (req, res, next) => {
+    try {
+        const { name } = req.params
+        const productsFilter = req.query.products
+
+        // const userProducts = ProductRepository.getProductBySellerId(name, productsFilter)
+        // if (!user) {
+        //     const response = new ResponseBuilder()
+        //         .setOk(false)
+        //         .setStatus(404)
+        //         .setMessage(`User not found`)
+        //         .build()
+        //     return res.json({ response })
+        // }
+        const response = new ResponseBuilder()
+            .setOk(true)
+            .setStatus(200)
+            .setMessage(`Sending the user`)
+            .setPayload({
+                user: user
+            })
+            .build()
+        return res.json({ response })
+    } catch (error) {
+        next(error)
+    }
 }

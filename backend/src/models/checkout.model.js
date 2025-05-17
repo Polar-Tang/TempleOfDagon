@@ -42,7 +42,12 @@ const CheckoutSchema = new mongoose.Schema({
     },
     active: {
         type: Boolean
-    }
+    },
+    products: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product',
+        default: []
+    }]
 },{
     timestamps: true
 })

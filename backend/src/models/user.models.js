@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 
 // SCHEMA, TYPED
 const userSchema = new mongoose.Schema({
@@ -40,7 +40,12 @@ const userSchema = new mongoose.Schema({
     },
     location: {
         type: String,
-    }
+    },
+    products: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Product',
+        default: []
+    }]
 })
 
 // CLASS, it utilize our shcema
