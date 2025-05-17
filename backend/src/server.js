@@ -18,7 +18,7 @@ import ENVIRONMENT from './config/environment.js'
 
 const port = 3000
 const app = express()
-
+console.log(process.env.PORT)
 
 
 app.use(cors(corsOptions))

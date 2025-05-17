@@ -1,5 +1,9 @@
 import Product from '../../models/product.models.js'
 import CheckoutSession from "../../models/checkout.model.js"
+import bcrypt from 'bcrypt'
+import User from '../../models/user.models.js';
+import mongoose from 'mongoose';
+
 
 export const createProducts = async () => {
   try {
@@ -11,7 +15,7 @@ export const createProducts = async () => {
         stock: 5,
         description: "rather for worshiping or simply decoration, everyone will need one as the sea rises to reclaim this doomed world...",
         category: "stone",
-        seller_id: "1",
+        seller_name: "1",
         title: 'godfish idol',
         active: true
       },
@@ -21,7 +25,7 @@ export const createProducts = async () => {
         price: 2,
         description: "'Ough, What do smell like?' Just like the best Massachusetts fresh fish, fish from Insmouth, 2 dollars per unity",
         category: "insmouth fish",
-        seller_id: "2",
+        seller_name: "2",
         title: 'insmouth fish',
         active: true
       },
@@ -31,7 +35,7 @@ export const createProducts = async () => {
         price: 1000,
         description: "A cyclopean monolith that measures meters, perfect for decorating a garden and bringing strange events into your miserable life.",
         category: "Submarine Obelisk",
-        seller_id: "3",
+        seller_name: "3",
         title: 'image 3',
         active: true
       },
@@ -41,27 +45,29 @@ export const createProducts = async () => {
         price: 80,
         description: "Lost civilizations older than Earth, rites for communing with the blind idiot god Azathoth, and the geometry of forgotten stars under which dread Cthulhu dreams. The Necronomicon is no mere book—it is an invitation to annihilation.",
         category: "Magic",
-        seller_id: "Abdul Alhazred, the Mad Arab",
+        seller_name: "Abdul Alhazred, the Mad Arab",
         title: 'Necronomicon (Order of Dagon edition)',
         active: true
       },
       {
+        _id: new mongoose.Types.ObjectId(),
         image_url: 'https://images.unsplash.com/photo-1700839154423-83ea2246621b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         stock: 40,
         price: 50,
         description: "Spores, and spores, and spores...",
         category: "Magic",
-        seller_id: "5",
+        seller_name: "Charles Dexter Ward",
         title: 'image 5',
         active: true
       },
       {
+        _id: new mongoose.Types.ObjectId(),
         image_url: 'https://images.unsplash.com/photo-1700770845346-7e95de335eb0?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         stock: 70,
         price: 40,
         description: "Spores, and spores, and spores...",
         category: "Magic",
-        seller_id: "6",
+        seller_name: "Charles Dexter Ward",
         title: 'image 6',
         active: true
       },
@@ -71,7 +77,7 @@ export const createProducts = async () => {
         price: 70,
         description: "Spores, and spores, and spores...",
         category: "Magic",
-        seller_id: "7",
+        seller_name: "7",
         title: 'image 7',
         active: true
       },
@@ -81,7 +87,7 @@ export const createProducts = async () => {
         price: 100,
         description: "Spores, and spores, and spores...",
         category: "Magic",
-        seller_id: "8",
+        seller_name: "8",
         title: 'image 8',
         active: true
       },
@@ -91,7 +97,7 @@ export const createProducts = async () => {
         price: 10,
         description: "Spores, and spores, and spores...",
         category: "Magic",
-        seller_id: "9",
+        seller_name: "9",
         title: 'image 9',
         active: true
       },
@@ -101,10 +107,22 @@ export const createProducts = async () => {
         price: 10,
         description: "Spores, and spores, and spores...",
         category: "Magic",
-        seller_id: "10",
+        seller_name: "10",
         title: 'image 10',
         active: true
       },
+      {
+        title: 'image 11',
+        price: 10,
+        stock: 90,
+        description: 'Ticket',
+        category: 'magic',
+        seller_name: '11',
+        image_url: 'https://images.unsplash.com/photo-1700769025506-6c3dcb9ec9b7?q=80&w=1664&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        createdAt: '2025-04-03T01:43:17.077Z',
+        updatedAt: '2025-04-03T01:43:17.077Z',
+        active: false
+      }
     ];
 
     await Product.insertMany(products);
@@ -159,7 +177,7 @@ export const createCards = async () => {
       },
       {
         cardholderName: "Robert Olmstead",
-        
+
         cardNumber: "5901459740715409",
         expiryMonth: "3",
         expiryYear: "2033",
@@ -175,4 +193,43 @@ export const createCards = async () => {
   } catch (err) {
     console.log("An error when we were seed has happened: ", err)
   }
+}
+
+export const createUsers = async () => {
+  try {
+    const hashedPassword = await bcrypt.hash("josephC0rwell", 10)
+
+    const charlesdexterward = {
+      _id: new mongoose.Types.ObjectId(),
+      name: "Charles Dexter Ward",
+      password: hashedPassword,
+      email: "charlesdexterward@gmail.com",
+      active: true,
+      products: [],
+      role: "admin",
+      emailVerified: true,
+      verificationToken: "",
+      bio: "I like to walk over the antique gardence of providence and admire the constructions from the past. But most of all i like Joseph Corwell",
+      location: "Providence, Massachusetts",
+    }
+    const charlesdexterward_user = new User(charlesdexterward)
+
+    await charlesdexterward_user.save()
+    const products = await Product.find({ seller_name: charlesdexterward_user.name });
+    const products_ids: mongoose.Types.ObjectId[] = []
+    await Promise.all(products.map(async (product) => {
+      product.seller_id = charlesdexterward_user._id;
+      if (product._id) {
+        products_ids.push(product._id)
+      }
+      await product.save();
+    }))
+    charlesdexterward_user.products = products_ids
+    await charlesdexterward_user.save()
+
+    console.log("users seeded");
+  } catch (err) {
+    console.log("An error when we were seed has happened: ", err)
+  }
+
 }

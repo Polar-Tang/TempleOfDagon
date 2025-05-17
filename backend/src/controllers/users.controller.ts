@@ -27,17 +27,19 @@ export const getUserController = async (req, res, next) => {
                         })
                         .build()
                     return res.json({ response })
+                    // return res.render(userProfile)
                 }
                 const filteredUserProfile = {
                     name: userProfile.name,
                     email: userProfile.email,
                     bio: userProfile.bio,
-                    location: userProfile.location
+                    location: userProfile.location,
+                    productsFilter: userProfile.products,
                 }
                 const response = new ResponseBuilder()
                     .setOk(true)
                     .setStatus(200)
-                    .setMessage(`User not found`)
+                    .setMessage(`User found`)
                     .setPayload({
                         detail: filteredUserProfile,
                         isOwner: false
@@ -65,6 +67,7 @@ export const getUserController = async (req, res, next) => {
                 })
                 .build()
             return res.json({ response })
+            
         }
 
         const productsByName = ProductRepository.getProductBySellerId(userProfile.name)
@@ -113,6 +116,7 @@ export const getUserController = async (req, res, next) => {
     } catch (err) {
         console.error(err)
         next(err)
+        return
     }
 }
 
