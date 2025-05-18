@@ -13,16 +13,16 @@ export const getUserController = async (req, res, next) => {
         console.log(userProfile)
 
         if (!userProfile) {
-             const response = new ResponseBuilder()
-            .setOk(true)
-            .setStatus(404)
-            .setMessage(`User not found`)
-            .setPayload({
-                detail: userProfile,
-                isOwner: false
-            })
-            .build()
-        return res.json({ response })
+            const response = new ResponseBuilder()
+                .setOk(true)
+                .setStatus(404)
+                .setMessage(`User not found`)
+                .setPayload({
+                    detail: userProfile,
+                    isOwner: false
+                })
+                .build()
+            return res.json({ response })
         }
 
         const productsByName = ProductRepository.getProductBySellerId(userProfile.name)
@@ -53,7 +53,7 @@ export const getUserController = async (req, res, next) => {
                         isOwner: true
                     })
                     .build()
-                    return res.json({ response })
+                return res.json({ response })
             }
 
         }
@@ -75,9 +75,15 @@ export const getUserController = async (req, res, next) => {
 }
 
 export const updateUserController = async (req, res, next) => {
-try {
-    
-} catch (error) {
-    
-}
+    try {
+        const { bio, location } = req.body
+
+        const auth_header = req.get("Authorization")
+        const token = auth_header.split(" ")[1]
+        const payload = jwt.decode(token, process.env.JWT_SECRET)
+        const userProfile = await UserRepository.updateUser(payload.email, { bio, location })
+
+    } catch (error) {
+        next(error)
+    }
 }
