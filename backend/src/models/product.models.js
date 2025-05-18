@@ -2,6 +2,10 @@ import mongoose from 'mongoose'
 
 // SCHEMA, TYPED
 const productSchema = new mongoose.Schema({
+    _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    },
     title: {
         type: String,
         required: true
@@ -27,8 +31,13 @@ const productSchema = new mongoose.Schema({
     image_url: {
         type: String,
     },
-    seller_id: {
+    seller_name: {
         type: String,
+        ref: 'User',
+    },
+    seller_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
     }
 },{
     timestamps: true

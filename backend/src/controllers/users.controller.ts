@@ -8,6 +8,50 @@ export const getUserController = async (req, res, next) => {
     try {
         const { name } = req.params
         // res.set("Cache-Control", "no-store")
+        const productsFilter = req.query.products
+
+        if (name && productsFilter) {
+            try {
+                console.log("Products filter is converted to: ")
+                console.log(productsFilter)
+
+                const userProfile = await UserRepository.getUserProductsByName(name, productsFilter)
+                if (!userProfile) {
+                    const response = new ResponseBuilder()
+                        .setOk(true)
+                        .setStatus(404)
+                        .setMessage(`User not found`)
+                        .setPayload({
+                            detail: userProfile,
+                            isOwner: false
+                        })
+                        .build()
+                    return res.json({ response })
+                    // return res.render(userProfile)
+                }
+                const filteredUserProfile = {
+                    name: userProfile.name,
+                    email: userProfile.email,
+                    bio: userProfile.bio,
+                    location: userProfile.location,
+                    productsFilter: userProfile.products,
+                }
+                const response = new ResponseBuilder()
+                    .setOk(true)
+                    .setStatus(200)
+                    .setMessage(`User found`)
+                    .setPayload({
+                        detail: filteredUserProfile,
+                        isOwner: false
+                    })
+
+                    .build()
+                return res.json({ response })
+            } catch (error) {
+                next(error)
+                return
+            }
+        }
 
         const userProfile = await UserRepository.getByName(name)
         console.log(userProfile)
@@ -71,19 +115,65 @@ export const getUserController = async (req, res, next) => {
     } catch (err) {
         console.error(err)
         next(err)
+        return
     }
 }
 
-export const updateUserController = async (req, res, next) => {
-    try {
-        const { bio, location } = req.body
+// export const updateUserController = async (req, res, next) => {
+//     try {
+//         const { bio, location } = req.body
 
-        const auth_header = req.get("Authorization")
-        const token = auth_header.split(" ")[1]
-        const payload = jwt.decode(token, process.env.JWT_SECRET)
-        const userProfile = await UserRepository.updateUser(payload.email, { bio, location })
+//         const auth_header = req.get("Authorization")
+//         const token = auth_header.split(" ")[1]
+//         const payload = jwt.decode(token, process.env.JWT_SECRET)
+//         await UserRepository.updateUser(payload.email, { bio, location })
 
-    } catch (error) {
-        next(error)
-    }
-}
+//         const filteredUserProfile = {
+//             name: payload.name,
+//             email: payload.email,
+//             bio: bio,
+//             location: location
+//         }
+//         const response = new ResponseBuilder()
+//             .setOk(true)
+//             .setStatus(200)
+//             .setMessage(`Sending the user`)
+//             .setPayload({
+//                 detail: filteredUserProfile,
+//                 isOwner: false
+//             })
+//             .build()
+//         return res.json({ response })
+//     } catch (error) {
+//         return next(error)
+//     }
+// }
+
+// const getUserDetailController = async (req, res, next) => {
+//     try {
+//         const { name } = req.params
+//         const productsFilter = req.query.products
+
+//         const userProducts = ProductRepository.getProductBySellerId(name, productsFilter)
+//         if (!userProducts) {
+//             const response = new ResponseBuilder()
+//                 .setOk(false)
+//                 .setStatus(404)
+//                 .setMessage(`User not found`)
+//                 .build()
+//             return res.json({ response })
+//         }
+//         const response = new ResponseBuilder()
+//             .setOk(true)
+//             .setStatus(200)
+//             .setMessage(`Sending the user`)
+//             .setPayload({
+//                 user: userProducts
+//             })
+//             .build()
+//         return res.json({ response })
+
+//     } catch (error) {
+//         next(error)
+//     }
+// }

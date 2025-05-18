@@ -1,2 +1,8 @@
-ATTENTION: default value of option mesa_glthread overridden by environment.
-ATTENTION: default value of option mesa_glthread overridden by environment.
+
+(spotify:16273): libayatana-appindicator-WARNING **: 10:36:30.764: libayatana-appindicator is deprecated. Please use libayatana-appindicator-glib in neATTENTION: default value of option mesa_glthread overridden by environment.
+hing detected ***: terminated
+*** stack smashing detected ***: terminated
+*** stack smashing detected ***: terminated
+*** stack smashing detected ***: terminated
+Warning: ../src/amd/vulkan/radv_physical_device.c:2010: Device '/dev/dri/renderD128' is not using the AMDGPU kernel driver: Invalid argument (VK_ERROR_INCOMPATIBLE_DRIVER)
+*** stack smashing detected ***: terminated

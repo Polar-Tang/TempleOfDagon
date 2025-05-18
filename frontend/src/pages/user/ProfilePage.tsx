@@ -24,17 +24,18 @@ const ProfilePage = () => {
   const [isEditing, setIsEditing] = useState(false)
   const [profileData, setProfileData] = useState<profileType>({} as profileType)
   const [products, setProducts] = useState([] as Products)
+  const [isOwner, setisOwner] = useState(false)
 
   const putNewDetails = async () => { 
-    const responseHTTP = await fetch(`${import.meta.env.VITE_API_URL}/api/users/`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/api/users/`, {
       method: "PUT",
       credentials: "include",
       headers: {
         'Authorization': `Bearer ${sessionStorage.getItem('access_token')}`,
       }
     })
-    const bodyRes = await responseHTTP.json()
-    setProfileData(bodyRes.response.payload.user)
+    // const bodyRes = await responseHTTP.json()
+
   }
 
   const getProfileDetail = async (userName: string) => {
@@ -48,6 +49,8 @@ const ProfilePage = () => {
     const bodyRes = await responseHTTP.json()
     setProfileData(bodyRes.response.payload.user)
     setProducts(bodyRes.response.payload.user.products)
+    setisOwner(bodyRes.response.payload.user.isOwner)
+    console.log(bodyRes.response.payload.isOwner, isOwner)
   }
 
 
@@ -80,7 +83,8 @@ const ProfilePage = () => {
           {/* Left Sidebar - Profile Details */}
           <div className="w-80 min-w-80 border-r border-gray-800 bg-gray-950 p-6 flex flex-col h-full overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold">Profile</h2>
+              <h2 className="text-xl font-bold">{isOwner ? "Profile" : name}</h2>
+              { isOwner &&
               <Button
                 variant="ghost"
                 size="icon"
@@ -88,7 +92,7 @@ const ProfilePage = () => {
                 className="h-8 w-8 text-gray-400 hover:text-white hover:bg-gray-800"
               >
                 {isEditing ? <Save className="h-4 w-4" /> : <Edit className="h-4 w-4" />}
-              </Button>
+              </Button>}
             </div>
 
             <div className="flex flex-col items-center mb-6">
