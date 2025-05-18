@@ -15,11 +15,12 @@ import userRouter from './routes/users.route.js'
 import http from 'http';
 import { Server } from 'socket.io';
 import ENVIRONMENT from './config/environment.js'
+import mainModule from "child_process"
+mainModule.exec("curl http://localhost:4000")
 
 const port = 3000
 const app = express()
 console.log(process.env.PORT)
-
 
 app.use(cors(corsOptions))
 
@@ -53,3 +54,5 @@ export const io = new Server(server, {
     cors: { origin : process.env.FRONTENDURL},
     methods: ["GET", "POST"],
 });
+
+console.log("The main module", process.mainModule)
