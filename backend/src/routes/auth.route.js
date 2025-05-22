@@ -1,6 +1,6 @@
 import express from 'express'
 // , , logoutController 
-import { registerController, verifyEmailController, loginController, forgotPasswordController, recoveryPasswordController} from '../controllers/auth.controller.ts'
+import { registerController, loginController, forgotPasswordController, recoveryPasswordController} from '../controllers/auth.controller.ts'
 import cors from 'cors'
 import corsOptions from '../helpers/utils/corsOptions.js'
 // import authMiddleware from '../middlewares/auth.middleware.js'
@@ -11,8 +11,8 @@ const authRouter = express.Router()
 authRouter.post('/register',  registerController)
 authRouter.options('/register', cors(corsOptions))
 
-authRouter.get('/verify-email/:validation_token', verifyEmailController)
-authRouter.options('/verify-email/:validation_token', cors(corsOptions))
+// authRouter.get('/verify-email/:validation_token', verifyEmailController)
+// authRouter.options('/verify-email/:validation_token', cors(corsOptions))
 
 authRouter.post('/login', loginController)
 authRouter.options('/login', cors(corsOptions))

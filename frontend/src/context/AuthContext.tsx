@@ -11,6 +11,7 @@ export const AuthProvider = ({ children }: ParentProps) => {
 
     useEffect(() => {
         const access_token = sessionStorage.getItem("access_token")
+        console.log("tHE ACCESDASDFASDTGF from the context ", access_token)
         if (access_token) {
             const object_access_token = jwtDecode(access_token) as accessToken
             setjwe(object_access_token )

@@ -12,15 +12,12 @@ import corsOptions from './helpers/utils/corsOptions.js'
 import Product from './models/product.models.js'
 // import createProducts from './helpers/scripts/seedMongod.js'
 import userRouter from './routes/users.route.js'
-import http from 'http';
 import { Server } from 'socket.io';
 import ENVIRONMENT from './config/environment.js'
-import mainModule from "child_process"
-mainModule.exec("curl http://localhost:4000")
 
 const port = 3000
+
 const app = express()
-console.log(process.env.PORT)
 
 app.use(cors(corsOptions))
 
@@ -30,6 +27,7 @@ app.disable('If-None-Match')
 app.use(express.json({limit: '3mb' }))
 app.use(express.urlencoded({ extended: true }))
 
+app.use('/uploads', express.static('uploads'));
 // app.use('/api/status', statusRouter)
 
 app.use('/api/auth', authRouter)

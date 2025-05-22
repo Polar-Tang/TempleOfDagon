@@ -209,7 +209,7 @@ export const createUsers = async () => {
       role: "admin",
       emailVerified: true,
       verificationToken: "",
-      bio: "I like to walk over the antique gardence of providence and admire the constructions from the past. But most of all i like Joseph Corwell",
+      bio: "I like to walk over the antique gardence of providence, Joseph Corwell but i like most that no one knock the doors, even if someone needs it",
       location: "Providence, Massachusetts",
     }
     const charlesdexterward_user = new User(charlesdexterward)

@@ -13,7 +13,8 @@ import { Link } from "react-router-dom";
 
 export function AccordionDemo() {
   const { isUserLogged, jwe } = useContext(AuthContext)
-  
+  console.log(jwe)
+
   return (
     <Accordion type="single" collapsible className="w-full z-400">
       {/* <AccordionItem value="item-1">

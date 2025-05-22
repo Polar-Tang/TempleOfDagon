@@ -5,10 +5,10 @@ import { Products } from "@/types/products"
 // Sample product data
 
 
-export default function ProductGrid({ products, seller_id }: { products: Products, seller_id: string }) {
+export default function ProductGrid({ products, seller_id, isOwnerState }: { products: Products, seller_id: string, isOwnerState: boolean }) {
   return (
     <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6`}>
-      {products ?
+      {Object.values(products).length !== 0 ?
         products.map((product) => (
           <Card
             key={product._id}
@@ -34,7 +34,7 @@ export default function ProductGrid({ products, seller_id }: { products: Product
               </div>
             </CardContent>
             <CardFooter className="p-4 pt-0 flex gap-2">
-              <button className="text-sm text-gray-400 hover:text-white transition-colors">Edit</button>
+              { isOwnerState && <button className="text-sm text-gray-400 hover:text-white transition-colors">Edit</button>}
               <span className="text-gray-700">•</span>
               <button className="text-sm text-gray-400 hover:text-white transition-colors">View</button>
               <span className="text-gray-700">•</span>

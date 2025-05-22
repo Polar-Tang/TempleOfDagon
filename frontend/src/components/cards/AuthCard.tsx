@@ -4,10 +4,11 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Link, useNavigate } from "react-router-dom"
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AlertDestructive } from '@/components/AlertErrorComponent'
 import useAuthReq from "@/hooks/useAuthReq"
 import { verifyString, verifyMinLength, verifyMaxLength, verifyEmail } from '@/lib/helpers/validations'; // Adjust the import path as needed
+import { AuthContext } from "@/context/AuthContext"
 
 
 type LinkDirection = {
@@ -36,11 +37,10 @@ type AuthTypeProps = {
 
 
 const AuthCard = ({ endpointInSuccessCase, titleH1, cardDescription, linkDirections, field_data_props, submit_bottom_text, endpoint }: AuthTypeProps) => {
+  const {isUserLogged} = useContext(AuthContext)
 
   const {
     handleRegister,
-    isUserHasLogged,
-    setIsUserHasLogged,
     message,
     isReqSubmited,
     setisReqSubmited
@@ -50,11 +50,10 @@ const AuthCard = ({ endpointInSuccessCase, titleH1, cardDescription, linkDirecti
   useEffect(() => {
     let timeoutId: NodeJS.Timeout
 
-    if (isUserHasLogged || isReqSubmited ) {
+    if (isUserLogged || isReqSubmited ) {
       timeoutId = setTimeout(() => {
-        setIsUserHasLogged(false)
         setisReqSubmited(false)
-        if (endpointInSuccessCase && isUserHasLogged) {
+        if (endpointInSuccessCase && isUserLogged) {
           navigate(endpointInSuccessCase)
 
         }
@@ -64,7 +63,7 @@ const AuthCard = ({ endpointInSuccessCase, titleH1, cardDescription, linkDirecti
     return () => {
       if (timeoutId) clearTimeout(timeoutId)
     }
-  }, [isUserHasLogged])
+  }, [isUserLogged])
 
 
 
@@ -84,7 +83,7 @@ const AuthCard = ({ endpointInSuccessCase, titleH1, cardDescription, linkDirecti
             <Button type="submit" className="w-full">
               {submit_bottom_text}
             </Button>
-            {(isUserHasLogged || isReqSubmited) && (
+            {(isUserLogged || isReqSubmited) && (
               <AlertDestructive
               title={message.title}
               description={message.description}

@@ -109,27 +109,27 @@ export const registerController = async (req: request, res: response, next) => {
 
         const redirectURL = `${process.env.FRONTENDURL}/verify-email/${validationToken}`
         // SEND MAIL
-        const mailOptions = {
-            from: {
-                name: "Froggy Market",
-                address: process.env.EMAIL_USER
-            },
-            subject: 'Email verification',
-            to: email,
-            html: `
-                 <h1>Verify Your Email</h1>
-                <p>Please click the link below to verify your email </p>
-                <a href=${redirectURL} >Verify</a>
-                `
-        }
-        const result = transportEmail.sendMail(mailOptions)
+        // const mailOptions = {
+        //     from: {
+        //         name: "Froggy Market",
+        //         address: process.env.EMAIL_USER
+        //     },
+        //     subject: 'Email verification',
+        //     to: email,
+        //     html: `
+        //          <h1>Verify Your Email</h1>
+        //         <p>Please click the link below to verify your email </p>
+        //         <a href=${redirectURL} >Verify</a>
+        //         `
+        // }
+        // const result = transportEmail.sendMail(mailOptions)
 
         const response = new ResponseBuilder()
             .setOk(true)
             .setStatus(200)
             .setMessage(`OK`)
             .setPayload({
-                messageSucess: `Enviamos un correo a: ${String(email)}`
+                messageSucess: `Ahora podes conectarte`
             })
             .build()
         return res.status(200).json({ response })
@@ -153,28 +153,28 @@ export const registerController = async (req: request, res: response, next) => {
     }
 }
 
-export const verifyEmailController = async (req: request, res: response, next) => {
-    try {
-        const { validation_token } = req.params
-        const payload = jwt.verify(validation_token, process.env.JWT_SECRET)
-        console.log("Token tecibido: ", payload)
-        const user_to_verify = await UserRepository.getByMail({ email: payload.email })
-        if (!user_to_verify) {
-            const response = new ResponseBuilder()
-                .setOk(false)
-                .setStatus(400)
-                .setPayload("Usuario no encontrado")
-                .build()
-            return res.status(400).json({ response })
-        }
-        user_to_verify.emailVerified = true
-        await UserRepository.register(user_to_verify)
+// export const verifyEmailController = async (req: request, res: response, next) => {
+//     try {
+//         const { validation_token } = req.params
+//         const payload = jwt.verify(validation_token, process.env.JWT_SECRET)
+//         console.log("Token tecibido: ", payload)
+//         const user_to_verify = await UserRepository.getByMail({ email: payload.email })
+//         if (!user_to_verify) {
+//             const response = new ResponseBuilder()
+//                 .setOk(false)
+//                 .setStatus(400)
+//                 .setPayload("Usuario no encontrado")
+//                 .build()
+//             return res.status(400).json({ response })
+//         }
+//         user_to_verify.emailVerified = true
+//         await UserRepository.register(user_to_verify)
 
-        return res.redirect(`${process.env.FRONTENDURL}/login`)
-    } catch (err) {
-        next(err)
-    }
-}
+//         return res.redirect(`${process.env.FRONTENDURL}/login`)
+//     } catch (err) {
+//         next(err)
+//     }
+// }
 
 export const loginController = async (req: request, res: response, next) => {
     try {

@@ -4,6 +4,7 @@ import UserRepository from '../repositories/user.repository.js'
 import ENVIRONMET from "../config/environment.js"
 import ProductRepository from '../repositories/product.repository.js'
 
+
 export const getUserController = async (req, res, next) => {
     try {
         const { name } = req.params
@@ -34,6 +35,7 @@ export const getUserController = async (req, res, next) => {
                     email: userProfile.email,
                     bio: userProfile.bio,
                     location: userProfile.location,
+                    image_url: userProfile.avatar_url,
                     productsFilter: userProfile.products,
                 }
                 const response = new ResponseBuilder()
@@ -68,16 +70,15 @@ export const getUserController = async (req, res, next) => {
                 .build()
             return res.json({ response })
         }
-
-        const productsByName = ProductRepository.getProductBySellerId(userProfile.name)
-
         const filteredUserProfile = {
             name: userProfile.name,
             email: userProfile.email,
             bio: userProfile.bio,
-            location: userProfile.location
+            location: userProfile.location,
+            productsFilter: userProfile.products,
+            image_url: userProfile.avatar_url,
         }
-
+        console.log("FIltered user profile ", filteredUserProfile)
         const auth_header = req.get("Authorization")
 
         if (auth_header) {
@@ -93,7 +94,6 @@ export const getUserController = async (req, res, next) => {
                     .setMessage(`Sending the user`)
                     .setPayload({
                         user: filteredUserProfile,
-                        products: productsByName,
                         isOwner: true
                     })
                     .build()
@@ -116,6 +116,52 @@ export const getUserController = async (req, res, next) => {
         console.error(err)
         next(err)
         return
+    }
+}
+type multerFileParse = {
+    fieldname: string,
+    originalname: string,
+    encoding: string,
+    mimetype: string,
+    destination: string,
+    filename: string,
+    path: string,
+    size: number
+
+}
+export const updateUserController = async (req, res, next) => {
+    try {
+        const { bio, location } = req.body
+        const {
+            fieldname,
+            originalname,
+            encoding,
+            mimetype,
+            destination,
+            filename,
+            path,
+            size
+        } = req.file as multerFileParse
+
+        const imagePath = process.env.BACKENDURL + "/uploads/" + filename
+
+        const auth_header = req.get("Authorization")
+        const token = auth_header.split(" ")[1]
+        const payload = jwt.decode(token, process.env.JWT_SECRET)
+        
+        const userProfile = await UserRepository.updateUser(payload.email, {imagePath })
+
+        const response = new ResponseBuilder()
+            .setOk(true)
+            .setStatus(200)
+            .setMessage(`Sending the user`)
+            .setPayload({
+                file: req.file
+            })
+            .build()
+        return res.json({ response })
+    } catch (error) {
+        next(error)
     }
 }
 

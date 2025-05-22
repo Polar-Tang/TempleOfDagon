@@ -1,6 +1,7 @@
 import Hell from "./Hell"
 import Home from "./Home"
 import LoginPage from "./auth/LoginPage"
+import LogoutPage from "./auth/LogoutPage"
 import RegisterPage from "./auth/RegisterPage"
 import ForgotPassPage from "./auth/ForgotPassPage"
 import RecoveryPassPage from './auth/RecoveryPassPage'
@@ -13,4 +14,4 @@ import CardDetailsForm from "./cartPages/CardDetailsForm"
 import CardDetailsPage from "./cartPages/CardDetailsPage"
 import ProfilePage from "./user/ProfilePage"
 
-export { Hell, Home, LoginPage, RegisterPage, ForgotPassPage, RecoveryPassPage, ProductsPage, ProductDetailPage, ProductsList, Questionnaire, CheckoutPage, CardDetailsForm, CardDetailsPage, ProfilePage }
+export { Hell, Home, LoginPage, LogoutPage, RegisterPage, ForgotPassPage, RecoveryPassPage, ProductsPage, ProductDetailPage, ProductsList, Questionnaire, CheckoutPage, CardDetailsForm, CardDetailsPage, ProfilePage }

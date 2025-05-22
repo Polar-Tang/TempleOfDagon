@@ -10,7 +10,7 @@ const RegisterPage = () => {
 			label: "Voy a loguearme"
 
 		}, {
-			to: "/recuprarcontraseña",
+			to: "/passrecovery",
 			label: "Olvidé mi contraseña"
 		}],
 		field_data_props: [

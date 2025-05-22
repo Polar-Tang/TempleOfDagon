@@ -32,7 +32,7 @@ export function DropdownMenuCheckboxes() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>Appearance</DropdownMenuLabel>
+        <DropdownMenuLabel>Welcome,</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <AccordionDemo />
         {/* 

@@ -45,7 +45,11 @@ const userSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Product',
         default: []
-    }]
+    }],
+    avatar_url: {
+        type: String,
+        //default: ""
+    }
 })
 
 // CLASS, it utilize our shcema

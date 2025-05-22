@@ -11,11 +11,11 @@ const LoginPage = () => {
 		titleH1: "Login",
 		cardDescription: "Enter your email and password to login to your account",
 		linkDirections: [{
-			to: "/registrar",
+			to: "/register",
 			label: "No tengo cuenta"
 
 		}, {
-			to: "/recuprarcontraseña",
+			to: "/passrecovery",
 			label: "Olvidé mi contraseña"
 		}],
 		field_data_props: [

@@ -245,7 +245,7 @@ export default function CardDetailsForm() {
                                                         placeholder="1234 5678 9012 3456"
                                                         className="bg-zinc-800 border-zinc-700 text-white"
                                                         value={formData.cardNumber}
-                                                        onChange={handleChange}
+                                                        onChange={handleChange} 
                                                         maxLength={16}
                                                     />
                                                     {errors.cardNumber && <p className="text-red-500 text-sm mt-1">{errors.cardNumber}</p>}

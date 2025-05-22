@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react'
 import { AlertProps } from "@/types/AlertTypes"
 import { AuthContext } from '@/context/AuthContext'
+import { jwtDecode } from 'jwt-decode'
+import { accessToken } from '@/types/ContextTypes'
 
 const useAuthReq = ({ endpoint }: { endpoint: string }) => {
-  const [isUserHasLogged, setIsUserHasLogged] = useState(false)
+  const {setisUserLogged, isUserLogged} = useContext(AuthContext)
   const [message, setMessage] = useState({ title: "", description: "", variant: "destructive" } as AlertProps)
   const [isReqSubmited, setisReqSubmited] = useState(false)
-  // const {setToken} = useContext(AuthContext)
+  const {setjwe} = useContext(AuthContext)
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -30,34 +32,36 @@ const useAuthReq = ({ endpoint }: { endpoint: string }) => {
       const data = await responseHTTP.json()
       const messageFromData = data.response.message
       const messageDescription = data.response.payload.detail
-      console.log("Is ok from the backend ", data.response.ok)
       if (data.response.ok) {
-        setIsUserHasLogged(true)
-        sessionStorage.setItem("access_token", String(messageDescription))
+        if (endpoint === "login"){
+          setisUserLogged(true)
+          console.log("IsUserHasLogged ", isUserLogged)
+          sessionStorage.setItem("access_token", String(messageDescription))
+          const object_access_token = jwtDecode(messageDescription) as accessToken
+          setjwe(object_access_token )
+        }
         setMessage({ title: messageFromData, description: "Bienvenido a halloween", variant: "default" })
         return
         // setTimeout(() => {
         // 	login(data.response.payload.detail)
         // }, 2000)
       }
-      data.response.payload.
-      setIsUserHasLogged(false)
+      
       setisReqSubmited(true)
-      setMessage({ title: messageFromData, description: messageDescription, variant: "destructive" })
+      if (responseHTTP.status === 400) {
+        setMessage({ title: messageFromData, description: messageDescription, variant: "destructive" })
+        return
+      }
       return
 
     } catch (error) {
-      console.log(error)
       setisReqSubmited(true)
-      setIsUserHasLogged(false)
       setMessage({ title: "Error", description: "Ocurrió un error, por favor intente de nuevo más tarde ", variant: "destructive" })
     }
   }
 
   return {
     handleRegister,
-    isUserHasLogged,
-    setIsUserHasLogged,
     setMessage,
     message,
     isReqSubmited, 

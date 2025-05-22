@@ -14,16 +14,16 @@ class UserRepository {
     }
 
     static async updateUser(email: string, newDetails) {
-        const { bio, location, image_url } = newDetails
-        await User.updateOne({ email: email }, {
+        const { imagePath } = newDetails
+        console.log(`\nimage_url: `, imagePath)
+        return await User.updateOne({ email: email }, {
             $set: {
-                bio: bio,
-                location: location,
-                // image_url
+                // bio: bio,
+                // location: location,
+                avatar_url: imagePath
             },
             $currentDate: { lastUpdated: true }
         })
-        return
     }
     
 
