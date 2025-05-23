@@ -11,7 +11,8 @@ export type Products = {
     seller_id?: string,
     stock?: number,
     createdAt?: string,
-    updatedAt?: string
+    updatedAt?: string,
+    file?: Blob
 }[]
 
 export type Product = {
@@ -24,7 +25,8 @@ export type Product = {
     seller_id?: string,
     stock?: number,
     createdAt?: string,
-    updatedAt?: string
+    updatedAt?: string,
+    file?: Blob
 }
 
 export interface BannerPorps {

@@ -4,13 +4,14 @@ import authMiddleware from '../middlewares/auth.middleware.js'
 import cors from 'cors'
 import corsOptions from '../helpers/utils/corsOptions.js'
 import multer from 'multer'
+import path from 'path'
 
 
 const storage = multer.diskStorage({
   destination: 'uploads/',
   filename: function (req, file, cb) {
-
     const ext = path.extname(file.originalname).toLowerCase();
+    console.log(file.originalname,  )
     
     const allowedExtensions = ['.jpg', '.png', '.jpeg'];
     if (!allowedExtensions.includes(ext)) {

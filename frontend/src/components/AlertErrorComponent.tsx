@@ -17,8 +17,8 @@ type AlertProps = {
 
 export const AlertDestructive = ({title, description, variant}: AlertProps) => {
   return ReactDOM.createPortal(
-    <Alert variant={variant}>
-      <AlertCircle className="h-4 w-4" />
+    <Alert className="z-100" variant={variant}>
+      <AlertCircle className="h-4 w-4 z-3" />
       <AlertTitle>{title}</AlertTitle>
       <AlertDescription>
         {description}

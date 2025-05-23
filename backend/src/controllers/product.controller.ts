@@ -3,6 +3,10 @@ import ResponseBuilder from "../helpers/builders/response.builder.js";
 import ProductRepository from "../repositories/product.repository.js";
 import UserRepository from "../repositories/user.repository.js";
 import { verifyMinLength, verifyString } from "../helpers/validations/auth.validators.js";
+import jwt from "jsonwebtoken"
+import { virifyPositiveNumber } from "../helpers/validations/product.validators.js";
+import mongoose from "mongoose";
+import { SanitizedProduct } from "../helpers/types/product.type.js";
 
 const isEmptyObject = (obj) => {
     return Object.keys(obj).length === 0;
@@ -14,79 +18,94 @@ export const createProductController = async (req, res, next) => {
             return next(new AppError("El producto está vacío", 400))
         }
         const {
+            filename,
+            fieldname
+        } = req.file
+        console.log("fieldname ", fieldname)
+        const {
             stock,
             description,
             category,
-            image_url,
+            title,
+            price
         } = req.body
 
-         if (!image_url || typeof image_url !== 'string') {
+        if (!filename || typeof filename !== 'string') {
             return next(new AppError("The image was not processed correctly", 500))
-         }
+        }
         const auth_header = req.get("Authorization")
         const token = auth_header.split(" ")[1]
         const payload = jwt.decode(token, process.env.JWT_SECRET)
+       
+        let errors: string[] = []
 
-        const author = UserRepository.getByMail(payload.email)
-        console.log("author:\n------------------------------\n",author)
-        
-        if(!author) {
-            return next(new AppError("User not found", 403))
-        }
-        let errors = []
-
-        const newProduct =  {
-            stock: stock ,
-            description: description ,
+        const newProduct = {
+            title: title,
+            stock: stock,
+            description: description,
             category: category,
-            image_url: image_url ,
+            image_url: filename,
             price: price,
         }
-        const newProductsKeys = Object.keys(newProduct)
-        for (let i = 0; i < newProductsKeys.length; i++ ) {
-            const productItemValue= newProduct[i]
-            console.log("The value is:\n", productItemValue)
-            const productItemKey= newProductsKeys[i]
-            console.log("The key is:\n", productItemKey)
-            if (productItemKey == "price"  || productItemKey == "stock") {
-                let error = positiveNumber(productItemKey, productItemValue)
-                if (error) {
-                    errors.push(error)
+        console.log(newProduct)
+        for (const [key, value] of Object.entries(newProduct)) {
+            console.log("The value is:\n", value)
+            console.log("The key is:\n", key)
+            if (key == "price" || key == "stock") {
+                let verifError = virifyPositiveNumber(key, Number(value))
+                if (verifError) {
+                    errors.push(verifError)
                 }
             }
-            if (productItemKey == "image_url"  || productItemKey == "description") {
-                let error = verifyString(productItemKey, productItemValue)
-                error = verifyMinLength(productItemKey, productItemValue, 8)
-                if (error) {
-                    errors.push(error)
+            if (key == "image_url" || key == "description" || key == "title") {
+                let verifError = verifyString(key, value)
+                verifError = verifyMinLength(key, value, 8)
+                if (verifError) {
+                    errors.push(verifError)
                 }
             }
-        } 
+        }
         if (errors.length > 0) {
-            return next(new AppError(errors, 403))
+            return next(new AppError(errors, 400))
         }
 
-        const sanitizedProduct = {
+        
+
+        const sanitizedProduct: SanitizedProduct = {
+            _id: new mongoose.Types.ObjectId(),
+            title: String(title).trim(),
             stock: Number(stock),
             description: description.trim(),
             category: category.toLowerCase(),
-            image_url: image_url.trim(),
+            image_url: filename.trim(),
             seller_name: payload.name.trim(),
             price: Number(price),
-            seller_id: author._id,
-
+            seller_id: payload._id,
         };
-        const new_object = await ProductRepository.createProduct(sanitizedProduct)
+        const new_product = await ProductRepository.createProduct(sanitizedProduct, payload.email)
+        console.log(new_product)
+        if (!new_product) {
+            const response = new ResponseBuilder()
+            .setOk(true)
+            .setStatus(500)
+            .setMessage(`Can't create the product`)
+            .setPayload({
+                detail: "The product cannot be created, try again later"
+            })
+            .build()
+        return res.status(201).json({ response })
+        }
         const response = new ResponseBuilder()
             .setOk(true)
             .setStatus(201)
             .setMessage(`Product created`)
             .setPayload({
-                new_object
+                new_product
             })
             .build()
         return res.status(201).json({ response })
     } catch (error) {
+        console.log(error)
         next(error)
     }
 }

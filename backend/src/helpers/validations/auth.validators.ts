@@ -10,14 +10,14 @@ export const verifyString = (field_name: string, field_value: string) => {
 }
 export const verifyMinLength = (field_name: string, field_value: string, minLength: number) => {
     if(!(field_value.length >= minLength)){
-        return field_name + ' should have at least ' + minLength + ' characters'
+        return field_name + ' should have at least ' + minLength + ' characters long'
     }
     return ""
 }
 
 export const verifyMaxLength = (field_name: string, field_value: string, maxLength: number) => {
     if(!(field_value.length <= maxLength)){
-        return field_name + ' should have at least ' + maxLength + ' characters'
+        return field_name + ' should have at least ' + maxLength + ' characters long'
     }
     return ""
 

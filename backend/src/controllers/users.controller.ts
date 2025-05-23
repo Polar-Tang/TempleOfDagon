@@ -55,8 +55,11 @@ export const getUserController = async (req, res, next) => {
             }
         }
 
-        const userProfile = await UserRepository.getByName(name)
-        console.log(userProfile)
+        // get profile with products
+        const userProfile = await UserRepository.getUserProductsByName(name, {
+            path: 'products',
+        })
+
 
         if (!userProfile) {
             const response = new ResponseBuilder()
@@ -70,6 +73,8 @@ export const getUserController = async (req, res, next) => {
                 .build()
             return res.json({ response })
         }
+        console.log("User products ", userProfile.products)
+
         const filteredUserProfile = {
             name: userProfile.name,
             email: userProfile.email,
@@ -143,13 +148,13 @@ export const updateUserController = async (req, res, next) => {
             size
         } = req.file as multerFileParse
 
-        const imagePath = process.env.BACKENDURL + "/uploads/" + filename
+        const imagePath = process.env.FRONTENDURL + "/uploads/" + filename
 
         const auth_header = req.get("Authorization")
         const token = auth_header.split(" ")[1]
         const payload = jwt.decode(token, process.env.JWT_SECRET)
-        
-        const userProfile = await UserRepository.updateUser(payload.email, {imagePath })
+        console.log("THis is the payload ", payload)
+        const userProfile = await UserRepository.updateUser(String(payload.email), { imagePath })
 
         const response = new ResponseBuilder()
             .setOk(true)

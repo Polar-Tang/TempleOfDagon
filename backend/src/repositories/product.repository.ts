@@ -1,12 +1,23 @@
+import { SanitizedProduct } from "../helpers/types/product.type.js";
 import Product from "../models/product.models.js"
+import User from "../models/user.models.js";
 // import pool  from "../config/dbMysql.config.js"
 
 class ProductRepository {
-    static async createProduct( new_product_data ) {
+    static async createProduct( new_product_data: SanitizedProduct, email: string) {
         // console.log( new_product_data)
-        const new_product = new Product(new_product_data)
-         await new_product.save()
-         return
+        const seller = await User.findOne({ email: email }).populate('products');
+        if (!seller) {
+          return null  
+        } 
+        const newProduct = await Product.create(new_product_data);
+        if (!newProduct._id) {
+          return null  
+        }
+        seller.products.push(newProduct._id);
+        await seller.save();
+        console.log("The seller now should had the products: ", seller.products)
+        return newProduct
     }
 
     static async updateProduct (product_id, update_data) {

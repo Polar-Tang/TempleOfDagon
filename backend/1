@@ -1,0 +1,2 @@
+
+(spotify:69300): libayatana-appindicator-WARNING **: 16:19:40.106: libayatana-appindicator is deprecated. Please use libayatana-appindicator-glib in newly written code.

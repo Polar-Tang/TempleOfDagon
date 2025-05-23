@@ -10,7 +10,7 @@
     "request": "launch",
 
     // Debug current file in VSCode
-    "program": "${file}",
+    "program": "${workspaceRoot}/backend/src/server.js",
 
     /*
     Path to tsx binary

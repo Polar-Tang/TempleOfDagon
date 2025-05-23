@@ -348,6 +348,9 @@
   .z-0 {
     z-index: 0;
   }
+  .z-3 {
+    z-index: 3;
+  }
   .z-4 {
     z-index: 4;
   }
@@ -362,6 +365,9 @@
   }
   .z-50 {
     z-index: 50;
+  }
+  .z-90 {
+    z-index: 90;
   }
   .z-100 {
     z-index: 100;
@@ -723,9 +729,6 @@
   .w-\[150px\] {
     width: 150px;
   }
-  .w-\[180px\] {
-    width: 180px;
-  }
   .w-auto {
     width: auto;
   }
@@ -901,9 +904,6 @@
   }
   .cursor-pointer {
     cursor: pointer;
-  }
-  .resize-none {
-    resize: none;
   }
   .scroll-my-1 {
     scroll-margin-block: calc(var(--spacing) * 1);
