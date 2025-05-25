@@ -7,7 +7,6 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import UserRepository from '../repositories/user.repository.js'
 import express, { request, response } from "express"
-// import userType from '../helpers/types/user.type.ts'
 import AppError from "../helpers/errors/app.error.js";
 // import authValidator from '../helpers/auth.validators.js'
 import {
@@ -32,7 +31,7 @@ import sendNotification from '../helpers/sockets/sendNotification.js'
 //     // Your implementation here
 // }
 
-export const registerController = async (req: request, res: response, next) => {
+export const registerController = async (req, res, next) => {
     try {
         const { name, password, email } = req.body
         const registerConfig = {
@@ -153,7 +152,7 @@ export const registerController = async (req: request, res: response, next) => {
     }
 }
 
-// export const verifyEmailController = async (req: request, res: response, next) => {
+// export const verifyEmailController = async (req, res, next) => {
 //     try {
 //         const { validation_token } = req.params
 //         const payload = jwt.verify(validation_token, process.env.JWT_SECRET)
@@ -176,7 +175,7 @@ export const registerController = async (req: request, res: response, next) => {
 //     }
 // }
 
-export const loginController = async (req: request, res: response, next) => {
+export const loginController = async (req, res, next) => {
     try {
         const loginSchema = Joi.object({
             email: Joi.string().email().required(),
@@ -271,7 +270,7 @@ export const loginController = async (req: request, res: response, next) => {
 }
 
 
-export const forgotPasswordController = async (req: request, res: response, next) => {
+export const forgotPasswordController = async (req, res, next) => {
     try {
         const { email } = req.body
 
@@ -341,7 +340,7 @@ export const forgotPasswordController = async (req: request, res: response, next
 
 }
 
-export const recoveryPasswordController = async (req: request, res: response, next) => {
+export const recoveryPasswordController = async (req, res, next) => {
     try {
         const { reset_token } = req.params
         const { password } = req.body

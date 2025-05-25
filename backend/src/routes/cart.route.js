@@ -1,11 +1,11 @@
 import express from 'express'
-import { addToCartController, eliminateProductCart, getAllCartProducts, checkoutController, checkoutRouterController, eliminateSessionCartController } from '../controllers/cart.controller.ts'
+import { addToCartController, eliminateProductCart, getAllCartProducts, checkoutController, checkoutRouterController, eliminateSessionCartController } from '../controllers/cart.controller.js'
 import authMiddleware from '../middlewares/auth.middleware.js'
 import cookieParser from "cookie-parser";
 import cors from 'cors'
 import corsOptions from '../helpers/utils/corsOptions.js'
 import crypto from 'crypto'
-import validateId from '../middlewares/valid_id.ts';
+import validateId from '../middlewares/valid_id.js';
 
 const cartRouter = express.Router()
 

@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-gray-900 text-white py-10">
       <div className="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-8">
         <div>
-          <h2 className="text-lg font-semibold flex items-center">
+          <h2 className="text-lg font-semibold font-burtonNT  flex items-center">
             <span className="mr-2">⚡</span>The Esoteric Order of Dagon 
           </h2>
           <p className="text-gray-400 text-sm mt-2">

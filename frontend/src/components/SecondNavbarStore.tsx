@@ -4,13 +4,12 @@ import { Input } from "@/components/ui/input"
 import { ProductSearchContext } from '@/context/ProductSearchContext'
 import ProductsMock from '@/mocks/productsMock'
 import BreadCrumbsNav from './menus/BreadCrumbsNav'
-import { LayoutContext } from '@/context/LayoutContext'
+// import { LayoutContext } from '@/context/LayoutContext'
 // import ProductsNavbar from './menus/ProductsNavbar'
 
 const SecondNavbarStore = ({ children }: { children: React.ReactNode}) => {
-    const { setProductsState, productsState } = useContext(ProductSearchContext)
+    const { setProductsState, productsState, isSingleProduct} = useContext(ProductSearchContext)
     // console.log("Children", setProductsState(searchIpunt?.value))
-    const {isSingleProduct} = useContext(LayoutContext)
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value

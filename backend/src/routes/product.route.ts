@@ -1,14 +1,19 @@
-import express from 'express'
-import { createProductController, deleteProductController, getAllProductController, getProductByIdController, updateProductController } from '../controllers/product.controller.js'
-import authMiddleware from '../middlewares/auth.middleware.js'
-import cors from 'cors'
-import corsOptions from '../helpers/utils/corsOptions.js'
-import multer from 'multer'
-import path from 'path'
+import multer from "multer"
+import path from "path"
+import { fileURLToPath } from 'url';
+import { createProductController, deleteProductController, getAllProductController, getProductByIdController, updateProductController } from '../controllers/product.controller.js';
+import express from 'express';
+import authMiddleware from '../middlewares/auth.middleware.js';
+import cors from 'cors';
+import corsOptions from "../helpers/utils/corsOptions.js";
+import ENVIRONMENT from "../config/environment.js";
+
+const productRouter = express.Router()
+console.log("The main module", process.mainModule)
 
 
 const storage = multer.diskStorage({
-  destination: 'uploads/',
+  destination: `./uploads`,
   filename: function (req, file, cb) {
     const ext = path.extname(file.originalname).toLowerCase();
     console.log(file.originalname,  )
@@ -19,24 +24,21 @@ const storage = multer.diskStorage({
     }
 
     const uniqueId = Math.round(Math.random() * 1E9) + '-' + Math.round(Math.random() * 1E9);
-    const completeFileName = uniqueId + ext;
+    const completeFileName = uniqueId + ext
     
     console.log("Complete file name:", completeFileName);
     cb(null, completeFileName);
   }
 });
-
+// const storage = multer.memoryStorage()
 const upload = multer({ 
   storage: storage,
   limits: {
     fileSize: 5 * 1024 * 1024
   }
 });
-
-const productRouter = express.Router()
-
 productRouter.get('/', getAllProductController)
-productRouter.post('/', authMiddleware(['admin', 'user']), upload.single('file'), createProductController)
+productRouter.post('/', authMiddleware(['admin', 'user']), upload.any(), createProductController)
 productRouter.options('/', cors(corsOptions))
 
 productRouter.get('/:id', getProductByIdController)

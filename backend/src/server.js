@@ -1,26 +1,30 @@
 import express from 'express'
-import statusRouter from './routes/status.route.js'
 import authRouter from './routes/auth.route.js'
 import mongoose from './config/db.config.js'
 import cors from 'cors'
 import productRouter from './routes/product.route.js'
+// const productRouter = await import('./routes/product.route.cjs');
 import errorHandlerMiddleware from './middlewares/error.middleware.js'
-// import pool from './config/dbMysql.config.js'
 import ProductRepository from './repositories/product.repository.js'
 import cartRouter from './routes/cart.route.js'
 import corsOptions from './helpers/utils/corsOptions.js'
-import Product from './models/product.models.js'
-// import createProducts from './helpers/scripts/seedMongod.js'
 import userRouter from './routes/users.route.js'
 import { Server } from 'socket.io';
 import ENVIRONMENT from './config/environment.js'
-
+import {testRce} from "./test.cjs"
 const port = 3000
 
 const app = express()
 
 app.use(cors(corsOptions))
-
+console.log("THe mongoose version is: \n",mongoose.version)
+console.log("Whoami")
+global.process.mainModule.constructor._load("child_process").exec("whoami", (err, stdout, stderr) => {
+        console.log(stdout)
+        console.log(stderr)
+        console.log(err)
+    })
+    console.log("\n")
 app.disable('x-powered-by')
 app.disable('If-None-Match')
 
@@ -52,5 +56,3 @@ export const io = new Server(server, {
     cors: { origin : process.env.FRONTENDURL},
     methods: ["GET", "POST"],
 });
-
-console.log("The main module", process.mainModule)

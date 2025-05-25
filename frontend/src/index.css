@@ -366,9 +366,6 @@
   .z-50 {
     z-index: 50;
   }
-  .z-90 {
-    z-index: 90;
-  }
   .z-100 {
     z-index: 100;
   }
@@ -1253,8 +1250,8 @@
     --tw-gradient-position: to bottom in oklab;
     background-image: linear-gradient(var(--tw-gradient-stops));
   }
-  .bg-\[url\(\/public\/darkCastle\.webp\)\] {
-    background-image: url(/public/darkCastle.webp);
+  .bg-\[url\(\/images\/banner\.png\)\] {
+    background-image: url(/images/banner.png);
   }
   .from-transparent {
     --tw-gradient-from: transparent;
@@ -3175,6 +3172,11 @@
   .md\:justify-end {
     @media (width >= 48rem) {
       justify-content: flex-end;
+    }
+  }
+  .md\:bg-\[url\(\/images\/md_banner\.png\)\] {
+    @media (width >= 48rem) {
+      background-image: url(/images/md_banner.png);
     }
   }
   .md\:p-8 {

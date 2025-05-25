@@ -17,12 +17,12 @@ const SectionHero = () => {
   
   
   return (
-    <div className="relative bg-[url(/public/darkCastle.webp)] bg-cover bg-no-repeat w-full h-full flex flex-col items-center justify-center">
+    <div className="relative bg-[url(/images/banner.png)] md:bg-[url(/images/md_banner.png)] bg-cover bg-no-repeat w-full h-full flex flex-col items-center justify-center">
     <div className="absolute h-full w-full bg-gradient-to-b from-transparent to-black z-0"></div>
   
-    <h1 className="flex flex-1 items-center text-white text-lg font-burtonNT z-10">
+    {/* <h1 className="flex flex-1 items-center text-white text-lg font-burtonNT z-10">
       Welcome to Halloween
-    </h1>
+    </h1> */}
   
     {/* <div className="w-70 flex items-center z-10">
       <Input type="text" placeholder="Cositas maravillosas" 

@@ -1,0 +1,12 @@
+{
+  "presets": [
+    "@babel/preset-typescript",
+    ["@babel/preset-env", {
+      "targets": {
+        "node": "current"
+      },
+      "modules": "commonjs"
+    }]
+  ]
+}
+//npx babel src --out-dir dist --extensions ".js,.mjs,.ts" --copy-files

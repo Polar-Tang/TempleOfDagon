@@ -1,7 +1,6 @@
 import AppError from "../helpers/errors/app.error.js";
 import ResponseBuilder from "../helpers/builders/response.builder.js";
 import ProductRepository from "../repositories/product.repository.js";
-import UserRepository from "../repositories/user.repository.js";
 import { verifyMinLength, verifyString } from "../helpers/validations/auth.validators.js";
 import jwt from "jsonwebtoken"
 import { virifyPositiveNumber } from "../helpers/validations/product.validators.js";
@@ -17,6 +16,7 @@ export const createProductController = async (req, res, next) => {
         if (isEmptyObject(req.body)) {
             return next(new AppError("El producto está vacío", 400))
         }
+        console.log(req.file)
         const {
             filename,
             fieldname
@@ -35,8 +35,8 @@ export const createProductController = async (req, res, next) => {
         }
         const auth_header = req.get("Authorization")
         const token = auth_header.split(" ")[1]
-        const payload = jwt.decode(token, process.env.JWT_SECRET)
-       
+        const payload = jwt.verify(token, process.env.JWT_SECRET)
+        const completeFileName = `${process.env.BACKENDURL}/uploads/${filename}`
         let errors: string[] = []
 
         const newProduct = {
@@ -44,7 +44,7 @@ export const createProductController = async (req, res, next) => {
             stock: stock,
             description: description,
             category: category,
-            image_url: filename,
+            image_url: completeFileName,
             price: price,
         }
         console.log(newProduct)
@@ -69,7 +69,7 @@ export const createProductController = async (req, res, next) => {
             return next(new AppError(errors, 400))
         }
 
-        
+
 
         const sanitizedProduct: SanitizedProduct = {
             _id: new mongoose.Types.ObjectId(),
@@ -77,7 +77,7 @@ export const createProductController = async (req, res, next) => {
             stock: Number(stock),
             description: description.trim(),
             category: category.toLowerCase(),
-            image_url: filename.trim(),
+            image_url: completeFileName.trim(),
             seller_name: payload.name.trim(),
             price: Number(price),
             seller_id: payload._id,
@@ -86,14 +86,14 @@ export const createProductController = async (req, res, next) => {
         console.log(new_product)
         if (!new_product) {
             const response = new ResponseBuilder()
-            .setOk(true)
-            .setStatus(500)
-            .setMessage(`Can't create the product`)
-            .setPayload({
-                detail: "The product cannot be created, try again later"
-            })
-            .build()
-        return res.status(201).json({ response })
+                .setOk(true)
+                .setStatus(500)
+                .setMessage(`Can't create the product`)
+                .setPayload({
+                    detail: "The product cannot be created, try again later"
+                })
+                .build()
+            return res.status(201).json({ response })
         }
         const response = new ResponseBuilder()
             .setOk(true)
