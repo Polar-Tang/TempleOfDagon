@@ -13,6 +13,8 @@ export interface ProductCardPortalProps {
     setSelectedImage: React.Dispatch<React.SetStateAction<selectedImage>>,
 
 }
+
+
 export type selectedImage = {
     src: string
     name: string

@@ -2,6 +2,9 @@ version: '3.8'
 
 services:
   backend:
+    # networks:
+    #   - internal_network
+    container_name: backend-dagon
     develop:
       watch:
         - action: sync
@@ -23,9 +26,10 @@ services:
       - MONGO_URI=mongodb://mongo:27017/mydatabase 
     depends_on:
       - mongo
-  # This will exit with status 0 but its fine, https://stackoverflow.com/questions/44884719/exited-with-code-0-docker
+  # This will exit with status 0 but its fine
   frontend:
     build: ./frontend
+    container_name: frontend-dagon
     environment: 
       - VITE_API_URL=http://localhost:3000
       - VITE_URL=http://localhost
@@ -48,22 +52,36 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
-      # read and write perm for write the cache
-      - ./nginx_cache:/data/nginx/cache:rw 
+      - ./nginx_cache:/data/nginx/cache
       - images-folder:/data/images
       - frontend-folder:/usr/share/nginx/html
+    command: [nginx-debug, '-g', 'daemon off;']
     depends_on:
       - frontend
       - backend
+    # networks:
+    #   - internal_network
+    #   - public_network
   mongo:
     image: mongo:5.0
-    container_name: mongo
+    container_name: mongo-dagon
     ports:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
-
+  varnish:
+    image: varnish:latest
+    ports:
+      - "6081:6081"  # Varnish listens on port 80 (public-facing)
+    volumes:
+      - ./varnish/default.vcl:/etc/varnish/default.vcl  # Varnish config
+    depends_on:
+      - backend
 volumes:
   mongo-data:
   images-folder:
   frontend-folder:
+# networks:
+#   internal_network:
+#     internal: true
+#   public_network:

@@ -1,26 +1,39 @@
 import { ImageZoom } from '@/components/Image-zoom'
 import { useParams } from 'react-router-dom'
-import ProductsMock from '@/mocks/productsMock'
-import SecondNavbarStore from '@/components/SecondNavbarStore'
-import { useContext, useEffect } from 'react'
-import { ProductSearchContext } from '@/context/ProductSearchContext'
+// import ProductsMock from '@/mocks/productsMock'
+import {  useCallback, useEffect, useState } from 'react'
+import CommentSection from './CommentSection'
+import { Product } from '@/types/products'
+import SecondNabvarProductStore from '@/components/SecondNabvarProductStore'
+import { comment } from '@/types/CommentsType'
 
 export default function ProductDetailPage() {
 
-  const {setisSingleProduct} = useContext(ProductSearchContext)
-  useEffect(() => {
-    setisSingleProduct(false)
-  }, [])
   const { id } = useParams()
-  const product = ProductsMock.find((product) => product._id === id)
+  const [product, setProduct] = useState({} as Product)
+  const [commentState, setcommentState] = useState([] as comment[])
+  useEffect(() => {
+    getProducts()
+  }, [commentState])
+  const getProducts = useCallback(async () => {
+    const productFetched = await fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`, {
+      method: "GET"
+    })
+    const productData = await productFetched.json()
+    setProduct(productData.payload.ProductsSearched)
+  }, [product])
+  
+
+  // const product = ProductsMock.find((product) => product._id === id)
   if (!product) {
     return <div className="text-red-500">Product not found</div>
   }
 
-    
 
   return (
-    <SecondNavbarStore>
+    <>
+    
+    <SecondNabvarProductStore>
 
       <ImageZoom
         product={product}
@@ -30,7 +43,10 @@ export default function ProductDetailPage() {
         // height={400}
         className="object-cover"
       />
-    </SecondNavbarStore>
+    </SecondNabvarProductStore>
+      <CommentSection commentState={commentState} setcommentState={setcommentState} comments={product.comments} product_id={product._id} />
+    </>
+    
 
 
   )

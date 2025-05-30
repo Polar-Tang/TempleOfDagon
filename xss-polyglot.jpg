@@ -1,0 +1,11 @@
+--2025-05-27 22:28:24--  http://portswigger-labs.net/polyglot/jpeg/xss_within_header_compressed_small_logo.jpg
+Resolving portswigger-labs.net (portswigger-labs.net)... 52.16.179.7
+Connecting to portswigger-labs.net (portswigger-labs.net)|52.16.179.7|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3318 (3.2K) [image/jpeg]
+Saving to: ‘xss_within_header_compressed_small_logo.jpg.2’
+
+     0K ...                                                   100%  160M=0s
+
+2025-05-27 22:28:25 (160 MB/s) - ‘xss_within_header_compressed_small_logo.jpg.2’ saved [3318/3318]
+

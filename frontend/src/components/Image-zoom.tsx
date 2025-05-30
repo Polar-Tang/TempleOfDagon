@@ -43,7 +43,7 @@ export function ImageZoom({ src, alt, magnifyAmount = 2.5, className, product }:
 
   return (
     <>
-      <div className="space-y-4">
+      <div className="space-y-4 w-full">
         <div
           ref={imageRef}
           className={cn("relative overflow-hidden rounded-lg border", className)}

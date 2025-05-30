@@ -32,11 +32,21 @@ export function DialogDemo({ className }: { className: string }) {
     const [IsSendReq, setIsSendReq] = useState(false)
     const handleFileChange = (e: FormEvent) => {
         const target = e.target as HTMLInputElement;
-        setformState(prev => ({
-            ...prev,
-            file: target.files ? target.files[0] : undefined
-        }));
-        console.log(formState)
+        const files = target.files
+        if (files) {
+            setformState(prev => ({
+                ...prev,
+                file:  files[0] 
+            }));
+            const reader = new FileReader()
+            reader.onload = function(fileEvent: ProgressEvent<FileReader>) {
+                if (fileEvent.target) {
+                    console.log(fileEvent.target.result)
+                    console.log("RESULT: ",reader.result)
+                }
+            }
+            reader.readAsDataURL(files[0]) // once read the blob, reader.result is a base64 string
+        }
     };
 
     const submitMultipartForm = async (e: FormEvent) => {
@@ -168,8 +178,9 @@ export function DialogDemo({ className }: { className: string }) {
                         </Select>
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
+                         
                         <Label htmlFor="stock" className="text-right">
-                            Image
+                        image
                         </Label>
                         <Input
                             onChange={handleFileChange}
@@ -177,6 +188,7 @@ export function DialogDemo({ className }: { className: string }) {
                             type="file"
                             accept="image/*"
                         />
+                        
                     </div>
                     <DialogFooter>
                         <Button type="submit" >Submit</Button>

@@ -6,22 +6,39 @@ import jwt from "jsonwebtoken"
 import { virifyPositiveNumber } from "../helpers/validations/product.validators.js";
 import mongoose from "mongoose";
 import { SanitizedProduct } from "../helpers/types/product.type.js";
+import path from "path";
+import fs from "fs"
+import createFilename from "../helpers/utils/createFIlename.js"
+import CommentRepository from "../repositories/comment.repository.js";
 
 const isEmptyObject = (obj) => {
     return Object.keys(obj).length === 0;
 };
+const errorRes = new ResponseBuilder()
+    .setOk(true)
+    .setStatus(400)
+    .setMessage(`Can't create the product`)
+    .build()
+const notFound = new ResponseBuilder()
+    .setOk(true)
+    .setStatus(404)
+    .setMessage(`Product Not found`)
+    .build()
 
 export const createProductController = async (req, res, next) => {
     try {
         if (isEmptyObject(req.body)) {
             return next(new AppError("El producto está vacío", 400))
         }
-        console.log(req.file)
         const {
-            filename,
-            fieldname
-        } = req.file
-        console.log("fieldname ", fieldname)
+            originalname,
+            mimetype,
+            buffer
+        } = req.file as {
+            originalname: string,
+            mimetype: string,
+            buffer: NodeJS.ArrayBufferView
+        }
         const {
             stock,
             description,
@@ -30,15 +47,42 @@ export const createProductController = async (req, res, next) => {
             price
         } = req.body
 
-        if (!filename || typeof filename !== 'string') {
-            return next(new AppError("The image was not processed correctly", 500))
+        const fileName = createFilename(originalname)
+        if (!fileName || typeof fileName !== 'string') {
+            // there's an error while creating the filename, createFilename returns an error 
+            const response = errorRes.setPayload({
+                    detail: String(fileName)
+                })
+            return res.status(400).send(response);
         }
+        const fileStorageImage = path.join('uploads', fileName)
+        const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+        if (buffer.byteLength > MAX_FILE_SIZE) {
+            const response = errorRes.setPayload({
+                    detail: String("Max 10 mb for a file")
+                })
+            return res.status(400).send(response);
+        }
+        if (buffer.byteLength === 0) {
+            const response = errorRes.setPayload({
+                    detail: String("Please select an image")
+                })
+            return res.status(400).send(response);
+        }
+        fs.writeFile(fileStorageImage, buffer, (err) => {
+            if (err) {
+                const response = errorRes.setPayload({
+                    detail: String("Error saving file")
+                })
+            return res.status(500).send(response);
+            } 
+        })
+        const completeFileName = `${process.env.FRONTENDURL}/images/uploads/${fileName}`
+        let errors: string[] = []
+
         const auth_header = req.get("Authorization")
         const token = auth_header.split(" ")[1]
         const payload = jwt.verify(token, process.env.JWT_SECRET)
-        const completeFileName = `${process.env.BACKENDURL}/uploads/${filename}`
-        let errors: string[] = []
-
         const newProduct = {
             title: title,
             stock: stock,
@@ -47,10 +91,8 @@ export const createProductController = async (req, res, next) => {
             image_url: completeFileName,
             price: price,
         }
-        console.log(newProduct)
+
         for (const [key, value] of Object.entries(newProduct)) {
-            console.log("The value is:\n", value)
-            console.log("The key is:\n", key)
             if (key == "price" || key == "stock") {
                 let verifError = virifyPositiveNumber(key, Number(value))
                 if (verifError) {
@@ -83,7 +125,6 @@ export const createProductController = async (req, res, next) => {
             seller_id: payload._id,
         };
         const new_product = await ProductRepository.createProduct(sanitizedProduct, payload.email)
-        console.log(new_product)
         if (!new_product) {
             const response = new ResponseBuilder()
                 .setOk(true)
@@ -113,7 +154,6 @@ export const createProductController = async (req, res, next) => {
 export const deleteProductController = async (req, res, next) => {
     try {
         const { id } = req.params
-        console.log("This is the id", id)
         if (!id) {
             return next(new AppError("You must provide an id", 400))
 
@@ -179,7 +219,7 @@ export const getProductByIdController = async (req, res, next) => {
             return next(new AppError("There's no id", 400))
         }
 
-        const ProductsSearched = await ProductRepository.getProductById(id) // []
+        const ProductsSearched = await ProductRepository.getProductById(id)
 
         // if (isEmptyObject(object_searched)) {
         //     return next(new AppError("Product not found", 404))
@@ -218,6 +258,88 @@ export const getAllProductController = async (req, res, next) => {
         return res.json(response)
     } catch (error) {
         console.error(error);
-        next(error)
+        return next(error)
+    }
+}
+
+export const createCommentController = async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const {message} = req.body
+
+         const auth_header = req.get("Authorization")
+        const token = auth_header.split(" ")[1]
+        const payload = jwt.verify(token, process.env.JWT_SECRET)
+        
+        if (!payload) {
+            return next("No user")
+
+        }
+        if (!message) {
+            return next("There no such message")
+        }
+        const messageData = {
+            description: message, 
+            author: payload.name, 
+            product_id: id
+        }
+        
+        const comment = CommentRepository.postComment(messageData)
+        if (!comment) {
+            return next("An error has occured while posting the new message")
+        }
+        const response = new ResponseBuilder()
+            .setOk(true)
+            .setStatus(200)
+            .setMessage(`Your message has been posted successfully!`)
+            .setPayload({
+                detail: comment
+            })
+            .build()
+        return res.json(response) 
+    } catch (error) {
+        console.log(error)
+        return next(error)
+    }
+}
+
+export const responseCommentController = async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const {message} = req.body
+
+         const auth_header = req.get("Authorization")
+        const token = auth_header.split(" ")[1]
+        const payload = jwt.verify(token, process.env.JWT_SECRET)
+        
+        if (!payload) {
+            return next("No user")
+
+        }
+        if (!message) {
+            return next("There no such message")
+        }
+        const messageData = {
+            message: message, 
+            author: payload.name, 
+            message_id: id
+        }
+        
+        const comment = CommentRepository.responseComment(messageData)
+        if (!comment) {
+            return next("An error has occured while posting the new message")
+        }
+        const response = new ResponseBuilder()
+            .setOk(true)
+            .setStatus(200)
+            .setMessage(`Your message has been posted successfully!`)
+            .setPayload({
+                detail: comment
+            })
+            .build()
+        return res.json(response) 
+    } catch (error) {
+        console.log(error)
+        return next(error)
     }
 }

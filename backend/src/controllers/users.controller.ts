@@ -148,7 +148,7 @@ export const updateUserController = async (req, res, next) => {
             size
         } = req.file as multerFileParse
 
-        const imagePath = process.env.FRONTENDURL + "/uploads/" + filename
+        const imagePath = process.env.FRONTENDURL + "/images/uploads/" + filename
 
         const auth_header = req.get("Authorization")
         const token = auth_header.split(" ")[1]

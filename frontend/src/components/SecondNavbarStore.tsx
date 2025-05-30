@@ -3,12 +3,11 @@ import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { ProductSearchContext } from '@/context/ProductSearchContext'
 import ProductsMock from '@/mocks/productsMock'
-import BreadCrumbsNav from './menus/BreadCrumbsNav'
 // import { LayoutContext } from '@/context/LayoutContext'
 // import ProductsNavbar from './menus/ProductsNavbar'
 
 const SecondNavbarStore = ({ children }: { children: React.ReactNode}) => {
-    const { setProductsState, productsState, isSingleProduct} = useContext(ProductSearchContext)
+    const { setProductsState, productsState} = useContext(ProductSearchContext)
     // console.log("Children", setProductsState(searchIpunt?.value))
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,9 +36,6 @@ const SecondNavbarStore = ({ children }: { children: React.ReactNode}) => {
             <main className="container mx-auto px-4 py-6">
                 <div className="flex flex-col gap-4">
                     <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-                        {
-                            isSingleProduct
-                                ?
                                 <> <div className="relative w-full md:w-auto flex-1 max-w-3xl">
                                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" />
                                     <Input
@@ -52,15 +48,12 @@ const SecondNavbarStore = ({ children }: { children: React.ReactNode}) => {
                                         <span>K</span>
                                     </div>
                                 </div>
-                                    {/* <ProductsNavbar /> */}
                                 </>
 
-                                : <BreadCrumbsNav />}
                     </div>
 
-                    <div className={ isSingleProduct 
-                    ? `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 justify-items-center`
-                    : `grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-[1fr,_2fr]`}>
+                    <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 justify-items-center`
+}>
                         {children}
                     </div>
                 </div>

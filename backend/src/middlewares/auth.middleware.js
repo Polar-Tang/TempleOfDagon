@@ -14,9 +14,9 @@ const authMiddleware = (allowed_roles) => {
                 const response = new ResponseBuilder()
                     .setOk(false)
                     .setStatus(errStatusCode)
-                    .setMessage(`Algo salió mal`)
+                    .setMessage(`Something went wrong`)
                     .setPayload({
-                        message: "No hay token"
+                        message: "You must login"
                     })
                     .build()
                 return res.status(errStatusCode).json({ response })
@@ -28,9 +28,9 @@ const authMiddleware = (allowed_roles) => {
                 const response = new ResponseBuilder()
                     .setOk(false)
                     .setStatus(errStatusCode)
-                    .setMessage(`Algo salió mal`)
+                    .setMessage(`Something went wrong`)
                     .setPayload({
-                        message: "Token malformado"
+                        message: "Bad token"
                     })
                     .build()
                 return res.status(errStatusCode).json({ response })
@@ -42,9 +42,9 @@ const authMiddleware = (allowed_roles) => {
                     const response = new ResponseBuilder()
                         .setOk(false)
                         .setStatus(403)
-                        .setMessage(`Algo salió mal`)
+                        .setMessage(`Something went wrong`)
                         .setPayload({
-                            message: "Operación no permitida"
+                            message: "Not allowed"
                         })
                         .build()
                     return res.status(403).json({ response })
@@ -58,7 +58,7 @@ const authMiddleware = (allowed_roles) => {
                 const response = new ResponseBuilder()
                     .setOk(false)
                     .setStatus(errStatusCode)
-                    .setMessage(`Algo salió mal`)
+                    .setMessage(`Something went wrong`)
                     .setPayload({
                         message: err.message
                     })
@@ -71,7 +71,7 @@ const authMiddleware = (allowed_roles) => {
             const response = new ResponseBuilder()
             .setOk(false)
             .setStatus(errStatusCode)
-            .setMessage(`Algo salió mal`)
+            .setMessage(`Something went wrong`)
             .setPayload({
                 message: err.message
             })

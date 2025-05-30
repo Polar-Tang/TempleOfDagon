@@ -1,4 +1,6 @@
-export type categories = "magic" | "candy" | "snacks" | "drinks" | "toys" | "accessories" | "clothes" | "home" | "pets" | "others"
+import { comment } from "./CommentsType"
+
+export type categories = "Magic" | "stone" | "meat" | "drinks" | "toys" | "accessories" | "clothes" | "home" | "pets" | "others"
 
 
 export type Products = {
@@ -7,10 +9,14 @@ export type Products = {
     image_url: string,
     price: number,
     category?: categories,
+    seller_name?: string,
     description?: string,
     seller_id?: string,
+    comments?: comment[] | string[]
     stock?: number,
+    __v?: number
     createdAt?: string,
+    active?: Boolean,
     updatedAt?: string,
     file?: Blob
 }[]
@@ -24,7 +30,11 @@ export type Product = {
     description?: string,
     seller_id?: string,
     stock?: number,
+    active?: Boolean,
     createdAt?: string,
+    seller_name?: string,
+    comments?: comment[] 
+    __v?: number
     updatedAt?: string,
     file?: Blob
 }

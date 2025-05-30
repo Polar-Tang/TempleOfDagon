@@ -29,7 +29,7 @@ class ProductRepository {
     }
 
     static async getProductById (product_id){
-        return Product.findOne({"_id":product_id})
+        return Product.findOne({"_id":product_id}).populate("comments")
     }
 
     static async getProductBySellerId (product_id){
