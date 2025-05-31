@@ -8,7 +8,6 @@ import { Truck, RotateCcw, CreditCard, Shield, Reply } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
 import { comment, commentsComponent } from "@/types/CommentsType"
 import { CommentInputFormWithFeedback } from "./CommentInputFormWithFeedback"
-import { Input } from "@/components/ui/input"
 import InputMessage from "@/components/InputMessage"
 
 type DialogType = "shipping" | "returns" | "payment" | "warranty" | null

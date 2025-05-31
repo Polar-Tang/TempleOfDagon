@@ -5,6 +5,7 @@ import { SkeletonCard } from "@/components/cards/SkelectonCard"
 import SecondNavbarStore from "@/components/SecondNavbarStore"
 import { useContext, useEffect } from "react"
 import { ProductSearchContext } from "@/context/ProductSearchContext"
+import { AuthContext } from "@/context/AuthContext"
 // import { Products } from "@/types/products"
 // import ProductsMock from "@/mocks/productsMock"
 // const [productsState, setProductsState] = useState<Products>(ProductsMock)
@@ -17,10 +18,12 @@ const ProductsList = () => {
   useEffect(() => {
     setisSingleProduct(true)
   }, [])
-
+ 
   const { productsState } = useContext(ProductSearchContext)
 
-
+    const { preferences } = useContext(AuthContext)
+     
+  console.log("Product ids: ",preferences.productId)
   return (
     <SecondNavbarStore>
 
@@ -32,7 +35,7 @@ const ProductsList = () => {
           )
           )
           : productsState.map((product) => (
-            <ProductCard product={product} />
+            <ProductCard product={product} liked_ids={preferences.productId}  />
           ))}
     </SecondNavbarStore>
   )

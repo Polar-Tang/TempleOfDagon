@@ -4,7 +4,7 @@ import ResponseBuilder  from "../helpers/builders/response.builder.js"
 
 
 const authMiddleware = (allowed_roles) => {
-    const errStatusCode = 500
+    const errStatusCode = 403
 
     return (req, res, next) => {
         try {

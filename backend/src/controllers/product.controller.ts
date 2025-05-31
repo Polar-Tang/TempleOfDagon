@@ -147,7 +147,7 @@ export const createProductController = async (req, res, next) => {
         return res.status(201).json({ response })
     } catch (error) {
         console.log(error)
-        next(error)
+        return next(error)
     }
 }
 
@@ -175,7 +175,7 @@ export const deleteProductController = async (req, res, next) => {
         return res.json(response)
     } catch (error) {
         console.error(error);
-        next(error)
+        return next(error)
     }
 
 }
@@ -205,7 +205,7 @@ export const updateProductController = async (req, res, next) => {
         return res.json(response)
     } catch (error) {
         console.error(error);
-        next(error)
+        return next(error)
     }
 
 }
@@ -236,7 +236,7 @@ export const getProductByIdController = async (req, res, next) => {
         return res.json(response)
     } catch (error) {
         console.error(error);
-        next(error)
+        return next(error)
     }
 }
 

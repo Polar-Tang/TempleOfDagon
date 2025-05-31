@@ -46,6 +46,11 @@ const userSchema = new mongoose.Schema({
         ref: 'Product',
         default: []
     }],
+    preferences: [{
+        type: Schema.Types.ObjectId,
+        ref: 'UserInteraction',
+        default: []
+    }],
     avatar_url: {
         type: String,
         //default: ""

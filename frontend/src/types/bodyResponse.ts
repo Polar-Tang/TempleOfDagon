@@ -9,6 +9,15 @@ export interface BodyResponse {
         detail?: string
     }
 }
+type response = {
+    
+}
+export interface BodyResponseAny {
+    ok: boolean
+    status: number
+    message: string
+    payload: any
+}
 
 export interface ResponseCartObject {
     _id: string

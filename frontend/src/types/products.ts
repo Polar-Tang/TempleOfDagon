@@ -27,14 +27,14 @@ export type Product = {
     image_url: string,
     price: number,
     category?: categories,
+    seller_name?: string,
     description?: string,
     seller_id?: string,
+    comments?: comment[] | string[]
     stock?: number,
-    active?: Boolean,
-    createdAt?: string,
-    seller_name?: string,
-    comments?: comment[] 
     __v?: number
+    createdAt?: string,
+    active?: Boolean,
     updatedAt?: string,
     file?: Blob
 }

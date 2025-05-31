@@ -1,5 +1,5 @@
 import express from 'express'
-import { getUserController, updateUserController } from "../controllers/users.controller.js"
+import { getUserController, responseCommentLikeController, updateUserController } from "../controllers/users.controller.js"
 import corsOptions from '../helpers/utils/corsOptions.js'
 import cors from "cors"
 import authMiddleware from '../middlewares/auth.middleware.js'
@@ -35,8 +35,6 @@ const upload = multer({
 
 const userRouter = express.Router()
 
-userRouter.get('/:name', getUserController)
-userRouter.options('/:name', cors(corsOptions))
 
 
 // userRouter.get('/:name/detail', getUserDetailController)
@@ -45,5 +43,10 @@ userRouter.options('/:name', cors(corsOptions))
 userRouter.put('/avatar', authMiddleware(['admin', "user"]), upload.single('file'), updateUserController)
 userRouter.options('/avatar', cors(corsOptions))
 
+userRouter.get('/preference/like/:product_id', authMiddleware(['admin', "user"]), responseCommentLikeController)
+userRouter.options('/preference', cors(corsOptions))
+
+userRouter.get('/:name', getUserController)
+userRouter.options('/:name', cors(corsOptions))
 
 export default userRouter

@@ -3,6 +3,8 @@ import ResponseBuilder from '../helpers/builders/response.builder.js'
 import UserRepository from '../repositories/user.repository.js'
 import ENVIRONMET from "../config/environment.js"
 import ProductRepository from '../repositories/product.repository.js'
+import UserInteractionRepository from '../repositories/userInteraction.repository.js'
+import { userPayload } from '../types/token.type.js'
 
 
 export const getUserController = async (req, res, next) => {
@@ -88,7 +90,7 @@ export const getUserController = async (req, res, next) => {
 
         if (auth_header) {
             const token = auth_header.split(" ")[1]
-            const payload = jwt.decode(token, process.env.JWT_SECRET)
+            const payload = jwt.verify(token, process.env.JWT_SECRET)
             console.log(token)
             console.log(payload)
             console.log(payload.name, " ", name, " are wuall? ", name === payload.name)
@@ -166,7 +168,7 @@ export const updateUserController = async (req, res, next) => {
             .build()
         return res.json({ response })
     } catch (error) {
-        next(error)
+        return next(error)
     }
 }
 
@@ -228,3 +230,37 @@ export const updateUserController = async (req, res, next) => {
 //         next(error)
 //     }
 // }
+
+export const responseCommentLikeController = async (req, res, next) => {
+    try {
+
+        const { product_id } = req.params
+
+        console.log("THe product ID is:", product_id)
+
+        const auth_header = req.get("Authorization")
+
+        const token = auth_header.split(" ")[1]
+        const payload: userPayload = jwt.verify(token, process.env.JWT_SECRET)
+        const { user_id } = payload
+        console.log("The user verified by the JWT: ", payload)
+
+        const [userInteraction, isLiked] = await UserInteractionRepository.userLikeProduct({ user_id, product_id })
+        console.log(typeof userInteraction)
+        if (typeof userInteraction != "object") {
+            return next("Was not posible to give a like, try again later")
+        }
+
+        const good_response = new ResponseBuilder()
+            .setOk(true)
+            .setStatus(200)
+            .setMessage(`Product ${isLiked ? "liked" : "disliked"}!`)
+            .setPayload({
+                detail: product_id
+            })
+            .build()
+        return res.send(good_response)
+    } catch (error) {
+        return next(error)
+    }
+}

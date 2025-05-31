@@ -1,3 +1,4 @@
+import { Preferencess } from "./AuthProps"
 import { Products } from "./products"
 import React from "react"
 
@@ -47,6 +48,8 @@ export interface AuthContextProps {
     setjwe: React.Dispatch<React.SetStateAction<accessToken>>,
     token: string,
     setToken: React.Dispatch<React.SetStateAction<string>>
+    preferences: Preferencess
+    setpreferences: React.Dispatch<React.SetStateAction<Preferencess>>
 }
 
 export interface ProductsSearchContextProps {

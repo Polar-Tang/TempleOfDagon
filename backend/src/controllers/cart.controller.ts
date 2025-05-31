@@ -12,7 +12,8 @@ import pdf from "html-pdf"
 
 
 export const addToCartController = async (req, res, next) => {
-    try {
+    try { 
+        // sent from the browser with crentials: "tRUE"
         let cartId = req.cookies.cartId
         if (!cartId) {
             cartId = crypto.randomBytes(16).toString("hex")

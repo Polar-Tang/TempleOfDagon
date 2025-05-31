@@ -34,7 +34,7 @@ app.use('/api/auth', authRouter)
 
 app.use('/api/products', productRouter)
 
-app.use('/api/users', userRouter )
+app.use('/api/users', userRouter)
 
 app.use('/api/cart', cartRouter)
 

@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react'
 import type { AuthContextProps, ParentProps, accessToken } from '@/types/ContextTypes'
 import { jwtDecode } from "jwt-decode";
+import { Preferencess } from '@/types/AuthProps';
 
 export const AuthContext = createContext({} as AuthContextProps)
 
@@ -8,6 +9,7 @@ export const AuthProvider = ({ children }: ParentProps) => {
     const [isUserLogged, setisUserLogged] = useState(false)
     const [jwe, setjwe] = useState({} as accessToken)
     const [token, setToken] = useState("")
+    const [preferences, setpreferences] = useState({} as Preferencess)
 
     useEffect(() => {
         const access_token = sessionStorage.getItem("access_token")
@@ -30,7 +32,9 @@ export const AuthProvider = ({ children }: ParentProps) => {
             jwe,
             setjwe,
             token,
-            setToken
+            setToken,
+            setpreferences,
+            preferences
         }}>
 
             {children}

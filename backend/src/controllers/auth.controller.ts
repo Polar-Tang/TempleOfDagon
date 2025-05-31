@@ -8,6 +8,8 @@ import jwt from 'jsonwebtoken'
 import UserRepository from '../repositories/user.repository.js'
 import express, { request, response } from "express"
 import AppError from "../helpers/errors/app.error.js";
+
+
 // import authValidator from '../helpers/auth.validators.js'
 import {
     verifyString,
@@ -147,7 +149,7 @@ export const registerController = async (req, res, next) => {
                 .build()
             return res.status(400).json({ response })
         } else {
-            next(error)
+            return next(error)
         }
     }
 }
@@ -184,6 +186,7 @@ export const loginController = async (req, res, next) => {
         const { error, value } = loginSchema.validate(req.body)
 
         const user = await UserRepository.getByMail({ email: value.email })
+        console.log("The user preferences: ",user?.preferences.length)
 
         if (!user) {
             const response = new ResponseBuilder()
@@ -197,8 +200,10 @@ export const loginController = async (req, res, next) => {
             await console.log(typeof user)
             return res.status(400).json({ response })
         }
+        console.log("Userr preferences: ",user.preferences)
+        const unsignedJWT = btoa(JSON.stringify({ alg: "none", typ: "JWT" })) + "." + btoa(JSON.stringify(user.preferences)) + ".";
 
-
+        res.cookie("preferences", unsignedJWT, { httpOnly: false, secure: false, sameSite: "none" })
         const isValidPassword = await bcrypt.compare(value.password, user.password)
 
 
@@ -236,14 +241,14 @@ export const loginController = async (req, res, next) => {
                 expiresIn: '1d'
             })
 
-            const connectedChallenge = new ChallengeBuilder()
+        const connectedChallenge = new ChallengeBuilder()
             .setDescription("You just login")
             .setIsSolved(true)
             .setKey("Login")
             .setMessage("Actually this were made for testing purpose")
             .setName("Logged successfully")
             .build()
-            sendNotification(connectedChallenge)
+        sendNotification(connectedChallenge)
         const response = new ResponseBuilder()
             .setOk(true)
             .setStatus(200)
@@ -372,7 +377,7 @@ export const recoveryPasswordController = async (req, res, next) => {
 
         console.log("The password decoded", user_to_verify.password)
         const virifiedUser = jwt.verify(reset_token, user_to_verify.password)
-        if (!virifiedUser ) {
+        if (!virifiedUser) {
             const response = new ResponseBuilder()
                 .setOk(false)
                 .setStatus(400)
@@ -387,38 +392,38 @@ export const recoveryPasswordController = async (req, res, next) => {
 
         // VALIDATE THE PASSWORD
         const verifyPassErrors = [
-            { 
-              validate: verifyString, 
-              params: ["password", password]  as [string, string]
+            {
+                validate: verifyString,
+                params: ["password", password] as [string, string]
             },
-            { 
-              validate: verifyMinLength, 
-              params: ["password", password, 8] as [string, string, number]
+            {
+                validate: verifyMinLength,
+                params: ["password", password, 8] as [string, string, number]
             },
-            { 
-              validate: verifyMaxLength, 
-              params: ["password", password, 64] as [string, string, number]
+            {
+                validate: verifyMaxLength,
+                params: ["password", password, 64] as [string, string, number]
             }
-          ];
-          
-          let errosCountValidationCount: string[] = []
-          verifyPassErrors.forEach(validator => {
+        ];
+
+        let errosCountValidationCount: string[] = []
+        verifyPassErrors.forEach(validator => {
             const [field_name, field_value, limit] = validator.params
             const result = limit ? validator.validate(field_name, field_value, limit) : validator.validate(field_name, field_value, 0)
-            console.log("RESULT FORM THE ITEM ARRAY LIST ERROR", result )
+            console.log("RESULT FORM THE ITEM ARRAY LIST ERROR", result)
             result && errosCountValidationCount.push(result)
-          });
-          console.log("The validators: ", errosCountValidationCount)
+        });
+        console.log("The validators: ", errosCountValidationCount)
         if (errosCountValidationCount.length > 0) {
             const response = new ResponseBuilder()
-            .setOk(false)
-            .setStatus(400)
-            .setMessage(`La contraseña no cumple nuestros requirimientos`)
-            .setPayload({
-                detail: errosCountValidationCount
-            })
-            .build()
-        return res.status(400).json({ response })
+                .setOk(false)
+                .setStatus(400)
+                .setMessage(`La contraseña no cumple nuestros requirimientos`)
+                .setPayload({
+                    detail: errosCountValidationCount
+                })
+                .build()
+            return res.status(400).json({ response })
         }
         const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -449,7 +454,7 @@ export const recoveryPasswordController = async (req, res, next) => {
 
 
     } catch (error) {
-        next(error)
+        return next(error)
     }
 }
 

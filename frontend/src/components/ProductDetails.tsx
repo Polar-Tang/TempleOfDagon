@@ -1,9 +1,10 @@
-import { Badge, Heart } from 'lucide-react'
+import { Badge } from 'lucide-react'
 import type { Product } from "@/types/products"
 import CardPurchaseOptions from './cards/CardPurchaseOptions'
+import LikeProductButton from './buttons/LikeProductButton'
 
 const ProductDetails = ({ product }: { product: Product }) => {
-    const { title, updatedAt, price } = product
+    const { title, updatedAt, price, _id } = product
 
     return (
         <>
@@ -13,9 +14,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
                         Nuevo
                     </Badge>
                     <span className="text-gray-500 text-sm">| +50 vendidos</span>
-                    <button className="ml-auto text-gray-400 hover:text-blue-500">
-                        <Heart className="w-6 h-6" />
-                    </button>
+                    <LikeProductButton product_id={_id}/>
                 </div>
 
                 <h1 className="text-6xl font-bold font-burtonNT">
@@ -36,7 +35,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
                 <div className="pt-4">
                     <div className="text-3xl font-bold">$ {price}</div>
                     <div className="text-gray-600">
-                        en 6 cuotas de $ {price / 6}<sup>04</sup>
+                        en 6 cuotas de $ {Math.round(price / 6)}<sup>04</sup>
                     </div>
                     <button className="text-blue-500 text-sm hover:underline mt-1">Ver los medios de pago</button>
                 </div>

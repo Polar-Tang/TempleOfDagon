@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Input } from './ui/input';
 import { Button } from './ui/button';
-import { Loader2, Reply, Search } from 'lucide-react';
+import { Loader2, Reply } from 'lucide-react';
 import { comment } from '@/types/CommentsType';
 
 const InputMessage = ({comment_id, setcommentState}: {comment_id: string, setcommentState: React.Dispatch<React.SetStateAction<comment[]>> }) => {
