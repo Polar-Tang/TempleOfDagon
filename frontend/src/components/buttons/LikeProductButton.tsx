@@ -9,34 +9,43 @@ import { BodyResponseAny } from '@/types/bodyResponse'
 const LikeProductButton = ({ product_id }: { product_id: string }) => {
 
     const [open, setOpen] = useState(false)
-    const [dialogMessage, setDialogMessage] = useState({title: "", description: "", variant: "destructive"} as AlertProps)
-    const {setpreferences, preferences} = useContext(AuthContext)
+    const [dialogMessage, setDialogMessage] = useState({ title: "", description: "", variant: "destructive" } as AlertProps)
+    const { setpreferences, preferences } = useContext(AuthContext)
 
     const likeProductApi = async (product_id: string) => {
-        try {
-            
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/users/preference/like/${product_id}`, {
-                method: "GET",
-                headers: {
-                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
-                }
-            })
-            const HTTPData: BodyResponseAny = await res.json()
-            console.log(HTTPData)
-            if (HTTPData.ok) {
-                let alertData = {title: `${HTTPData.message}`, description: ``, variant: "default"} as AlertProps
-                setDialogMessage(alertData) 
-                const newProductIds = preferences.productId.filter(prod => prod !== product_id);
+
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/users/preference/like/${product_id}`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
+            },
+            credentials: "include"
+        })
+        const HTTPData: BodyResponseAny = await res.json()
+        console.log("Status res: ",HTTPData.ok)
+        if (HTTPData.ok) {
+            let alertData = { title: `${HTTPData.message}`, description: ``, variant: "default" } as AlertProps
+            setDialogMessage(alertData)
+            if (HTTPData.message === "Product liked!") {
+                console.log("The preferences before ", preferences)
+                const newProductIds = [...preferences.productId, product_id];
                 setpreferences({ ...preferences, productId: newProductIds });
-            } else if (HTTPData.status === 403) {
-                let alertData = {title: `${HTTPData.message}`, description: ``, variant: "destructive"} as AlertProps
-                setDialogMessage(alertData)
+                console.log("The preferences after ", preferences)
+            } else {
+                console.log("The preferences before ", preferences)
+                const newProductIds = preferences.productId.filter((id) => id !== product_id);
+                setpreferences({ ...preferences, productId: newProductIds });
+                console.log("The preferences after ", preferences)
             }
-        } catch (e) {
-            console.log(e)
-            let alertData: AlertProps = {title: `Something went Wrong`, description: `Sorry, Try again later!`, variant: "destructive"}
-                setDialogMessage(alertData) 
+        } else if (res.status === 403) {
+            let alertData = { title: `${HTTPData.message}`, description: `Please login before like the product`, variant: "destructive" } as AlertProps
+            setDialogMessage(alertData)
+        } else {
+            let alertData: AlertProps = { title: `Something went Wrong`, description: `Sorry, Try again later!`, variant: "destructive" }
+            setDialogMessage(alertData)
         }
+
+
         setOpen(true)
         setTimeout(() => setOpen(false), 2000)
     }

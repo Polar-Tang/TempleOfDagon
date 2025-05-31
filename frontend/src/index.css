@@ -344,9 +344,6 @@
   .left-3 {
     left: calc(var(--spacing) * 3);
   }
-  .left-100 {
-    left: calc(var(--spacing) * 100);
-  }
   .left-\[50\%\] {
     left: 50%;
   }
@@ -394,9 +391,6 @@
   }
   .col-start-2 {
     grid-column-start: 2;
-  }
-  .float-left {
-    float: left;
   }
   .float-right {
     float: right;

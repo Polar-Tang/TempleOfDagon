@@ -43,8 +43,8 @@ const userRouter = express.Router()
 userRouter.put('/avatar', authMiddleware(['admin', "user"]), upload.single('file'), updateUserController)
 userRouter.options('/avatar', cors(corsOptions))
 
-userRouter.get('/preference/like/:product_id', authMiddleware(['admin', "user"]), responseCommentLikeController)
-userRouter.options('/preference', cors(corsOptions))
+userRouter.post('/preference/like/:product_id', authMiddleware(['admin', "user"]), responseCommentLikeController)
+userRouter.options('/preference/like/:product_id', cors(corsOptions))
 
 userRouter.get('/:name', getUserController)
 userRouter.options('/:name', cors(corsOptions))
