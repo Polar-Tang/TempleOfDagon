@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { Download, ShoppingCart } from "lucide-react"
+import {  ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
@@ -196,12 +196,7 @@ export default function CartPage() {
                     </div>
                   </CardContent>
                   <CardFooter className="flex flex-col gap-4">
-                    <Button className="w-full"
-                    // onClick={generateInvoice}
-                    >
-                      <Download className="mr-2 h-4 w-4" />
-                      Generate Invoice
-                    </Button>
+                    
                     <Button className="w-full">
                       <Link to="/new/checkout/order">
                       Proceed to Checkout

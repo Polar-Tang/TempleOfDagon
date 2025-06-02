@@ -6,6 +6,7 @@ import CommentSection from './CommentSection'
 import { Product } from '@/types/products'
 import SecondNabvarProductStore from '@/components/SecondNabvarProductStore'
 import { comment } from '@/types/CommentsType'
+import FourOFourPage from '../404Page'
 
 export default function ProductDetailPage() {
 
@@ -26,7 +27,7 @@ export default function ProductDetailPage() {
 
   // const product = ProductsMock.find((product) => product._id === id)
   if (!product) {
-    return <div className="text-red-500">Product not found</div>
+    return <FourOFourPage title='Product not found' redir='/store' description='The product you are looking for does not exist' />
   }
 
 

@@ -1,5 +1,5 @@
 import { Preferencess } from "./AuthProps"
-import { Products } from "./products"
+import { categories, Products } from "./products"
 import React from "react"
 
 export interface LayoutContextProps {
@@ -17,9 +17,12 @@ export interface ProductCardPortalProps {
 
 
 export type selectedImage = {
-    src: string
-    name: string
-    _id: string
+    _id?: string,
+    title?: string,
+    image_url?: string,
+    price?: number,
+    category?: categories,
+    description?: string,
 }
 
 export interface ProductsCartContextProps {

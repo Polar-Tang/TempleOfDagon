@@ -5,40 +5,46 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import "./banner.css"
 import { ReactElement, useContext, useEffect, useRef, useState } from 'react'
 import { ProductPortalContext } from '@/context/ProductPortalContext'
-import {BannerPorps} from '@/types/products'
+import { ImagesProducts } from '@/types/products'
+import ProductsMock from '@/mocks/productsMock'
+import { selectedImage } from '@/types/ContextTypes'
+import ProductCardPortal from './cards/ProductCardPortal'
 
-export function ImageSection({ images }: BannerPorps): ReactElement<any | void, any | void> {
+export function ImageSection({ images }: ImagesProducts): ReactElement<any | void, any | void> {
 
 	const { setIsProductPortalOpen,
 		setSelectedImage,
+		isProductPortalOpen,
 	} = useContext(ProductPortalContext)
 
 	const renderProductPortal = (e: React.MouseEvent<HTMLButtonElement>) => {
-
 		const imgElement = e.target as HTMLImageElement
-
+		const product = ProductsMock.find((p) => p._id === imgElement.id)
 		if (imgElement.tagName === 'IMG') {
-			const src: string = imgElement.src
-			const name: string = imgElement.alt
-			const dataProduct = {
-				src: src,
-				name: name,
-				_id: imgElement.id
-			}
 			
+			const dataProduct = {
+				image_url: product?.image_url,
+				_id: imgElement.id,
+				description: product?.description,
+				category: product?.category,
+				price: product?.price ,
+				title: product?.title,
+			} as selectedImage
+			console.log("Data product: ",dataProduct)
 			setSelectedImage(dataProduct)
 			setIsProductPortalOpen(true)
 		}
 
 	}
-
+	console.log("Selected image: ", isProductPortalOpen)
 	return (
 		<div className={`images`}>
-			{images.map(({ src, name, _id }, index) => {
+				  {isProductPortalOpen && <ProductCardPortal/>}		
+			{images.map((img, index) => {
 				return (
 					<div className='image h-full' key={index}>
 						<button onClick={(e) => renderProductPortal(e)} >
-							<img src={src} alt={name} id={_id} className='h-50 max-w-50' />
+							<img src={img.image_url} alt={img.title} id={img._id} className='h-50 max-w-50' />
 						</button>
 					</div>
 				)
@@ -47,11 +53,11 @@ export function ImageSection({ images }: BannerPorps): ReactElement<any | void, 
 	)
 }
 
-export default function Banner({ images }: BannerPorps) {
+export default function Banner({ images }: ImagesProducts) {
 	const wrapperRef = useRef<HTMLDivElement>(null)
 	const [animationState, setanimationState] = useState<gsap.core.Tween>()
 	const { isProductPortalOpen, selectedImage } = useContext(ProductPortalContext)
-	const isSelectedImageEmpty = (selectedImage.name && selectedImage.src) == ""
+	const isSelectedImageEmpty = (selectedImage.title && selectedImage.image_url) == ""
 
 
 	gsap.registerPlugin(useGSAP)

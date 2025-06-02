@@ -14,6 +14,11 @@ const ResponseSchema = new mongoose.Schema({
 });
 
 const CommentSchema = new mongoose.Schema({
+    _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        auto: true
+    },
     author: {
         type: String,
         required: true
