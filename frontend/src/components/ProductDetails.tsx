@@ -1,6 +1,4 @@
-import { Badge } from 'lucide-react'
 import type { Product } from "@/types/products"
-import CardPurchaseOptions from './cards/CardPurchaseOptions'
 import LikeProductButton from './buttons/LikeProductButton'
 
 const ProductDetails = ({ product }: { product: Product }) => {
@@ -10,10 +8,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
         <>
             <div className='p-6 space-y-6' >
                 <div className="flex  items-center gap-2">
-                    <Badge className="bg-gray-100 text-gray-700">
-                        Nuevo
-                    </Badge>
-                    <span className="text-gray-500 text-sm">| +50 vendidos</span>
+                    
                     <LikeProductButton product_id={_id}/>
                 </div>
 
@@ -67,7 +62,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
                 </div>
             </div>
 
-            <CardPurchaseOptions />
+            {/* <CardPurchaseOptions /> */}
         </>
     )
 }

@@ -22,8 +22,7 @@ const ProductsList = () => {
   const { productsState } = useContext(ProductSearchContext)
 
     const { preferences } = useContext(AuthContext)
-     
-  console.log("Product ids: ",preferences.productId)
+    console.log("Preferences; ",preferences)
   return (
     <SecondNavbarStore>
 
@@ -35,7 +34,7 @@ const ProductsList = () => {
           )
           )
           : productsState.map((product) => (
-            <ProductCard product={product} liked_ids={preferences.productId}  />
+            <ProductCard product={product} liked_ids={Array.isArray(preferences?.productId) ? preferences.productId : []}  />
           ))}
     </SecondNavbarStore>
   )

@@ -98,9 +98,8 @@ export function ImageZoom({ src, alt, magnifyAmount = 2.5, className, product }:
                 }}
               />
             ) : (
-              <div className="flex items-center h-full text-muted-foreground">
                 <ProductsDetails product={product} />
-              </div>
+              
             )}
           </div>
         </div>

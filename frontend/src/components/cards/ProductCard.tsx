@@ -14,15 +14,13 @@ export default function ProductCard({ product, liked_ids }: {
     title,
     price,
     image_url } = product
-  console.log(liked_ids)
+  console.log("Liked ids: ",liked_ids)
   const navigator = useNavigate()
   return (
     <Card key={_id} id={_id} className="justify-items-center w-full overflow-hidden border-none shadow-none bg-trasparent">
       <CardContent className="p-4 flex flex-col items-center">
         <div className="mb-2 h-48 w-full relative flex items-center justify-center">
-          {(liked_ids && liked_ids.includes(_id)) && <ThumbsUp className="s-14 text-white absolute float-right" />}
-
-
+          {(liked_ids && liked_ids?.includes(_id)) && <ThumbsUp className="s-14 text-white absolute float-right" />}
             <img
               src={image_url}
               onClick={() => navigator(`/store/${_id}`)}

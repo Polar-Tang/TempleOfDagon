@@ -148,19 +148,11 @@ export const createComments = async () => {
 
     if (comment2) {
       await CommentRepository.responseComment({
-        message: "It work for me",
+        message: "It works for me",
         author: "Charles Dexter Ward",
         message_id: String(comment2?._id)
       });
     }
-
-    const product3 = await ProductRepository.getProductById("6812424f01fbd13fcf8f1c0e");
-
-    await CommentRepository.postComment({
-      description: "It works on every race, i tested it",
-      author: "Herbert West",
-      product_id: String(product3?._id)
-    });
 
 
     const product4 = await ProductRepository.getProductById("6812424f01fbd13fcf8f1c10");

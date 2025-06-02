@@ -1,10 +1,11 @@
-import { Heart } from 'lucide-react'
+import { ThumbsUp } from 'lucide-react'
 import { Button } from '../ui/button'
 import { useContext, useState } from "react"
 import { AlertDestructive } from '../AlertErrorComponent'
 import { AlertProps } from '@/types/AlertTypes'
 import { AuthContext } from "@/context/AuthContext"
 import { BodyResponseAny } from '@/types/bodyResponse'
+import Cookies from 'js-cookie'
 
 const LikeProductButton = ({ product_id }: { product_id: string }) => {
 
@@ -22,21 +23,21 @@ const LikeProductButton = ({ product_id }: { product_id: string }) => {
             credentials: "include"
         })
         const HTTPData: BodyResponseAny = await res.json()
-        console.log("Status res: ",HTTPData.ok)
+        console.log("Status res: ", HTTPData.ok)
+        // preferences
+        const unsignedJWT = Cookies.get('preferences')
+        console.log(unsignedJWT)
+        if (unsignedJWT) {
+            const [headerBase64, payloadBase64] = unsignedJWT.split('.');
+
+            const payloadJson = atob(payloadBase64)
+            const preferences = JSON.parse(payloadJson)
+            console.log("The funasdfgjkdszfiokghjdfa páyloasdf ", preferences)
+            setpreferences(preferences)
+        }
         if (HTTPData.ok) {
             let alertData = { title: `${HTTPData.message}`, description: ``, variant: "default" } as AlertProps
             setDialogMessage(alertData)
-            if (HTTPData.message === "Product liked!") {
-                console.log("The preferences before ", preferences)
-                const newProductIds = [...preferences.productId, product_id];
-                setpreferences({ ...preferences, productId: newProductIds });
-                console.log("The preferences after ", preferences)
-            } else {
-                console.log("The preferences before ", preferences)
-                const newProductIds = preferences.productId.filter((id) => id !== product_id);
-                setpreferences({ ...preferences, productId: newProductIds });
-                console.log("The preferences after ", preferences)
-            }
         } else if (res.status === 403) {
             let alertData = { title: `${HTTPData.message}`, description: `Please login before like the product`, variant: "destructive" } as AlertProps
             setDialogMessage(alertData)
@@ -53,7 +54,7 @@ const LikeProductButton = ({ product_id }: { product_id: string }) => {
     return (
         <>
             <Button onClick={() => likeProductApi(product_id)} className="ml-auto text-gray-400 hover:text-blue-500">
-                <Heart className="w-6 h-6" />
+                {(preferences?.productId?.includes(product_id)) ? <ThumbsUp className='s-4 text-blue-500' /> : <ThumbsUp className='s-6 text-gray-400' />}
             </Button>
             {open && <AlertDestructive title={dialogMessage.title} description={dialogMessage.description} variant={dialogMessage.variant} />}
         </>
