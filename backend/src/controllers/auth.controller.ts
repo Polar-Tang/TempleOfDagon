@@ -203,7 +203,7 @@ export const loginController = async (req, res, next) => {
         console.log("Userr preferences: ",user.preferences)
         const unsignedJWT = btoa(JSON.stringify({ alg: "none", typ: "JWT" })) + "." + btoa(JSON.stringify(user.preferences)) + ".";
 
-        res.cookie("preferences", unsignedJWT, { httpOnly: false, secure: true, sameSite: "none" })
+        res.cookie("preferences", unsignedJWT, { httpOnly: false, secure: true, sameSite: "none", path: "/"  })
         const isValidPassword = await bcrypt.compare(value.password, user.password)
 
 
