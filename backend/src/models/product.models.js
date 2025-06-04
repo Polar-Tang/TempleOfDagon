@@ -4,7 +4,8 @@ import mongoose from 'mongoose'
 const productSchema = new mongoose.Schema({
     _id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        required: true,
+        auto: true
     },
     title: {
         type: String,

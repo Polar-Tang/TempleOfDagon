@@ -421,8 +421,9 @@ export default function CardDetailsForm() {
 
                                         <div className="mt-6 flex items-center justify-center text-zinc-400 text-sm">
                                             <ShieldCheck className="h-4 w-4 mr-2" />
-                                            <span>Secure checkout powered by Stripe</span>
+                                            <span>We only accepts The Order Of Dagon credit card</span>
                                         </div>
+                                            <img src="/images/temple_dagon_card.png"/>
                                     </CardContent>
                                 </Card>
                             </div>

@@ -20,6 +20,6 @@ export type commentsComponent = {
     product_id?: string,
     commentState: comment[] | undefined,
     setcommentState: React.Dispatch<React.SetStateAction<comment[]>>,
-
+    desc?: string | undefined
 
 }

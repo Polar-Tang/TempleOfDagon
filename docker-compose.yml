@@ -1,9 +1,21 @@
 version: '3.8'
 
 services:
+  varnish:
+    image: varnish:stable
+    container_name: varnish
+    volumes:
+      - "./varnish/default.vcl:/etc/varnish/default.vcl"
+    ports:
+      - "3000:80"
+    tmpfs:
+      - /var/lib/varnish:exec
+    environment:
+      - VARNISH_SIZE=2G  
+    command: "-p default_keep=300"
+    depends_on:
+      - backend
   backend:
-    # networks:
-    #   - internal_network
     container_name: backend-dagon
     develop:
       watch:
@@ -16,8 +28,8 @@ services:
           path: package.json
     build:
       context: ./backend
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     # using env file
     env_file: ./backend/.env  
     # overwrited env variables:
@@ -26,7 +38,6 @@ services:
       - MONGO_URI=mongodb://mongo:27017/mydatabase 
     depends_on:
       - mongo
-  # This will exit with status 0 but its fine
   frontend:
     build: ./frontend
     container_name: frontend-dagon
@@ -59,7 +70,7 @@ services:
     depends_on:
       - frontend
       - backend
-    # networks:
+          # networks:
     #   - internal_network
     #   - public_network
   mongo:
@@ -69,14 +80,6 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
-  varnish:
-    image: varnish:latest
-    ports:
-      - "6081:6081"  # Varnish listens on port 80 (public-facing)
-    volumes:
-      - ./varnish/default.vcl:/etc/varnish/default.vcl  # Varnish config
-    depends_on:
-      - backend
 volumes:
   mongo-data:
   images-folder:

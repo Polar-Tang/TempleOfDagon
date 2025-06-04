@@ -7,16 +7,8 @@ import ProductPortalProvider from '@/context/ProductPortalContext';
 
 const Home = () => {
 
-  const images = ProductsMock.map((image) => {
-    return {
-      src: image.image_url,
-      name: image.title,
-      _id: image._id
-    }
-  }
-  )
+ 
   // const {ProductsMock.image_url, productsMock.title} = images
-
   return (
     <>
     <div className='place-items-center h-dvh bg-black grid 
@@ -29,7 +21,8 @@ const Home = () => {
       {/* <Navbar />  */}
       <SectionHero />
       <ProductPortalProvider >
-        <Banner images={images}/>
+
+        <Banner images={ProductsMock}/>
       </ProductPortalProvider>
     </div>
     {/* <Footer/> */}

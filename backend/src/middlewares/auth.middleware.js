@@ -19,7 +19,7 @@ const authMiddleware = (allowed_roles) => {
                         message: "You must login"
                     })
                     .build()
-                return res.status(errStatusCode).json({ response })
+                return res.status(errStatusCode).json(response)
 
             }
             const access_token = auth_header.split(" ")[1]
@@ -33,7 +33,7 @@ const authMiddleware = (allowed_roles) => {
                         message: "Bad token"
                     })
                     .build()
-                return res.status(errStatusCode).json({ response })
+                return res.status(errStatusCode).json(response)
             }
 
             try {
@@ -47,7 +47,7 @@ const authMiddleware = (allowed_roles) => {
                             message: "Not allowed"
                         })
                         .build()
-                    return res.status(403).json({ response })
+                    return res.status(403).json(response)
                 }
 
                 req.user = user_session_payload_decoded
@@ -63,7 +63,7 @@ const authMiddleware = (allowed_roles) => {
                         message: err.message
                     })
                     .build()
-                return res.status(errStatusCode).json({ response })
+                return res.status(errStatusCode).json(response)
             }
 
         } catch (err) {
@@ -76,7 +76,7 @@ const authMiddleware = (allowed_roles) => {
                 message: err.message
             })
             .build()
-        return res.status(errStatusCode).json({ response })
+        return res.status(errStatusCode).json(response)
         }
     }
 }

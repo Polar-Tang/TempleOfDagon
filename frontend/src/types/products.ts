@@ -1,8 +1,11 @@
 import { comment } from "./CommentsType"
 
-export type categories = "Magic" | "stone" | "meat" | "drinks" | "toys" | "accessories" | "clothes" | "home" | "pets" | "others"
+export type categories = "Magic" | "stone" | "meat" | "art" | "metal" | "others"
 
 
+export interface ImagesProducts {
+    images: Array<Product>;
+  }
 export type Products = {
     _id: string,
     title: string,

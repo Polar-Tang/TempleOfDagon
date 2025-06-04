@@ -2,8 +2,24 @@ import mongoose from "mongoose";
 import UserInteraction from "../models/userInteraction.model.js";
 import { UserInteractionType } from "../types/userInteraction.type.js";
 import UserRepository from "./user.repository.js";
+import Product from "../models/product.models.js"
 
 class UserInteractionRepository {
+    static async getPreferencesByProductId(product_id: mongoose.Types.ObjectId ) {
+        try {
+            console.log("Product id ",product_id)
+            const query = UserInteraction.find({
+                productId: new mongoose.Types.ObjectId(product_id)
+            });
+            const productsLiked = await query.exec()
+            console.log(productsLiked)
+            query.getFilter()
+            return productsLiked;
+        } catch (err) {
+            console.error(err);
+            return null;
+        }
+    }
 
     static async userLikeProduct({ user_id, product_id }: { user_id: mongoose.Types.ObjectId | string, product_id: mongoose.Types.ObjectId }): Promise<[UserInteractionType | null, boolean | null]> {
         try {
@@ -11,7 +27,6 @@ class UserInteractionRepository {
             let userInteraction = await UserInteraction.findOne({
                 userId: user_id,
             })
-            console.log(userInteraction)
             const user = await UserRepository.getById(String(user_id))
             if (!user) {
                 return [null, null];
@@ -26,6 +41,7 @@ class UserInteractionRepository {
                 });
                 await userInteraction.save();
                 user.preferences.push(userInteraction._id)
+
                 await user.save()
                 // true means product was liked
                 return [userInteraction, true];

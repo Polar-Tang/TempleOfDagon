@@ -18,9 +18,9 @@ const ProductCardPortal = () => {
     // console.log("selectedImage from the useEffect", (selectedImage.name && selectedImage.src && selectedImage._id) == ""  )
   }, [])
 
-  const {name, src, _id} = selectedImage
+  const {title, image_url, _id, description, price, category} = selectedImage
 
-  const isSelectedImageEmpty = (name && src && _id) == ""
+  const isSelectedImageEmpty = (title && image_url && _id) == ""
 
   if (isSelectedImageEmpty || !isProductPortalOpen ) return null
   return ReactDOM.createPortal(
@@ -33,7 +33,7 @@ const ProductCardPortal = () => {
           </Button>
         </div>
         <img
-          src={src}
+          src={image_url}
           alt="Product Image"
           width={600}
           height={400}
@@ -41,12 +41,12 @@ const ProductCardPortal = () => {
           style={{ aspectRatio: "600/400", objectFit: "cover" }}
         />
         <div id={_id} className="p-4 space-y-2">
-          <h3 className="text-xl font-semibold">{name}</h3>
-          <p className="text-gray-500 dark:text-gray-400">This is a description of the product.</p>
+          <h3 className="text-xl font-semibold">{title}</h3>
+          <p className="text-gray-500 dark:text-gray-400">{description}</p>
           <div className="flex items-center justify-between">
-            <span className="text-lg font-bold">$49.99</span>
+            <span className="text-lg font-bold">${price}</span>
             
-
+            <span className="text-gray-500 dark:text-gray-400">Category: {category}</span> 
             <ProcuctAddCardButton classes={""} />
           </div>
         </div>

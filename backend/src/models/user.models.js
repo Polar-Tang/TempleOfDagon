@@ -53,7 +53,7 @@ const userSchema = new mongoose.Schema({
     }],
     avatar_url: {
         type: String,
-        //default: ""
+        default: `${process.env.FRONTENDURL}/images/avatar/avart_default.png`
     }
 })
 

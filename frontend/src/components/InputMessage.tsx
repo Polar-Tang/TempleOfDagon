@@ -3,8 +3,9 @@ import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { Loader2, Reply } from 'lucide-react';
 import { comment } from '@/types/CommentsType';
+import { AlertDestructive } from './AlertErrorComponent';
 
-const InputMessage = ({comment_id, setcommentState}: {comment_id: string, setcommentState: React.Dispatch<React.SetStateAction<comment[]>> }) => {
+const InputMessage = ({comment_id, setcommentState }: {comment_id: string, setcommentState: React.Dispatch<React.SetStateAction<comment[]>> }) => {
      const [message, setMessage] = useState('');
         const [isLoading, setIsLoading] = useState(false);
         const [error, setError] = useState<string | null>(null);
@@ -58,6 +59,7 @@ const InputMessage = ({comment_id, setcommentState}: {comment_id: string, setcom
         };
   return (
     <form onSubmit={handleSubmit} className="flex gap-2">
+        {error && <AlertDestructive title='Something went wrong.' description='An error has ocurred, try again later' variant='destructive'/>}
                 <Input
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
@@ -68,7 +70,7 @@ const InputMessage = ({comment_id, setcommentState}: {comment_id: string, setcom
                 <Button
                     type="submit"
                     disabled={!message.trim() || isLoading}
-                    className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50"
+                    className={`${success ? "bg-green-600" : "bg-blue-600" } hover:bg-blue-700 disabled:opacity-50`}
                 >
                     {isLoading ? (
                         <Loader2 className="s-2 animate-spin" />

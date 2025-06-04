@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 
@@ -9,10 +7,12 @@ import { Separator } from "@/components/ui/separator"
 import { comment, commentsComponent } from "@/types/CommentsType"
 import { CommentInputFormWithFeedback } from "./CommentInputFormWithFeedback"
 import InputMessage from "@/components/InputMessage"
+import { formatRelativeTime } from "@/lib/helpers/formatRelativeTime"
+import DescriptionProductSection from "./DescriptionProductSection"
 
 type DialogType = "shipping" | "returns" | "payment" | "warranty" | null
 
-export default function QASection({ commentState, setcommentState, comments, product_id}: commentsComponent) {
+export default function QASection({ commentState, setcommentState, comments, product_id, desc}: commentsComponent) {
     const [openDialog, setOpenDialog] = useState<DialogType>(null)
 
     const dialogContent = {
@@ -123,6 +123,7 @@ export default function QASection({ commentState, setcommentState, comments, pro
 
     return (
         <div className="bg-gray-900 text-white p-6 min-h-screen">
+            <DescriptionProductSection desc={desc}/>
             <h1 className="text-2xl font-medium">Q & A</h1>
             <Separator className="my-4" />
             <div className="max-w-4xl mx-auto space-y-8">
@@ -222,47 +223,6 @@ const CommentsList = ({ comments, setcommentState }: { comments: comment[] | und
     }
 }
 // Utility function to format relative time
-const formatRelativeTime = (timestamp: string): string => {
-    const now = new Date();
-    const date = new Date(timestamp);
-    const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
-
-    // Less than a minute
-    if (diffInSeconds < 60) {
-        return 'just now';
-    }
-
-    // Less than an hour
-    const diffInMinutes = Math.floor(diffInSeconds / 60);
-    if (diffInMinutes < 60) {
-        return `${diffInMinutes}m ago`;
-    }
-
-    // Less than a day
-    const diffInHours = Math.floor(diffInMinutes / 60);
-    if (diffInHours < 24) {
-        return `${diffInHours}h ago`;
-    }
-
-    // Less than a week
-    const diffInDays = Math.floor(diffInHours / 24);
-    if (diffInDays < 7) {
-        return `${diffInDays}d ago`;
-    }
-
-    // Less than a month
-    const diffInWeeks = Math.floor(diffInDays / 7);
-    if (diffInWeeks < 4) {
-        return `${diffInWeeks}w ago`;
-    }
-
-    // More than a month - show actual date
-    return date.toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-        year: date.getFullYear() !== now.getFullYear() ? 'numeric' : undefined
-    });
-};
 
 const Comment = ({ comment, setcommentState }: { comment: comment, setcommentState: React.Dispatch<React.SetStateAction<comment[]>> }) => {
     const [toggleInput, settoggleInput] = useState(false)

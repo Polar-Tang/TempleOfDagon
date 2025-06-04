@@ -10,6 +10,7 @@ COPY .babelrc .
 # RUN npm install --save-dev @babel/core @babel/cli @babel/preset-env @babel/preset-typescript @babel/plugin-syntax-top-level-await
 
 COPY . .
+
 RUN npm install mongoose@8.9.4 --save-exact
 
 RUN npx babel ./src --out-dir ./dist --extensions ".js,.mjs,.ts" --copy-files --out-file-extension .js

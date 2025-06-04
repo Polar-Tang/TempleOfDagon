@@ -1,9 +1,8 @@
-import type React from "react"
 // import { Heart } from "lucide-react"
 // import { Badge } from "@/components/ui/badge"
 // import CardPurchaseOptions from "@/components/cards/CardPurchaseOptions"
 // import BreadCrumbsNav from '@/components/menus/BreadCrumbsNav'
-import { useState, useRef } from "react"
+import React,{ useState, useRef } from "react"
 import { cn } from "@/lib/utils"
 import { Product } from "@/types/products"
 import ProductsDetails from "@/components/ProductDetails"
@@ -13,10 +12,13 @@ interface ImageZoomProps {
   alt: string
   magnifyAmount?: number
   className?: string,
-  product: Product
+  product: Product,
+  likesNum: number,
+  setnumberLikesState: React.Dispatch<React.SetStateAction<number>>
 }
 
-export function ImageZoom({ src, alt, magnifyAmount = 2.5, className, product }: ImageZoomProps) {
+export function ImageZoom({ src, alt, magnifyAmount = 2.5, className, product, likesNum, setnumberLikesState }: ImageZoomProps) {
+  console.log("Image zoom num likes ",likesNum)
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [showMagnifier, setShowMagnifier] = useState(false)
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
@@ -98,9 +100,8 @@ export function ImageZoom({ src, alt, magnifyAmount = 2.5, className, product }:
                 }}
               />
             ) : (
-              <div className="flex items-center h-full text-muted-foreground">
-                <ProductsDetails product={product} />
-              </div>
+                <ProductsDetails setnumberLikesState={setnumberLikesState} likesNum={likesNum} product={product} />
+              
             )}
           </div>
         </div>

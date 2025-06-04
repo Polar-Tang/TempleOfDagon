@@ -48,9 +48,9 @@ const useAuthReq = ({ endpoint }: { endpoint: string }) => {
           const unsignedJWT = Cookies.get('preferences')
           console.log(unsignedJWT)
           if (unsignedJWT) {
-            const [headerBase64, payloadBase64] = unsignedJWT.split('.');
+            const asdf = unsignedJWT.split('.');
 
-            const payloadJson = atob(payloadBase64)
+            const payloadJson = atob(asdf[1])
             console.log("The funasdfgjkdszfiokghjdfa páyloasdf ", payloadJson)
             const preferences = JSON.parse(payloadJson)
             setpreferences(preferences[0])

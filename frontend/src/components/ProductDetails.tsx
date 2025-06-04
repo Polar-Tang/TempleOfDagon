@@ -1,20 +1,30 @@
-import { Badge } from 'lucide-react'
 import type { Product } from "@/types/products"
-import CardPurchaseOptions from './cards/CardPurchaseOptions'
 import LikeProductButton from './buttons/LikeProductButton'
+import { formatRelativeTime } from "@/lib/helpers/formatRelativeTime"
+import * as React from "react"
+import {
+    Dialog,
+    DialogTrigger,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogDescription,
+    DialogFooter,
+    DialogClose,
+} from "@/components/ui/dialog"
 
-const ProductDetails = ({ product }: { product: Product }) => {
-    const { title, updatedAt, price, _id } = product
 
+const ProductDetails = ({ product, likesNum, setnumberLikesState }: {
+    product: Product, likesNum: number, setnumberLikesState: React.Dispatch<React.SetStateAction<number>>
+}) => {
+    const { title, createdAt, price, _id, category, stock } = product
+    console.log("son likes", likesNum)
     return (
         <>
-            <div className='p-6 space-y-6' >
+            <div className='p-6 bg-gray-900  space-y-6' >
                 <div className="flex  items-center gap-2">
-                    <Badge className="bg-gray-100 text-gray-700">
-                        Nuevo
-                    </Badge>
-                    <span className="text-gray-500 text-sm">| +50 vendidos</span>
-                    <LikeProductButton product_id={_id}/>
+
+                    <LikeProductButton setnumberLikesState={setnumberLikesState} product_id={_id} />
                 </div>
 
                 <h1 className="text-6xl font-bold font-burtonNT">
@@ -23,53 +33,75 @@ const ProductDetails = ({ product }: { product: Product }) => {
 
                 <div className="flex items-center">
                     <div className="flex">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                            <svg key={star} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                                <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                            </svg>
-                        ))}
+                        Likes
                     </div>
-                    <span className="text-gray-500 ml-1">(1)</span>
+                    <span className="text-gray-500 ml-1">{likesNum}</span>
                 </div>
 
                 <div className="pt-4">
                     <div className="text-3xl font-bold">$ {price}</div>
                     <div className="text-gray-600">
-                        en 6 cuotas de $ {Math.round(price / 6)}<sup>04</sup>
+                        6 cuotes of $ {Math.round(price / 6)}
                     </div>
-                    <button className="text-blue-500 text-sm hover:underline mt-1">Ver los medios de pago</button>
+
+                    <PaymentMethods />
                 </div>
 
                 <div className="pt-6">
-                    <h3 className="font-medium text-lg">Lo que tenés que saber de este producto</h3>
+                    <h3 className="font-medium text-lg">Details</h3>
                     <ul className="mt-2 space-y-2">
                         <li className="flex gap-2">
                             <span>•</span>
-                            <span>Año de publicación: {updatedAt}</span>
+                            <span>Stock: {stock}</span>
                         </li>
                         <li className="flex gap-2">
                             <span>•</span>
-                            <span>Con índice: Sí</span>
+                            <span>Publish: {formatRelativeTime(createdAt)}</span>
                         </li>
                         <li className="flex gap-2">
                             <span>•</span>
-                            <span>Volumen del libro: Volumen Único</span>
+                            <span>Category: {category}</span>
                         </li>
-                        <li className="flex gap-2">
-                            <span>•</span>
-                            <span>Género: Literatura y ficción.</span>
-                        </li>
-                        <li className="flex gap-2">
-                            <span>•</span>
-                            <span>Subgénero: Clásicos.</span>
-                        </li>
+
                     </ul>
                 </div>
             </div>
 
-            <CardPurchaseOptions />
+            {/* <CardPurchaseOptions /> */}
         </>
     )
 }
 
 export default ProductDetails
+
+const PaymentMethods = () => {
+    return (
+        <Dialog>
+            <DialogTrigger asChild>
+                <button className="text-blue-500 text-sm hover:underline mt-1">
+                    See paid methods
+                </button>
+            </DialogTrigger>
+            <DialogContent>
+                <DialogHeader>
+                    <DialogTitle>Payment Methods</DialogTitle>
+                    <DialogDescription>
+                        We only accept the Temple of Dagon credit card
+                    </DialogDescription>
+                    <div className="flex justify-center">
+                        <img className="w-60 md:w-100" src="/images/temple_dagon_card.png" />
+                        {/* <Link to="/contact" >Get your own</Link> */}
+                    </div>
+                </DialogHeader>
+                {/* Add your payment methods details here */}
+                <DialogFooter>
+                    <DialogClose asChild>
+                        <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                            Close
+                        </button>
+                    </DialogClose>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog>
+    )
+}

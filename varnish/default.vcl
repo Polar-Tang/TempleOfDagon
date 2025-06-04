@@ -1,21 +1,28 @@
 vcl 4.1;
 
 backend default {
-    .host = "backend";  # Matches your Docker Compose service name
-    .port = "3000";     # Node.js app port
+    .host = "backend";
+    .port = "3000";
 }
 
-# Cache API responses (adjust rules as needed)
 sub vcl_recv {
-    # Cache GET requests for 2 minutes (example)
-    if (req.method == "GET" && req.url ~ "^/api/") {
+    # Cache GET requests (customize as needed)
+    if (req.method == "GET") {
         return (hash);
     }
 }
 
 sub vcl_backend_response {
-    # Set TTL (cache duration) for responses
-    if (bereq.url ~ "^/api/") {
-        set beresp.ttl = 2m;  # Cache for 2 minutes
+    # Cache for 2 minutes (example)
+    set beresp.ttl = 2m;
+}
+
+sub vcl_deliver {
+    # Add debug headers to responses
+    if (obj.hits > 0) {
+        set resp.http.X-Cache = "HIT (Varnish)";
+        set resp.http.X-Cache-Hits = obj.hits;
+    } else {
+        set resp.http.X-Cache = "MISS (Varnish)";
     }
 }

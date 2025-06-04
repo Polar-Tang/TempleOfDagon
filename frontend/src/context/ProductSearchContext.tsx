@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext } from 'react'
+import React, { useState, createContext } from 'react'
 import type { Products } from "@/types/products"
 // import type {BodyResponse} from "@/types/bodyResponse"
 import ProductsMock from '@/mocks/productsMock'
@@ -17,13 +17,11 @@ export const ProductSearchProvider = ({ children }: { children: React.ReactNode 
     //     setProductsState(data.payload.ProductSearched);
     //     return data
     // }
-  const [isSingleProduct, setisSingleProduct] = useState<boolean>(false)
+    const [isSingleProduct, setisSingleProduct] = useState<boolean>(false)
+    const [isFilter, setIsFilter] = useState<boolean>(false)
+    const [memoProductState, setMemoProductState] = useState([] as Products)
 
 
-
-    useEffect(() => {
-        setProductsState(ProductsMock)
-    }, []);
 
     return (
         <ProductSearchContext.Provider value={{
@@ -31,6 +29,11 @@ export const ProductSearchProvider = ({ children }: { children: React.ReactNode 
             setProductsState,
             isSingleProduct,
             setisSingleProduct,
+            isFilter,
+            setIsFilter,
+            memoProductState,
+            setMemoProductState
+
         }}>
             {children}
 

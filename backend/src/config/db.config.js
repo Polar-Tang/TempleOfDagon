@@ -1,9 +1,10 @@
 import mongoose from 'mongoose'
-import { createProducts, createCards, createUsers } from '../helpers/scripts/seedMongod.js'
+import { createProducts, createCards, createUsers, createComments } from '../helpers/scripts/seedMongod.js'
 import Product from '../models/product.models.js';
 import ENVIRONMENT from './environment.js'
 import CheckoutSession from '../models/checkout.model.js';
 import User from '../models/user.models.js';
+import Comment from '../models/comment.model.js';
 
 //const MONGO_URL = 'mongodb://localhost:27017/mydatabase'
 
@@ -18,6 +19,7 @@ mongoose.connect(process.env.MONGO_URI, {
     const productCount = await Product.countDocuments();
     const cartDetailsCount = await CheckoutSession.countDocuments();
     const userCount = await User.countDocuments();
+    const commentsCount = await Comment.countDocuments();
 
     if (productCount === 0) {
       await createProducts();
@@ -35,7 +37,11 @@ mongoose.connect(process.env.MONGO_URI, {
     } else {
       console.log("Users already exist. Skipping seeding.")
     }
-
+    if (commentsCount === 0) {
+      await createComments()
+    } else {
+      console.log("Comments already exist. Skipping seeding.")
+    }
     console.log("Server setup complete.");
   })
   .catch((err) => {

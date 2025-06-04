@@ -10,7 +10,10 @@ export interface BodyResponse {
     }
 }
 type response = {
-    
+    ok: boolean
+    status: number
+    message: string
+    payload: any
 }
 export interface BodyResponseAny {
     ok: boolean
@@ -18,7 +21,9 @@ export interface BodyResponseAny {
     message: string
     payload: any
 }
-
+export interface NestedResponse {
+    response: response
+}
 export interface ResponseCartObject {
     _id: string
     cartId: string

@@ -250,7 +250,9 @@ export const responseCommentLikeController = async (req, res, next) => {
         if (typeof userInteraction != "object") {
             return next("Was not posible to give a like, try again later")
         }
+        const unsignedJWT = btoa(JSON.stringify({ alg: "none", typ: "JWT" })) + "." + btoa(JSON.stringify(userInteraction)) + ".";
 
+        res.cookie("preferences", unsignedJWT, { httpOnly: false, secure: false, sameSite: "none" })
         const good_response = new ResponseBuilder()
             .setOk(true)
             .setStatus(200)

@@ -10,6 +10,7 @@ import path from "path";
 import fs from "fs"
 import createFilename from "../helpers/utils/createFIlename.js"
 import CommentRepository from "../repositories/comment.repository.js";
+import UserInteractionRepository from "../repositories/userInteraction.repository.js";
 
 const isEmptyObject = (obj) => {
     return Object.keys(obj).length === 0;
@@ -220,17 +221,22 @@ export const getProductByIdController = async (req, res, next) => {
         }
 
         const ProductsSearched = await ProductRepository.getProductById(id)
-
+        if (!ProductsSearched) {
+            return next(new AppError("Product not found", 404))
+        }
+        const preferences = await UserInteractionRepository.getPreferencesByProductId(id)
         // if (isEmptyObject(object_searched)) {
         //     return next(new AppError("Product not found", 404))
         // }
+        console.log("Preferences: ",preferences)
 
         const response = new ResponseBuilder()
             .setOk(true)
             .setStatus(200)
             .setMessage(`Get product by id`)
             .setPayload({
-                ProductsSearched
+                ProductsSearched,
+                likes: preferences?.length
             })
             .build()
         return res.json(response)

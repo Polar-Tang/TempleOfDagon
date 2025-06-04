@@ -26,7 +26,8 @@ const userInteractionSchema = new mongoose.Schema({
     default: true
   }
 }, {
-  timestamps: true
+  timestamps: true,
+  strictQuery: "throw"
 });
 
 // Compound indexes
