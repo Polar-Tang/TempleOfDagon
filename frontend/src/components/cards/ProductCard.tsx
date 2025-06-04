@@ -1,10 +1,8 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import {  ThumbsUp } from "lucide-react"
+import { ThumbsUp } from "lucide-react"
 import type { Product } from "@/types/products"
 import { ProcuctAddCardButton, ProductCardDetail } from "../buttons/ProductCartButons"
 import { useNavigate } from "react-router-dom"
-import { ProductSearchContext } from "@/context/ProductSearchContext"
-import { useContext } from "react"
 
 
 export default function ProductCard({ product, liked_ids }: {
@@ -12,7 +10,6 @@ export default function ProductCard({ product, liked_ids }: {
   liked_ids: string[] | undefined
   // addToCart: (e: React.MouseEvent) => void,
 }) {
-    const {  numberLikesState } = useContext(ProductSearchContext)
   
   const { _id,
     title,
@@ -44,10 +41,10 @@ export default function ProductCard({ product, liked_ids }: {
           </div>
 
           <div className="flex items-center justify-center text-sm text-gray-700 mt-1">
-            <span className="font-semibold text-white">{numberLikesState}</span>
+            <span className="font-semibold text-white">{price}</span>
             <div className="flex items-center ml-1">
               <ThumbsUp className="h-3 w-3 text-green-700 mr-1" />
-              <span className="text-xs">Likes </span>
+              <span className="text-xs">Repeat ${(price*2)-(price%1/4)}</span>
             </div>
           </div>
         </div>
