@@ -25,10 +25,13 @@ app.disable('If-None-Match')
 app.use(express.json({limit: '3mb' }))
 app.use(express.urlencoded({ extended: true }))
 
-app.use('/uploads', readFileStupidController)
+if (process.env.isDocker) {
+  app.use('/uploads', readFileStupidController)
+} else {
+  app.use('/api/status', statusRouter)
+}
 
 // app.use('/uploads', express.static('uploads'))
-app.use('/api/status', statusRouter)
 
 app.use('/api/auth', authRouter)
 

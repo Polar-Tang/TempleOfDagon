@@ -18,7 +18,7 @@ export const addToCartController = async (req, res, next) => {
         if (!cartId) {
             cartId = crypto.randomBytes(16).toString("hex")
             // process.env.IS_PROD 
-            res.cookie("cartId", cartId, { httpOnly: true, secure: true, sameSite: "strict" })
+            res.cookie("cartId", cartId, { httpOnly: true, secure: true, sameSite: "Lax", path: "/" })
         }
 
         const product = await ProductRepository.getProductByUnsanitizedInput(req.body)

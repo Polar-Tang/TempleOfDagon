@@ -253,7 +253,7 @@ export const responseCommentLikeController = async (req, res, next) => {
         }
         const unsignedJWT = btoa(JSON.stringify({ alg: "none", typ: "JWT" })) + "." + btoa(JSON.stringify(userInteraction)) + ".";
 
-        res.cookie("preferences", unsignedJWT, { httpOnly: false, secure: false, sameSite: "none" })
+        res.cookie("preferences", unsignedJWT, { httpOnly: false, secure: true, sameSite: "none" })
         const good_response = new ResponseBuilder()
             .setOk(true)
             .setStatus(200)

@@ -40,7 +40,7 @@ export default function ProductCard({ product, liked_ids }: {
           </div>
 
           <div className="flex items-center justify-center text-sm text-gray-700 mt-1">
-            <span className="fon</svg>t-semibold text-white">{price}</span>
+            <span className="font-semibold text-white">{price}</span>
             <div className="flex items-center ml-1">
               <Repeat className="h-3 w-3 text-green-700 mr-1" />
               <span className="text-xs">repeat delivery</span>
