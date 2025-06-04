@@ -65,7 +65,9 @@ const ProductDetails = ({ product, likesNum, setnumberLikesState }: {
 
                     </ul>
                 </div>
-                <ProcuctAddCardButton classes="flex items-center" />
+                <div className="flex items-center justify-center mt-6">
+                    <ProcuctAddCardButton classes="flex items-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" />
+                </div>
             </div>
 
             {/* <CardPurchaseOptions /> */}

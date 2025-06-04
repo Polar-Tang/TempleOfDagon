@@ -20,6 +20,7 @@ export const ProductSearchProvider = ({ children }: { children: React.ReactNode 
     const [isSingleProduct, setisSingleProduct] = useState<boolean>(false)
     const [isFilter, setIsFilter] = useState<boolean>(false)
     const [memoProductState, setMemoProductState] = useState([] as Products)
+    const [numberLikesState, setnumberLikesState] = useState(0)
 
 
 
@@ -32,8 +33,9 @@ export const ProductSearchProvider = ({ children }: { children: React.ReactNode 
             isFilter,
             setIsFilter,
             memoProductState,
-            setMemoProductState
-
+            setMemoProductState,
+            numberLikesState, 
+            setnumberLikesState
         }}>
             {children}
 

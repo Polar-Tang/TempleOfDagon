@@ -64,4 +64,6 @@ export interface ProductsSearchContextProps {
     setIsFilter: React.Dispatch<React.SetStateAction<boolean>>,
     memoProductState: Products,
     setMemoProductState: React.Dispatch<React.SetStateAction<Products>>
+    numberLikesState: number,
+    setnumberLikesState: React.Dispatch<React.SetStateAction<number>>
 }

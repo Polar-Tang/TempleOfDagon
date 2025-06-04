@@ -17,103 +17,100 @@ export default function QASection({ commentState, setcommentState, comments, pro
 
     const dialogContent = {
         shipping: {
-            title: "Costo y tiempo de envío",
+            title: "Shipping cost and time",
             icon: <Truck className="w-5 h-5" />,
             content: (
                 <div className="space-y-4">
                     <div className="space-y-2">
-                        <h4 className="font-medium">Envío gratis</h4>
-                        <p className="text-sm text-gray-600">En compras superiores a $50.000</p>
+                        <h4 className="font-medium">Free shipping</h4>
+                        <p className="text-sm text-gray-600">On purchases over $50,000</p>
                     </div>
                     <div className="space-y-2">
-                        <h4 className="font-medium">Tiempos de entrega</h4>
+                        <h4 className="font-medium">Delivery times</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
-                            <li>• Capital Federal: 1-2 días hábiles</li>
-                            <li>• GBA: 2-3 días hábiles</li>
-                            <li>• Interior: 3-7 días hábiles</li>
+                            <li>• Capital Federal: 1-2 business days</li>
+                            <li>• GBA: 2-3 business days</li>
+                            <li>• Interior: 3-7 business days</li>
                         </ul>
                     </div>
                     <div className="space-y-2">
-                        <h4 className="font-medium">Costos</h4>
+                        <h4 className="font-medium">Costs</h4>
                         <p className="text-sm text-gray-600">
-                            El costo se calcula automáticamente según tu ubicación al finalizar la compra.
+                            The cost is calculated automatically according to your location at checkout.
                         </p>
                     </div>
                 </div>
             ),
         },
         returns: {
-            title: "Devoluciones gratis",
+            title: "Free returns",
             icon: <RotateCcw className="w-5 h-5" />,
             content: (
                 <div className="space-y-4">
                     <div className="space-y-2">
-                        <h4 className="font-medium">Política de devoluciones</h4>
-                        <p className="text-sm text-gray-600">Tenés 30 días para devolver tu producto sin costo adicional.</p>
+                        <h4 className="font-medium">Return policy</h4>
+                        <p className="text-sm text-gray-600">You have 30 days to return your product at no additional cost.</p>
                     </div>
                     <div className="space-y-2">
-                        <h4 className="font-medium">Condiciones</h4>
+                        <h4 className="font-medium">Conditions</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
-                            <li>• El producto debe estar en su empaque original</li>
-                            <li>• No debe tener signos de uso</li>
-                            <li>• Incluir todos los accesorios</li>
+                            <li>• The product must be in its original packaging</li>
+                            <li>• It must not show signs of use</li>
+                            <li>• Include all accessories</li>
                         </ul>
                     </div>
                     <div className="space-y-2">
-                        <h4 className="font-medium">Proceso</h4>
+                        <h4 className="font-medium">Process</h4>
                         <p className="text-sm text-gray-600">
-                            Iniciá el proceso desde tu cuenta y te enviaremos las instrucciones.
+                            Start the process from your account and we will send you the instructions.
                         </p>
                     </div>
                 </div>
             ),
         },
         payment: {
-            title: "Medios de pago y promociones",
+            title: "Payment methods and promotions",
             icon: <CreditCard className="w-5 h-5" />,
             content: (
                 <div className="space-y-4">
                     <div className="space-y-2">
-                        <h4 className="font-medium">Medios de pago</h4>
+                        <h4 className="font-medium">Payment methods</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
-                            <li>• Tarjetas de crédito y débito</li>
-                            <li>• Mercado Pago</li>
-                            <li>• Transferencia bancaria</li>
-                            <li>• Efectivo en puntos de pago</li>
+                            <li>• Temple of Dagon credit card</li>
                         </ul>
                     </div>
                     <div className="space-y-2">
-                        <h4 className="font-medium">Promociones vigentes</h4>
+                        <h4 className="font-medium">Current promotions</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
-                            <li>• 12 cuotas sin interés con tarjetas seleccionadas</li>
-                            <li>• 15% off pagando con transferencia</li>
-                            <li>• 2x1 en productos seleccionados</li>
+                            <li>• 12 interest-free installments with selected cards</li>
+                            <li>• 15% off paying by bank transfer</li>
+                            <li>• 2x1 on selected products</li>
                         </ul>
                     </div>
                 </div>
             ),
         },
         warranty: {
-            title: "Garantía",
+            title: "Warranty",
             icon: <Shield className="w-5 h-5" />,
             content: (
                 <div className="space-y-4">
                     <div className="space-y-2">
-                        <h4 className="font-medium">Garantía del fabricante</h4>
-                        <p className="text-sm text-gray-600">Todos nuestros productos incluyen garantía oficial del fabricante.</p>
+                        <h4 className="font-medium">Manufacturer's warranty</h4>
+                        <p className="text-sm text-gray-600">All our products include the official manufacturer's warranty.</p>
                     </div>
                     <div className="space-y-2">
-                        <h4 className="font-medium">Duración</h4>
+                        <h4 className="font-medium">Duration</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
-                            <li>• Electrónicos: 12 meses</li>
-                            <li>• Electrodomésticos: 12-24 meses</li>
-                            <li>• Herramientas: 6-12 meses</li>
+                            <li>• Electronics: 12 months</li>
+                            <li>• Home appliances: 12-24 months</li>
+                            <li>• Tools: 6-12 months</li>
                         </ul>
                     </div>
                     <div className="space-y-2">
-                        <h4 className="font-medium">Cobertura</h4>
+                        <h4 className="font-medium">Coverage</h4>
                         <p className="text-sm text-gray-600">
-                            Cubre defectos de fabricación y fallas técnicas. No incluye daños por mal uso.
+                            Covers manufacturing defects and technical failures. Does not include damage due to misuse.
                         </p>
                     </div>
                 </div>
@@ -131,7 +128,7 @@ export default function QASection({ commentState, setcommentState, comments, pro
                 <div className="space-y-6">
 
                     <div className="space-y-4">
-                        <h2 className="text-lg text-gray-300">¿Qué querés saber?</h2>
+                        <h2 className="text-lg text-gray-300">¿What you want to know?</h2>
 
                         {/* Category badges */}
                         <div className="flex flex-wrap gap-3">
@@ -140,28 +137,28 @@ export default function QASection({ commentState, setcommentState, comments, pro
                                 className="bg-blue-600 text-white border-blue-600 hover:bg-blue-700 px-4 py-2 cursor-pointer"
                                 onClick={() => setOpenDialog("shipping")}
                             >
-                                Costo y tiempo de envío
+                                Cost and shpping time
                             </Badge>
                             <Badge
                                 variant="outline"
                                 className="bg-blue-600 text-white border-blue-600 hover:bg-blue-700 px-4 py-2 cursor-pointer"
                                 onClick={() => setOpenDialog("returns")}
                             >
-                                Devoluciones gratis
+                                Free returns
                             </Badge>
                             <Badge
                                 variant="outline"
                                 className="bg-blue-600 text-white border-blue-600 hover:bg-blue-700 px-4 py-2 cursor-pointer"
                                 onClick={() => setOpenDialog("payment")}
                             >
-                                Medios de pago y promociones
+                                Payments methods and promotions
                             </Badge>
                             <Badge
                                 variant="outline"
                                 className="bg-blue-600 text-white border-blue-600 hover:bg-blue-700 px-4 py-2 cursor-pointer"
                                 onClick={() => setOpenDialog("warranty")}
                             >
-                                Garantía
+                                warranty
                             </Badge>
                         </div>
                     </div>

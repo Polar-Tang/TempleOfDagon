@@ -49,9 +49,9 @@ const useAuthReq = ({ endpoint }: { endpoint: string }) => {
           console.log(unsignedJWT)
           if (unsignedJWT) {
             const asdf = unsignedJWT.split('.');
-
             const payloadJson = atob(asdf[1])
-            console.log("The funasdfgjkdszfiokghjdfa páyloasdf ", payloadJson)
+            console.log("The payload ", payloadJson) // The payload null
+            
             const preferences = JSON.parse(payloadJson)
             setpreferences(preferences[0])
           }
