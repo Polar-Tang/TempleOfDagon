@@ -1,6 +1,6 @@
 import { CartContext } from '@/context/CartContext'
 import { useContext, useEffect } from 'react'
-import { ProductCardDelete } from '../buttons/ProcuctCardButons'
+import { ProductCardDelete } from '../buttons/ProductCartButons'
 import ImgComponent from '../ImageComponent'
 
 const CartMenu = () => {

@@ -1,7 +1,7 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Repeat, ThumbsUp } from "lucide-react"
 import type { Product } from "@/types/products"
-import { ProcuctAddCardButton, ProductCardDetail } from "../buttons/ProcuctCardButons"
+import { ProcuctAddCardButton, ProductCardDetail } from "../buttons/ProductCartButons"
 import { useNavigate } from "react-router-dom"
 
 

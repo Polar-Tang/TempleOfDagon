@@ -1,5 +1,5 @@
 import { Card, CardContent } from '../ui/card'
-import { ProcuctAddCardButton } from '../buttons/ProcuctCardButons'
+import { ProcuctAddCardButton } from '../buttons/ProductCartButons'
 
 const CardPurchaseOptions = () => {
     return (

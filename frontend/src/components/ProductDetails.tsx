@@ -12,7 +12,7 @@ import {
     DialogFooter,
     DialogClose,
 } from "@/components/ui/dialog"
-
+import { ProcuctAddCardButton } from "./buttons/ProductCartButons"
 
 const ProductDetails = ({ product, likesNum, setnumberLikesState }: {
     product: Product, likesNum: number, setnumberLikesState: React.Dispatch<React.SetStateAction<number>>
@@ -65,6 +65,7 @@ const ProductDetails = ({ product, likesNum, setnumberLikesState }: {
 
                     </ul>
                 </div>
+                <ProcuctAddCardButton classes="flex items-center" />
             </div>
 
             {/* <CardPurchaseOptions /> */}

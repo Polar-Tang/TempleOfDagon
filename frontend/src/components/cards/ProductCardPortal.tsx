@@ -3,7 +3,7 @@ import { ProductPortalContext } from "@/context/ProductPortalContext";
 import { useContext, useEffect } from "react";
 import ReactDOM from 'react-dom';
 import { AiOutlineClose } from "react-icons/ai";
-import { ProcuctAddCardButton} from "@/components/buttons/ProcuctCardButons"
+import { ProcuctAddCardButton} from "@/components/buttons/ProductCartButons"
 
 const ProductCardPortal = () => {
   const {
