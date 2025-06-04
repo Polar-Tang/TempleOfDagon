@@ -11,6 +11,8 @@ import fs from "fs"
 import createFilename from "../helpers/utils/createFIlename.js"
 import CommentRepository from "../repositories/comment.repository.js";
 import UserInteractionRepository from "../repositories/userInteraction.repository.js";
+import ENVIRONMENT from './config/environment.js'
+import { getUploadsUrl } from "../helpers/utils/getUploadsUrl.js";
 
 const isEmptyObject = (obj) => {
     return Object.keys(obj).length === 0;
@@ -78,7 +80,8 @@ export const createProductController = async (req, res, next) => {
             return res.status(500).send(response);
             } 
         })
-        const completeFileName = `${process.env.FRONTENDURL}/images/uploads/${fileName}`
+
+        const completeFileName = getUploadsUrl(fileName)
         let errors: string[] = []
 
         const auth_header = req.get("Authorization")

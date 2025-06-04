@@ -4,12 +4,13 @@ import dotenv from 'dotenv'
 // node ./src/config/environment.js
 dotenv.config()
 
-console.log(process.env.MONGO_URI)
 const ENVIRONMENT = {
     EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
     EMAIL_USER: process.env.EMAIL_USER,
     JWT_SECRET: process.env.JWT_SECRET,
     MONGO_URI: process.env.MONGO_URI,
+    isDocker: process.env.isDocker,
+
     MYSQL: {
         HOST: process.env.MYSQL_HOST,
         USER: process.env.MYSQL_USER,

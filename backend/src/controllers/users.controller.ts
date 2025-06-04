@@ -5,6 +5,7 @@ import ENVIRONMET from "../config/environment.js"
 import ProductRepository from '../repositories/product.repository.js'
 import UserInteractionRepository from '../repositories/userInteraction.repository.js'
 import { userPayload } from '../types/token.type.js'
+import { getUploadsUrl } from '../helpers/utils/getUploadsUrl.js'
 
 
 export const getUserController = async (req, res, next) => {
@@ -150,7 +151,7 @@ export const updateUserController = async (req, res, next) => {
             size
         } = req.file as multerFileParse
 
-        const imagePath = process.env.FRONTENDURL + "/images/uploads/" + filename
+        const imagePath = getUploadsUrl(filename)
 
         const auth_header = req.get("Authorization")
         const token = auth_header.split(" ")[1]

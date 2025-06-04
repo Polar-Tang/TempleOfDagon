@@ -79,3 +79,4 @@ xdg-settings: default-url-scheme-handler not implemented for xfce
 [220749:0603/211305.565047:ERROR:gbm_wrapper.cc(262)] Failed to export buffer to dma_buf: No such file or directory (2)
 [220749:0603/211305.565182:ERROR:gbm_wrapper.cc(79)] Failed to get fd for plane.: No such file or directory (2)
 [220749:0603/211305.565263:ERROR:gbm_wrapper.cc(262)] Failed to export buffer to dma_buf: No such file or directory (2)
+[220677:0603/211631.219713:ERROR:atom_cache.cc(229)] Add chromium/from-privileged to kAtomsToCache
