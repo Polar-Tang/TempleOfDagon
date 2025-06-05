@@ -3,10 +3,9 @@ import { AlertProps } from "@/types/AlertTypes"
 import { AuthContext } from '@/context/AuthContext'
 import { jwtDecode } from 'jwt-decode'
 import { accessToken } from '@/types/ContextTypes'
-import Cookies from 'js-cookie'
 
 const useAuthReq = ({ endpoint }: { endpoint: string }) => {
-  const { setisUserLogged, isUserLogged } = useContext(AuthContext)
+  const { setisUserLogged } = useContext(AuthContext)
   const [message, setMessage] = useState({ title: "", description: "", variant: "destructive" } as AlertProps)
   const [isReqSubmited, setisReqSubmited] = useState(false)
   const { setjwe, setpreferences } = useContext(AuthContext)
@@ -27,7 +26,6 @@ const useAuthReq = ({ endpoint }: { endpoint: string }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: "include",
         body: JSON.stringify(form_state)
       })
 
@@ -36,25 +34,20 @@ const useAuthReq = ({ endpoint }: { endpoint: string }) => {
       const messageDescription = data.response.payload.detail
       if (data.response.ok) {
         if (endpoint === "login") {
-          setisUserLogged(true)
-
-          console.log(responseHTTP.headers)
-          console.log("IsUserHasLogged ", isUserLogged)
-          sessionStorage.setItem("access_token", String(messageDescription))
-          const object_access_token = jwtDecode(messageDescription) as accessToken
-          setjwe(object_access_token)
-
-          // preferences
-          const unsignedJWT = Cookies.get('preferences')
-          console.log(unsignedJWT)
-          if (unsignedJWT) {
-            const asdf = unsignedJWT.split('.');
+          const preferencesToken = responseHTTP.headers.get("x-preferences-token")
+          console.log("#The preferrences header ", preferencesToken)
+          if (preferencesToken) {
+            const asdf = preferencesToken.split('.');
             const payloadJson = atob(asdf[1])
-            console.log("The payload ", payloadJson) // The payload null
             
             const preferences = JSON.parse(payloadJson)
             setpreferences(preferences[0])
           }
+          setisUserLogged(true)
+          sessionStorage.setItem("access_token", String(messageDescription))
+          const object_access_token = jwtDecode(messageDescription) as accessToken
+          setjwe(object_access_token)
+
         }
         setMessage({ title: messageFromData, description: "Bienvenido a halloween", variant: "default" })
         return

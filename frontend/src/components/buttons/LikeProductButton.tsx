@@ -5,7 +5,6 @@ import { AlertDestructive } from '../AlertErrorComponent'
 import { AlertProps } from '@/types/AlertTypes'
 import { AuthContext } from "@/context/AuthContext"
 import { BodyResponseAny } from '@/types/bodyResponse'
-import Cookies from 'js-cookie'
 
 const LikeProductButton = ({ product_id, setnumberLikesState }: { product_id: string, setnumberLikesState: React.Dispatch<React.SetStateAction<number>> }) => {
 
@@ -25,15 +24,15 @@ const LikeProductButton = ({ product_id, setnumberLikesState }: { product_id: st
         const HTTPData: BodyResponseAny = await res.json()
         console.log("Status res: ", HTTPData.ok)
         // preferences
-        const unsignedJWT = Cookies.get('preferences')
-        console.log(unsignedJWT)
-        if (unsignedJWT) {
-            const tokenSegments = unsignedJWT.split('.');
-
-            const payloadJson = atob(tokenSegments[1])
+         const preferencesToken = res.headers.get("x-preferences-token")
+          console.log("#The preferrences header ", preferencesToken)
+          if (preferencesToken) {
+            const asdf = preferencesToken.split('.');
+            const payloadJson = atob(asdf[1])
+            console.log("The payload ", payloadJson) // The payload null
             const preferences = JSON.parse(payloadJson)
             setpreferences(preferences)
-        }
+          }
         if (HTTPData.ok) {
             let alertData = { title: `${HTTPData.message}`, description: ``, variant: "default" } as AlertProps
             setDialogMessage(alertData)
@@ -54,6 +53,7 @@ const LikeProductButton = ({ product_id, setnumberLikesState }: { product_id: st
         setOpen(true)
         setTimeout(() => setOpen(false), 2000)
     }
+    console.log("Prefences: ",preferences)
 
     return (
         <>
